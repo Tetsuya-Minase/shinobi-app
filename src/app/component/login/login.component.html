@@ -1,0 +1,14 @@
+<h1>ログイン画面</h1>
+<div class="container" style="width: 90%">
+  <div class="row">
+    <span class="col-md-2">ID</span>
+    <input type="text" class="col-md-6" #id>
+  </div>
+  <div class="row">
+    <span class="col-md-2">パスワード</span>
+    <input type="text" class="col-md-6" #pass>
+  </div>
+  <div class="row">
+    <button mat-stroked-button class="mx-auto" (click)="login(id.value, pass.value)">ログイン</button>
+  </div>
+</div>
