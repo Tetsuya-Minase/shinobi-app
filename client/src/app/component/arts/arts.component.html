@@ -1,0 +1,38 @@
+<div class="row">
+<ng-container *ngFor="let artsObject of artsArray">
+    <div class="card col-md-3" [ngClass]="artsObject.clickFlg ? 'bg-primary text-light' : ''" (click)="dataClick(artsObject)">
+      <div class="card-body">
+        <h5 class="card-title">{{artsObject.name}}</h5>
+        <div class="card-subtitle mb-2 text-muted">
+          <ng-container *ngFor="let attribute of artsObject.attribute">
+            <span class="badge badge-secondary">{{attribute}}</span>
+          </ng-container>
+        </div>
+        <div class="card-text mb-1 mt-1">
+          <table class="table-bordered">
+            <tbody>
+              <tr>
+                <td>
+                  <span class="bg-dark text-light mr-1">タイプ</span>{{artsObject.type}}</td>
+                <td>
+                  <span class="bg-dark text-light mr-1">間合</span>{{artsObject.range}}</td>
+                <td>
+                  <span class="bg-dark text-light mr-1">コスト</span>{{artsObject.cost}}</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <span class="bg-dark text-light mr-1">指定特技</span>{{artsObject.targetSkill}}</td>
+              </tr>
+              <tr>
+                <td colspan="3">{{artsObject.description}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          {{artsObject.flavor}}
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

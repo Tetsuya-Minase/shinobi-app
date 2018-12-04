@@ -1,0 +1,14 @@
+{
+  "name": "trpgapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "exec": "run-p exec:client exec:server",
+    "exec:client": "cd ./client && npm run watch:client",
+    "exec:server": "cd ./server && npm start"
+  },
+  "author": "",
+  "license": "ISC"
+}
