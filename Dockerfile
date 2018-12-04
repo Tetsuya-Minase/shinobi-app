@@ -12,4 +12,4 @@ RUN npm run build:clean
 
 EXPOSE  3000
 
-CMD ["node", "/src/server/bin/www"]
+CMD ["node", "/src/app/bin/www"]
