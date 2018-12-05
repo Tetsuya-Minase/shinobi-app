@@ -5,12 +5,10 @@ import * as cookieParser from 'cookie-parser';
 import * as helmet from 'helmet';
 // ログ
 import * as winston from 'winston';
-// import * as winstonDailyRotateFile from 'winston-daily-rotate-file';
 require('winston-daily-rotate-file');
 
 // router
 import { Api } from './routes/api';
-// const apiRouter = require('./routes/api');
 
 class App {
   public express: express.Application = express();
@@ -18,7 +16,7 @@ class App {
   private apiRouter;
 
   constructor() {
-    this.apiRouter = new Api();
+    this.apiRouter = new Api().router;
 
     this.initMiddleWare();
     this.initRouting();
@@ -67,27 +65,29 @@ class App {
     this.express.use(express.json());
     this.express.use(express.urlencoded({ extended: false }));
     this.express.use(cookieParser());
-    this.express.use(express.static(path.join(__dirname, 'express')));
+    this.express.use(express.static(path.join(__dirname, 'public')));
     this.express.use(helmet());
     this.express.disable('x-powered-by');
     
     // ルーティング
     this.express.use('/api', this.apiRouter);
     this.express.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'public/index.html'));
+      // res.sendFile(path.join(__dirname, '/public/index.html'));
+      res.sendFile(path.join(path.resolve(''), './app/public/index.html'));
     });
   }
   
   private initHandleError() {
     // catch 404 and forward to error handler
-    this.express.use(function(req, res, next) {
+    this.express.use((req, res, next) => {
       this.logger.error(`404 not found [url:${req.url}]`);
       next(createError(404));
     });    
     // error handler
-    this.express.use(function(err, req, res, next) {
+    this.express.use((err, req, res, next) => {
       // set locals, only providing error in development
       res.locals.message = err.message;
+      console.log('★', err.message);
       res.locals.error = req.express.get('env') === 'development' ? err : {};
       // log error
       this.logger.error(`500 internal server error [err:${err}]`);

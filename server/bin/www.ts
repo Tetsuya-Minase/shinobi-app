@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-import { default as app } from '../app';
+import { default as express } from '../app';
 import * as debug from 'debug';
 import * as http from 'http';
 
@@ -9,12 +9,12 @@ import * as http from 'http';
  * Get port from environment and store in Express.
  */
 const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+express.set('port', port);
 
 /**
  * Create HTTP server.
  */
-const server = http.createServer(app);
+const server = http.createServer(express);
 
 /**
  * Listen on provided port, on all network interfaces.
