@@ -4,8 +4,14 @@
 /server/config
 /app/config
 
+# dist
+/app
+
 # dependencies
 node_modules
+
+# log
+/app/log
 
 # IDEs and editors
 /.idea

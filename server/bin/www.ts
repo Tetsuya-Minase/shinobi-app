@@ -1,30 +1,24 @@
-#!/usr/bin/env node
-
 /**
  * Module dependencies.
  */
-
-var app = require('../app');
-var debug = require('debug')('server:server');
-var http = require('http');
+import { default as express } from '../app';
+import * as debug from 'debug';
+import * as http from 'http';
 
 /**
  * Get port from environment and store in Express.
  */
-
-var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+const port = normalizePort(process.env.PORT || '3000');
+express.set('port', port);
 
 /**
  * Create HTTP server.
  */
-
-var server = http.createServer(app);
+const server = http.createServer(express);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
@@ -32,9 +26,8 @@ server.on('listening', onListening);
 /**
  * Normalize a port into a number, string, or false.
  */
-
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+  const port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -52,7 +45,6 @@ function normalizePort(val) {
 /**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -80,12 +72,11 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  // debug('Listening on ' + bind);
-  console.log('Listening on ' + bind);
+  debug('Listening on ' + bind);
+  console.log(`Listening on ${bind}`);
 }
