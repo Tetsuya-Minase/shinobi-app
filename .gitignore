@@ -2,7 +2,6 @@
 
 # compiled output
 /server/config
-/app/config
 
 # dependencies
 node_modules
