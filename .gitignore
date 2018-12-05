@@ -4,6 +4,9 @@
 /server/config
 /app/config
 
+# dist
+/app
+
 # dependencies
 node_modules
 
