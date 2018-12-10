@@ -5,7 +5,7 @@ import * as cons from '../../common/constant';
 @Component({
   selector: 'app-artssetting',
   templateUrl: './artssetting.component.html',
-  styleUrls: ['./artssetting.component.css']
+  styleUrls: ['./artssetting.component.scss']
 })
 export class ArtssettingComponent implements OnInit {
   /** 選択した忍法リスト */

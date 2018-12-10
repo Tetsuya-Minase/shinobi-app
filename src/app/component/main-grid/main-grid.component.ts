@@ -7,7 +7,7 @@ import * as ifs from '../../common/interfaces';
 @Component({
     selector: 'app-main-grid',
     templateUrl: './main-grid.component.html',
-    styleUrls: ['./main-grid.component.css']
+    styleUrls: ['./main-grid.component.scss']
 })
 export class MainGridComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() ryuha: string = '';

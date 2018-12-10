@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-basic-information',
   templateUrl: './basic-information.component.html',
-  styleUrls: ['./basic-information.component.css']
+  styleUrls: ['./basic-information.component.scss']
 })
 export class BasicInformationComponent implements OnInit {
   public selectList: Array<string> = ['流派を選択', '斜歯忍軍', '鞍馬神流', 'ハグレモノ', '比良坂機関', '私立御斎学園', '隠忍の血統'];

@@ -73,6 +73,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
+            "tsConfig": "src/tsconfig.json",
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "scripts": [
@@ -131,7 +132,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "css"
+      "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
