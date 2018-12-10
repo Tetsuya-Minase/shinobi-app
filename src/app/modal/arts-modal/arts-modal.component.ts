@@ -5,7 +5,7 @@ import * as ifs from '../../common/interfaces';
 @Component({
   selector: 'app-arts-modal',
   templateUrl: './arts-modal.component.html',
-  styleUrls: ['./arts-modal.component.css']
+  styleUrls: ['./arts-modal.component.scss']
 })
 export class ModalComponent implements OnInit {
   @Input() public modalId: string;

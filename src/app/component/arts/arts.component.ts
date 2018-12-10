@@ -7,7 +7,7 @@ import * as cons from '../../common/constant';
 @Component({
   selector: 'app-arts',
   templateUrl: './arts.component.html',
-  styleUrls: ['./arts.component.css']
+  styleUrls: ['./arts.component.scss']
 })
 export class ArtsComponent implements OnInit {
   @Input() public selectArtsArray: Array<ifs.ArtsData>;

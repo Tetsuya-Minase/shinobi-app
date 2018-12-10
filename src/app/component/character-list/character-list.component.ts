@@ -4,7 +4,7 @@ import { DbService } from '../../service/db.service';
 @Component({
   selector: 'app-character-list',
   templateUrl: './character-list.component.html',
-  styleUrls: ['./character-list.component.css']
+  styleUrls: ['./character-list.component.scss']
 })
 export class CharacterListComponent implements OnInit {
   public charactorNameList = [];

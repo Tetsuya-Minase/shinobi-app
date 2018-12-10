@@ -7,7 +7,7 @@ import { WebStorage } from '../../common/functions';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
   // HTMLから参照するため仮置き

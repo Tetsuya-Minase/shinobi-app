@@ -23,38 +23,38 @@ export enum ArtsAttribute {
  */
 export interface ArtsData {
     /** 忍法名 */
-    name: string
+    name: string;
     /** 忍法タイプ */
-    type: ArtsType
+    type: ArtsType;
     /** 間合 */
-    range: number
+    range: number;
     /** コスト */
-    cost: string
+    cost: string;
     /** 指定特技 */
-    targetSkill: string
+    targetSkill: string;
     /** エフェクト */
-    description: string
+    description: string;
     /** フレーバーテキスト */
-    flavor: string
+    flavor: string;
     /** 忍法種類 */
-    attribute: Array<ArtsAttribute>
+    attribute: Array<ArtsAttribute>;
     /** データクリックされたか */
-    clickFlg: boolean
+    clickFlg: boolean;
 };
 
 /**
  * クリックした
  */
 export interface IClickIndex {
-    name: string
-    , colId: string
-    , colIndex: number
-    , rowIndex: number
+    name: string;
+    colId: string;
+    colIndex: number;
+    rowIndex: number;
 }
 
 export interface IUrlList {
-    regist: string
-    , characterList: string
-    , login: string
-    , myPage:string
+    regist: string;
+    characterList: string;
+    login: string;
+    myPage:string;
 }

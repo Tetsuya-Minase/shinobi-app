@@ -8,7 +8,7 @@ import { ArtssettingComponent } from '../artssetting/artssetting.component';
 @Component({
   selector: 'app-character-detail',
   templateUrl: './character-detail.component.html',
-  styleUrls: ['./character-detail.component.css']
+  styleUrls: ['./character-detail.component.scss']
 })
 export class CharacterDetailComponent implements OnInit {
   public ryuha = '';

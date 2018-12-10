@@ -18,7 +18,6 @@ import { ModalComponent } from './modal/arts-modal/arts-modal.component';
 import { ArtsComponent } from './component/arts/arts.component';
 import { ArtssettingComponent } from './component/artssetting/artssetting.component';
 import { BasicInformationComponent } from './component/basic-information/basic-information.component';
-import { DbData } from './common/db-stub';
 import { ReferModalComponent } from './modal/refer-modal/refer-modal.component';
 import { LoginComponent } from './component/login/login.component';
 import { ErrorComponent } from './component/error/error.component';
@@ -51,7 +50,6 @@ import { MyPageComponent } from './component/my-page/my-page.component';
     HttpClientModule,
     NgbModule.forRoot(),
     AgGridModule.withComponents([]),
-    InMemoryWebApiModule.forRoot(DbData),
     ROUTES,
     BrowserAnimationsModule,
     MatDialogModule,
