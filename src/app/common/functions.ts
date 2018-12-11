@@ -1,11 +1,29 @@
-export function deepCopy(target: any) {
-    return JSON.parse(JSON.stringify(target));
-}
+import * as  ifs from './interfaces';
 
-export function listDeleteByKey(list: any[], keyName: any, key: any) {
-    let tmpList = list.concat();
-    tmpList = tmpList.filter(tmp => tmp[keyName] !== key);
-    return tmpList;
+/**
+ * 汎用関数群用namespace
+ */
+export namespace Functions {
+    export function deepCopy(target: any) {
+        return JSON.parse(JSON.stringify(target));
+    }
+    
+    export function listDeleteByKey(list: any[], keyName: any, key: any) {
+        let tmpList = list.concat();
+        tmpList = tmpList.filter(tmp => tmp[keyName] !== key);
+        return tmpList;
+    }
+    
+    /**
+     * 対象が定義されているか確認
+     * @param target 検査対象
+     */
+    export function isDefined(target: any) {
+        if(target === null || undefined) {
+            return false;
+        }
+        return true;
+    }   
 }
 
 export namespace WebStorage {
@@ -34,6 +52,57 @@ export namespace WebStorage {
     }
     export function delLocalStorage(key: string) {
         window.localStorage.removeItem(key);
+    }
+    export const enum STORAGE_KEYS {
+        userId = 'userId'
+    }
+}
+
+export namespace InitInterfaces {
+    export function initCharacterData() : ifs.ICharacterData {
+        return {
+            userId: '',
+            playerName: '',
+            characterName: '',
+            kana: '',
+            regulation: '',
+            type: '',
+            ryuha: '',
+            kairyuha: '',
+            ryugi: '',
+            enemy: '',
+            rank: '',
+            achievement: '',
+            age: '',
+            gender: '',
+            face: '',
+            belief: '',
+            selectedSkillList: {},
+            dispArtsArray: {},
+            background: [initBackground()],
+            secrets: [initSecrets()],
+            hyorogan: 0,
+            jintugan: 0,
+            tonkohu: 0
+        }
+    }
+
+    export function initSecrets(): ifs.ISecretsInfo{
+        return {
+            name: '',
+            targetSkill: '',
+            effect: '',
+            effectDetai: ''
+        }
+    }
+
+    export function initBackground(): ifs.IBackGround {
+        return {
+            name: '',
+            type: '',
+            point: 0,
+            effect: ''
+        }
     }
 }
 

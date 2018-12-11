@@ -1,5 +1,7 @@
+import { MatDialog } from '@angular/material';
 import { DbService } from './../../service/db.service';
 import { Component, OnInit } from '@angular/core';
+import { ReferModalComponent } from '../../modal/refer-modal/refer-modal.component';
 
 @Component({
   selector: 'app-my-page',
@@ -8,16 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyPageComponent implements OnInit {
   public myCharacterList: Array<object> = new Array<object>();
+  public myCharacterNameList: Array<object> = new Array<object>();
   public modalCharacter = {};
 
   constructor(
-    private dbService: DbService
+    private dbService: DbService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
-    this.dbService.getCharactorData('my-account').subscribe(
+    const userId = window.sessionStorage.getItem('userId');
+    this.dbService.getCharacterData(userId).subscribe(
       res => {
-        this.myCharacterList = res.filter(data => data['playerName'] === 'Guest');
+        this.myCharacterList = res;
+        console.log(this.myCharacterList);
+        if (!this.myCharacterList) {
+          return;
+        }
+        this.myCharacterList.forEach(item => {
+          this.myCharacterNameList.push(item['characterName']);
+        });
       }, err => {
         console.log(err);
       }
@@ -25,7 +37,10 @@ export class MyPageComponent implements OnInit {
   }
 
   public modalOpen(character: object) {
-    this.modalCharacter = Object.assign({}, character);
+    this.dialog.open(ReferModalComponent, {
+      width: '70%',
+      data: character
+    });
   }
 
 }

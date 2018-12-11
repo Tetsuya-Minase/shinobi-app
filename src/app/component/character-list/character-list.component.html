@@ -1,10 +1,9 @@
 <div class="col-md-12 m-2">
-  <div class="float-left">
-      <h3>登録済みキャラクター</h3>
-      <li *ngFor="let name of charactorNameList">
-          <a href="" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#referModal" (click)="modalOpen(name)">{{name}}</a>
-      </li>
+    <div class="float-left">
+        <h3>登録済みキャラクター</h3>
+        <li *ngFor="let character of characterList">
+            <a (click)="modalOpen(character)">{{character['characterName']}}</a>
+        </li>
+    </div>
   </div>
-</div>
-
-<app-refer-modal [charactorData]="modalCharactor"></app-refer-modal>
+  

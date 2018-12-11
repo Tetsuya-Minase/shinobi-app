@@ -41,9 +41,15 @@ export interface ArtsData {
     /** データクリックされたか */
     clickFlg: boolean;
 };
+/**
+ * 忍法JSON用IF
+ */
+export interface IArtsInfo {
+    artsinfo: Array<ArtsData>;
+}
 
 /**
- * クリックした
+ * クリックした忍法用IF
  */
 export interface IClickIndex {
     name: string;
@@ -52,9 +58,70 @@ export interface IClickIndex {
     rowIndex: number;
 }
 
+/**
+ * 奥義用IF
+ */
+export interface ISecretsInfo {
+    name: string;
+    targetSkill: string;
+    effect: string;
+    effectDetai: string;
+}
+
+/**
+ * アイテム用IF
+ */
+export interface IItemList {
+    hyorogan: number;
+    jintugan: number;
+    tonkohu: number;
+}
+
+/**
+ * ページURL用IF
+ */
 export interface IUrlList {
     regist: string;
     characterList: string;
     login: string;
-    myPage:string;
+    myPage: string;
+}
+
+/**
+ * 背景用IF
+ */
+export interface IBackGround {
+    name: string;
+    type: string;
+    point: number;
+    effect: string;
+}
+
+/** 
+ * キャラクターデータ用IF
+ */
+export interface ICharacterData {
+    userId: string;
+    playerName: string;
+    characterName: string;
+    kana: string;
+    regulation: string;
+    type: string;
+    ryuha: string;
+    kairyuha: string;
+    ryugi: string;
+    enemy: string;
+    rank: string;
+    achievement: string;
+    age: string;
+    gender: string;
+    face: string;
+    belief: string;
+    selectedSkillList: object;
+    dispArtsArray: object;
+    background: Array<IBackGround>;
+    secrets: Array<ISecretsInfo>;
+    hyorogan: number;
+    jintugan: number;
+    tonkohu: number;
 }

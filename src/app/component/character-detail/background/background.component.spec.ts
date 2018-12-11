@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArtsModalComponent } from './arts-modal.component';
+import { BackgroundComponent } from './background.component';
 
-describe('ModalComponent', () => {
-  let component: ArtsModalComponent;
-  let fixture: ComponentFixture<ArtsModalComponent>;
+describe('BackgroundComponent', () => {
+  let component: BackgroundComponent;
+  let fixture: ComponentFixture<BackgroundComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArtsModalComponent ]
+      declarations: [ BackgroundComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArtsModalComponent);
+    fixture = TestBed.createComponent(BackgroundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
