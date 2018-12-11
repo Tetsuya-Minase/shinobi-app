@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArtsModalComponent } from './arts-modal.component';
+import { FormValidationNgComponent } from './form-validation-ng.component';
 
-describe('ModalComponent', () => {
-  let component: ArtsModalComponent;
-  let fixture: ComponentFixture<ArtsModalComponent>;
+describe('FormValidationNgComponent', () => {
+  let component: FormValidationNgComponent;
+  let fixture: ComponentFixture<FormValidationNgComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArtsModalComponent ]
+      declarations: [ FormValidationNgComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArtsModalComponent);
+    fixture = TestBed.createComponent(FormValidationNgComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

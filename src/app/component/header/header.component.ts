@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { URL_LIST } from '../../common/constant';
 import { WebStorage } from '../../common/functions';
+import { DataShareService } from '../../service/data-share.service';
 
 @Component({
   selector: 'app-header',
@@ -15,13 +16,25 @@ export class HeaderComponent implements OnInit {
   public isLogin = false;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private dataShareService: DataShareService
   ) { }
 
   ngOnInit() {
     this.urlList = Object.assign({}, URL_LIST);
-    console.log(this.urlList);
     this.isLogin = this.getStorage();
+    // ログイン情報取得
+    this.dataShareService.loginInfo$.subscribe(
+      res => {
+        console.log('header:', res);
+        setTimeout(() => {
+          this.isLogin = res;
+        }, 300);
+      },
+      err => {
+        console.error(err);
+      }
+    );
   }
 
   public routing(target: string){
@@ -34,6 +47,6 @@ export class HeaderComponent implements OnInit {
       return true;
     } else {
       return false;
-    }    
+    }
   }
 }

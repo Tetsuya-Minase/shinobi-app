@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit, Input, OnChanges } from '@angular/core';
 import { GridOptions } from 'ag-grid';
-import { GridDefs } from '../../common/constant';
-import * as func from '../../common/functions';
-import * as ifs from '../../common/interfaces';
+import { GridDefs } from '../../../common/constant';
+import { Functions } from '../../../common/functions';
+import * as ifs from '../../../common/interfaces';
 
 @Component({
     selector: 'app-main-grid',
@@ -101,13 +101,6 @@ export class MainGridComponent implements OnInit, AfterViewInit, OnChanges {
         this.gridOptions.columnApi.setColumnVisible('F', true);
         this.gridOptions.columnApi.setColumnVisible('G', true);
 
-        // this.gridOptions.columnApi.setColumnVisible('A', true, 'gridOptionsChanged');
-        // this.gridOptions.columnApi.setColumnVisible('B', true, 'gridOptionsChanged');
-        // this.gridOptions.columnApi.setColumnVisible('C', true, 'gridOptionsChanged');
-        // this.gridOptions.columnApi.setColumnVisible('D', true, 'gridOptionsChanged');
-        // this.gridOptions.columnApi.setColumnVisible('E', true, 'gridOptionsChanged');
-        // this.gridOptions.columnApi.setColumnVisible('F', true, 'gridOptionsChanged');
-        // this.gridOptions.columnApi.setColumnVisible('G', true, 'gridOptionsChanged');
         this.gridOptions.api.refreshCells({ force: true });
         setTimeout(() => {
             this.gridOptions.api.sizeColumnsToFit();
@@ -128,7 +121,7 @@ export class MainGridComponent implements OnInit, AfterViewInit, OnChanges {
             } else {
                 clickCell.event.target.style.backgroundColor = '';
                 clickCell.event.target.style.color = 'black';
-                this.selectedSkillList = func.listDeleteByKey(this.selectedSkillList, 'name', clickCell.value.data);
+                this.selectedSkillList = Functions.listDeleteByKey(this.selectedSkillList, 'name', clickCell.value.data);
 
             }
         } else if (clickCell.event.path.length === 23) {
@@ -139,7 +132,7 @@ export class MainGridComponent implements OnInit, AfterViewInit, OnChanges {
             } else {
                 clickCell.event.target.parentNode.style.backgroundColor = '';
                 clickCell.event.target.parentNode.style.color = 'black';
-                this.selectedSkillList = func.listDeleteByKey(this.selectedSkillList, 'name', clickCell.value.data);
+                this.selectedSkillList = Functions.listDeleteByKey(this.selectedSkillList, 'name', clickCell.value.data);
             }
         }
     }
@@ -174,7 +167,7 @@ export class MainGridComponent implements OnInit, AfterViewInit, OnChanges {
 
     public getColIndex(clickItems: Array<ifs.IClickIndex>): Array<ifs.IClickIndex> {
         const allColumns: Array<any> = this.gridOptions.columnApi.getAllColumns();
-        const originItems: Array<ifs.IClickIndex> = func.deepCopy(clickItems);
+        const originItems: Array<ifs.IClickIndex> = Functions.deepCopy(clickItems);
         let colIndex: number;
         originItems.forEach((item, idx) => {
             let skipCount: number = 0;

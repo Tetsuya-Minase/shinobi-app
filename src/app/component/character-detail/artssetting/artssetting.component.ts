@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import * as ifs from '../../common/interfaces';
-import * as cons from '../../common/constant';
+import * as ifs from '../../../common/interfaces';
+import { ArtsModalComponent } from '../../../modal/arts-modal/arts-modal.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-artssetting',
@@ -23,9 +24,18 @@ export class ArtssettingComponent implements OnInit {
     , clickFlg: false
   }];
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
+  }
+
+  public modalOpen() {
+    this.dialog.open(ArtsModalComponent, {
+      width: '70%',
+      data: {selectArtsArray: this.selectArtsArray}
+    });
   }
 
   public registData(event: Array<ifs.ArtsData>) {

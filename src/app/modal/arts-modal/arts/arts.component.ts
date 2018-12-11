@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DbService } from '../../service/db.service';
-import * as ifs from '../../common/interfaces';
-import * as func from '../../common/functions';
-import * as cons from '../../common/constant';
+import { DbService } from '../../../service/db.service';
+import * as ifs from '../../../common/interfaces';
+import { Functions } from '../../../common/functions';
 
 @Component({
   selector: 'app-arts',
@@ -22,7 +21,7 @@ export class ArtsComponent implements OnInit {
   ngOnInit() {
     this.dbService.getArtsData().subscribe(
       res => {
-        this.artsArray = res;
+        this.artsArray = res.artsinfo;
       }
     );
   }
@@ -31,7 +30,7 @@ export class ArtsComponent implements OnInit {
     arts.clickFlg = !arts.clickFlg;
 
     if (this.artsNameList.includes(arts.name)) {
-      this.selectArtsArray = func.listDeleteByKey(this.selectArtsArray, 'name', arts.name);
+      this.selectArtsArray = Functions.listDeleteByKey(this.selectArtsArray, 'name', arts.name);
     } else {
       this.selectArtsArray.push(arts);
     }

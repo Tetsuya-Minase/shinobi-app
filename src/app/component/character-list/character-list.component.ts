@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from '../../service/db.service';
+import { MatDialog } from '@angular/material';
+import { ReferModalComponent } from '../../modal/refer-modal/refer-modal.component';
 
 @Component({
   selector: 'app-character-list',
@@ -7,33 +9,40 @@ import { DbService } from '../../service/db.service';
   styleUrls: ['./character-list.component.scss']
 })
 export class CharacterListComponent implements OnInit {
-  public charactorNameList = [];
-  public charactorList = [];
-  public modalCharactor = {};
+  public characterNameList = [];
+  public characterList = [];
+  public modalCharacter = {
+    selectedSkillList: { skill: []},
+    dispArtsArray: { arts: []}
+  };
 
   constructor(
-    private dbService: DbService
+    private dbService: DbService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
-    this.dbService.getCharactorData().subscribe(
+    this.dbService.getCharacterData().subscribe(
       ret => {
-        this.charactorList = ret;
+        this.characterList = ret;
         console.log(ret);
-      }, err => {
-        console.error(err);
-      }, () => {
-        if (!this.charactorList) {
+        if (!this.characterList) {
           return;
         }
-        this.charactorList.forEach(item => {
-          this.charactorNameList.push(item['charactorName']);
-        });
+        // this.characterList.forEach(item => {
+        //   this.characterNameList.push(item['characterName']);
+        // });
+        // console.log('characterNameList:', this.characterNameList);
+      }, err => {
+        console.error(err);
       }
     );
   }
 
-  public modalOpen(charactorName: string) {
-    this.modalCharactor = this.charactorList.find(value => value.charactorName === charactorName);
+  public modalOpen(character: any) {
+    this.dialog.open(ReferModalComponent, {
+      width: '70%',
+      data: character
+    });
   }
 }

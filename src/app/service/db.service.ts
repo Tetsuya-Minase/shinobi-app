@@ -2,89 +2,92 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import * as ifs from '../common/interfaces';
-import * as cons from '../common/constant';
-// import { isArray } from 'util';
-// import * as character from 'assets/characterList';
+
+export namespace URL {
+  export const artsinfo = 'assets/artsinfo.json';
+  export const character = 'api/character';
+  export const login = 'api/login';
+  export const user = 'api/user';
+}
 
 @Injectable()
 export class DbService {
   private serverFlg: boolean;
   private header;
+
   constructor(private http: HttpClient) {
     const port = location.port;
-    if(port === '4200'){
+    if (port === '4200') {
       this.serverFlg = false;
     } else if (port === '3000') {
       this.serverFlg = true;
     } else {
       console.log(port);
     }
-    // this.header = {'content-type':'appication/json'}
+    this.header = { 'content-type': 'appication/json' }
   }
 
   /**
-   * 
+   * 忍法取得Service
    */
-  public getArtsData(): Observable<Array<ifs.ArtsData>> {
-    const url = '/db/arts';
-    if (this.serverFlg) {
-      return this.http.get<Array<ifs.ArtsData>>(url);
-    } else {
-      // stub用
-      return Observable.create(observer => {
-        observer.next(cons.ArtsInfo.arts);
-        observer.complete();
-      });
-    }
+  public getArtsData(): Observable<ifs.IArtsInfo> {
+    return this.http.get<ifs.IArtsInfo>(URL.artsinfo);
   };
 
   /**
    * キャラクタ一覧取得
    */
-  public getCharactorData(param?: string): Observable<Array<object>> {
-    const url = '/db/charactor';
-    let opt = {param: ''}
-    if(typeof param === 'string'){
-      opt.param = param;
-    }
+  public getCharacterData(param?: string): Observable<Array<object>> {
+    const url = '/api/charactor';
+    let opt = { name: '' }
 
-    if (this.serverFlg) {
-      return this.http.get<Array<object>>(url);
-    } else {
-      // stub用
-      return Observable.create(observer => {
-        observer.next(cons.CHARACTER.charactor);
-        observer.complete();
-      });
+    console.log(`param:${param}`);
+    if (param && typeof param === 'string') {
+      opt.name = param;
     }
-
-  };
+    return this.http.get<Array<object>>(URL.character, { headers: this.header, params: opt });
+  }
 
   /**
-   * 
+   * キャラクター登録
    * @param data 
    */
   public insertData(data: any): Observable<object> {
-    const url = '/db/charactor';
-    if (this.serverFlg) {
-      return this.http.post(url, JSON.parse(data));
-    } else {
-      const old = JSON.parse(window.localStorage.getItem('charactor'));
-      let temp = [];
-      if (old) {
-        if (!Array.isArray(old)) {
-          temp.push(old);
-        } else {
-          temp = old.concat();
-        }
-      }
-      temp.push(data);
-      console.log(temp);
-      window.localStorage.setItem('charactor', JSON.stringify(temp));
-      return Observable.create(observer => {
-        observer.next({ code: 200, res: 'ok' });
-        observer.complete();
-      });
+    console.log('data:', data);
+    return this.http.post(URL.character, data);
+  }
+
+  /**
+   * ログイン処理
+   * @param id ユーザID
+   * @param pass パスワード
+   */
+  public postLogin(id: string, pass: string): Observable<object> {
+    const param = {
+      id: id,
+      password: pass
+    };
+    return this.http.post(URL.login, param);
+  }
+
+  /**
+   * ユーザ登録
+   * @param id ユーザID
+   * @param pass パスワード
+   */
+  public userRegister(id: string, password: string): Observable<object> {
+    const param = {
+      userId: id,
+      password: password
     }
+    return this.http.post(URL.user, param);
+  }
+
+  /**
+   * ユーザ重複チェック
+   * @param id ユーザID
+   */
+  public duplicateUserCheck(id: string) {
+    return this.http.get<boolean>(URL.user, { headers: this.header, params: { id: id } });
   }
 }

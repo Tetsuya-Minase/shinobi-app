@@ -6,9 +6,10 @@
   </div>
   <div class="row">
     <span class="col-md-2">パスワード</span>
-    <input type="text" class="col-md-6" #pass>
+    <input type="password" class="col-md-6" #pass>
   </div>
-  <div class="row">
-    <button mat-stroked-button class="mx-auto" (click)="login(id.value, pass.value)">ログイン</button>
+  <div class="row mt-md-2">
+    <button mat-stroked-button class="mx-auto col-md-4" (click)="login(id.value, pass.value)">ログイン</button>
+    <button mat-stroked-button class="mx-auto col-md-4" routerLink="../user-register">登録</button>
   </div>
 </div>

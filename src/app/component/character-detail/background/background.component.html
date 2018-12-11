@@ -1,0 +1,19 @@
+<button type="button" class="btn btn-primary" (click)="addRow()">行追加</button>
+<table class="table-bordered">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>種別</th>
+      <th>功績点</th>
+      <th>効果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let background of backgroundList">
+      <td><input type="text" [(ngModel)]="background.name"></td>
+      <td><input type="text" [(ngModel)]="background.type"></td>
+      <td><input type="text" [(ngModel)]="background.point"></td>
+      <td><input type="text" [(ngModel)]="background.effect"></td>
+    </tr>
+  </tbody>
+</table>

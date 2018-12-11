@@ -128,7 +128,7 @@ export namespace GridDefs {
 }
 
 export namespace ObjectFilter {
-    export const charactorDataFillter = ['playerName', 'charactorName', 'kana', 'regulation', 'type', 'kairyuha', 'enemy', 'rank', 'achievement', 'age', 'gender', 'face', 'ryugi', 'belief'];
+    export const characterDataFillter = ['playerName', 'charactorName', 'kana', 'regulation', 'type', 'kairyuha', 'enemy', 'rank', 'achievement', 'age', 'gender', 'face', 'ryugi', 'belief'];
 
 }
 

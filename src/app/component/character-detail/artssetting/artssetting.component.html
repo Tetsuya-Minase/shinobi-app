@@ -1,5 +1,5 @@
 <div>
-  <button type="button" class="btn btn-info" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#modalPanel">忍法設定</button>
+  <button type="button" class="btn btn-info" (click)="modalOpen()">忍法設定</button>
   <button type="button" class="btn btn-primary ml-2" (click)="addRow()">行追加</button>
 </div>
 <div>
@@ -40,4 +40,3 @@
     </tbody>
   </table>
 </div>
-<app-arts-modal [modalId]="'modalPanel'" [selectArtsArray]="selectArtsArray" (regist)="registData($event)"></app-arts-modal>
