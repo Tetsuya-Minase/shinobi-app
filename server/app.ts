@@ -7,6 +7,8 @@ import * as helmet from 'helmet';
 import * as winston from 'winston';
 require('winston-daily-rotate-file');
 
+import { Response } from 'Express';
+
 // router
 import { Api } from './routes/api';
 
@@ -65,15 +67,14 @@ class App {
     this.express.use(express.json());
     this.express.use(express.urlencoded({ extended: false }));
     this.express.use(cookieParser());
-    this.express.use(express.static(path.join(__dirname, 'public')));
+    this.express.use(express.static(path.resolve(__dirname, '../public')));
     this.express.use(helmet());
     this.express.disable('x-powered-by');
     
     // ルーティング
     this.express.use('/api', this.apiRouter);
-    this.express.get('*', (req, res) => {
-      // res.sendFile(path.join(__dirname, '/public/index.html'));
-      res.sendFile(path.join(path.resolve(''), './app/public/index.html'));
+    this.express.get('*', (req, res: Response) => {
+      res.sendFile(path.resolve(__dirname, '..//public/index.html'));
     });
   }
   
@@ -87,7 +88,6 @@ class App {
     this.express.use((err, req, res, next) => {
       // set locals, only providing error in development
       res.locals.message = err.message;
-      console.log('★', err.message);
       res.locals.error = req.express.get('env') === 'development' ? err : {};
       // log error
       this.logger.error(`500 internal server error [err:${err}]`);

@@ -12,6 +12,7 @@ node_modules
 
 # log
 /app/log
+/log
 
 # IDEs and editors
 /.idea
