@@ -133,7 +133,7 @@ export namespace ObjectFilter {
 }
 
 export namespace ArtsInfo {
-    export const arts: Array<ifs.ArtsData> = [
+    export const arts: Array<ifs.IArtsData> = [
         {
             name: '接近戦攻撃※'
             , type: ifs.ArtsType.atack

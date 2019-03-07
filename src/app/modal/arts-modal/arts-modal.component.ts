@@ -8,11 +8,8 @@ import * as ifs from '../../common/interfaces';
   styleUrls: ['./arts-modal.component.scss']
 })
 export class ArtsModalComponent implements OnInit {
-  // @Input() public modalId: string;
-  // @Input() public selectArtsArray: Array<ifs.ArtsData>;
-  // @Output() public regist = new EventEmitter<Array<ifs.ArtsData>>();
-  public returnList: Array<ifs.ArtsData> = new Array<ifs.ArtsData>();
-  public selectArtsArray: Array<ifs.ArtsData> = new Array<ifs.ArtsData>();
+  public returnList: Array<ifs.IArtsData> = new Array<ifs.IArtsData>();
+  public selectArtsArray: Array<ifs.IArtsData> = new Array<ifs.IArtsData>();
 
   constructor(
     public dialogRef: MatDialogRef<ArtsModalComponent>,
@@ -20,13 +17,11 @@ export class ArtsModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('★data:', this.data);
     this.selectArtsArray = this.data.selectArtsArray;
-    console.log('★selectArtsArray:', this.selectArtsArray);
   }
 
-  public registData(event: Array<ifs.ArtsData>) {
-    this.returnList = event.concat();
+  public registData(event: Array<ifs.IArtsData>) {
+    this.returnList = JSON.parse(JSON.stringify(event));
   }
 
   public returnData() {
