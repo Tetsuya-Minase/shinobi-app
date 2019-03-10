@@ -9,9 +9,7 @@ export namespace Functions {
     }
     
     export function listDeleteByKey(list: any[], keyName: any, key: any) {
-        let tmpList = list.concat();
-        tmpList = tmpList.filter(tmp => tmp[keyName] !== key);
-        return tmpList;
+        return list.filter(l => l[keyName] !== key);
     }
     
     /**

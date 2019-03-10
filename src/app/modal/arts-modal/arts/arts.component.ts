@@ -9,9 +9,9 @@ import { Functions } from '../../../common/functions';
   styleUrls: ['./arts.component.scss']
 })
 export class ArtsComponent implements OnInit {
-  @Input() public selectArtsArray: Array<ifs.ArtsData>;
-  @Output() public regist = new EventEmitter<Array<ifs.ArtsData>>();
-  public artsArray: Array<ifs.ArtsData>;
+  @Input() public selectArtsArray: Array<ifs.IArtsData>;
+  @Output() public regist = new EventEmitter<Array<ifs.IArtsData>>();
+  public artsArray: Array<ifs.IArtsData>;
   private artsNameList: Array<string> = [];
 
   constructor(
@@ -26,24 +26,20 @@ export class ArtsComponent implements OnInit {
     );
   }
 
-  public dataClick(arts: ifs.ArtsData) {
+  /**
+   * クリックデータを親コンポーネントに通知する
+   * @param arts クリックしたデータ
+   */
+  public dataClick(arts: ifs.IArtsData) {
     arts.clickFlg = !arts.clickFlg;
 
     if (this.artsNameList.includes(arts.name)) {
       this.selectArtsArray = Functions.listDeleteByKey(this.selectArtsArray, 'name', arts.name);
     } else {
-      this.selectArtsArray.push(arts);
+      this.selectArtsArray = [...this.selectArtsArray, arts];
     }
-    this.createArtsNameList();
+    this.artsNameList = this.selectArtsArray.map(s => s.name);
     this.regist.emit(this.selectArtsArray);
-  }
-
-  public createArtsNameList() {
-    const tempArray = [];
-    this.selectArtsArray.forEach(artsObj => {
-      tempArray.push(artsObj.name);
-    });
-    this.artsNameList = tempArray.concat();
   }
 
 }

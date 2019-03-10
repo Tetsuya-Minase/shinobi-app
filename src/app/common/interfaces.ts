@@ -21,7 +21,7 @@ export enum ArtsAttribute {
 /**
  * 忍法用IF
  */
-export interface ArtsData {
+export interface IArtsData {
     /** 忍法名 */
     name: string;
     /** 忍法タイプ */
@@ -45,7 +45,7 @@ export interface ArtsData {
  * 忍法JSON用IF
  */
 export interface IArtsInfo {
-    artsinfo: Array<ArtsData>;
+    artsinfo: Array<IArtsData>;
 }
 
 /**

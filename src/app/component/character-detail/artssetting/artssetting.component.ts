@@ -10,9 +10,9 @@ import { MatDialog } from '@angular/material';
 })
 export class ArtssettingComponent implements OnInit {
   /** 選択した忍法リスト */
-  public selectArtsArray: Array<ifs.ArtsData> = [];
+  public selectArtsArray: Array<ifs.IArtsData> = [];
   /** 表示用リスト */
-  public dispArtsArray: Array<ifs.ArtsData> = [{
+  public dispArtsArray: Array<ifs.IArtsData> = [{
     name: '接近戦攻撃※'
     , type: ifs.ArtsType.atack
     , range: 1
@@ -38,7 +38,7 @@ export class ArtssettingComponent implements OnInit {
     });
   }
 
-  public registData(event: Array<ifs.ArtsData>) {
+  public registData(event: Array<ifs.IArtsData>) {
     this.dispArtsArray = [{
       name: '接近戦攻撃※'
       , type: ifs.ArtsType.atack
@@ -50,7 +50,7 @@ export class ArtssettingComponent implements OnInit {
       , attribute: [ifs.ArtsAttribute.general]
       , clickFlg: false
     }];
-    this.dispArtsArray = event.concat();
+    this.dispArtsArray = JSON.parse(JSON.stringify(event));
   }
 
   public addRow() {
