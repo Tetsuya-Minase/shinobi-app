@@ -1,111 +1,112 @@
 <div class="m-md-3 row">
-    <div>
-        <form [formGroup]="basicInfoGroup">
-            <table class="table-bordered">
-                <tr>
-                    <th>プレイヤー名<span class="text-danger font-weight-bold">*必須</span></th>
-                    <td colspan="3">
-                        <input type="text" class="w-100" formControlName="playerName" required>
-                        <app-form-validation-ng [targetForm]="getForm('playerName')"></app-form-validation-ng>
-                    </td>
-                </tr>
-                <tr>
-                    <th>キャラクター名<span class="text-danger font-weight-bold">*必須</span></th>
-                    <td colspan="3">
-                        <input type="text" class="w-100" formControlName="characterName" required>
-                        <app-form-validation-ng [targetForm]="getForm('characterName')"></app-form-validation-ng>
-                    </td>
-                </tr>
-                <tr>
-                    <th>カナ</th>
-                    <td colspan="3">
-                        <input id="kana" type="text" class="w-100" formControlName="kana">
-                    </td>
-                </tr>
-                <tr>
-                    <th>レギュレーション</th>
-                    <td colspan="3">
-                        <input id="regulation" type="text" class="w-100" formControlName="regulation">
-                    </td>
-                </tr>
-                <tr>
-                    <th>タイプ</th>
-                    <td colspan="3">
-                        <input id="type" type="text" [value]="'忍者'" class="w-100" formControlName="type">
-                    </td>
-                </tr>
-                <tr>
-                    <th>上位流派</th>
-                    <td>
-                        <select (change)="changeRyuha($event.target.value)">
-                            <option *ngFor="let item of selectList">{{item}}</option>
-                        </select>
-                    </td>
-                    <th>流派</th>
-                    <td>
-                        <input id="kairyuha" type="text" formControlName="kairyuha">
-                    </td>
-                </tr>
-                <tr>
-                    <th>流儀</th>
-                    <td colspan="3">
-                        <input id="ryugi" type="text" class="w-100" formControlName="ryugi">
-                    </td>
-                </tr>
-                <tr>
-                    <th>仇敵</th>
-                    <td colspan="3">
-                        <input id="enemy" type="text" class="w-100" formControlName="enemy">
-                    </td>
-                </tr>
-                <tr>
-                    <th>階級</th>
-                    <td>
-                        <input id="rank" type="text" formControlName="rank">
-                    </td>
-                    <th>功績</th>
-                    <td>
-                        <input id="achievement" type="text" formControlName="achievement">
-                    </td>
-                </tr>
-                <tr>
-                    <th>年齢</th>
-                    <td>
-                        <input id="age" type="text" formControlName="age">
-                    </td>
-                    <th>性別</th>
-                    <td>
-                        <input id="gender" type="text" formControlName="gender">
-                    </td>
-                </tr>
-                <tr>
-                    <th>表の顔</th>
-                    <td>
-                        <input id="face" type="text" formControlName="face">
-                    </td>
-                    <th>信念</th>
-                    <td>
-                        <input id="belief" type="text" formControlName="belief">
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
-    <div>
-        <button class="btn btn-success" type="button" [disabled]="basicInfoGroup.invalid" (click)="registCharactor()">保存</button>
-    </div>
+  <div>
+    <form [formGroup]="basicInfoGroup">
+      <table class="table-bordered">
+        <tr>
+          <th>プレイヤー名<span class="text-danger font-weight-bold">*必須</span></th>
+          <td colspan="3">
+            <input type="text" class="w-100" formControlName="playerName" required>
+            <app-form-validation-ng [targetForm]="getForm('playerName')"></app-form-validation-ng>
+          </td>
+        </tr>
+        <tr>
+          <th>キャラクター名<span class="text-danger font-weight-bold">*必須</span></th>
+          <td colspan="3">
+            <input type="text" class="w-100" formControlName="characterName" required>
+            <app-form-validation-ng [targetForm]="getForm('characterName')"></app-form-validation-ng>
+          </td>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <td colspan="3">
+            <input id="kana" type="text" class="w-100" formControlName="kana">
+          </td>
+        </tr>
+        <tr>
+          <th>レギュレーション</th>
+          <td colspan="3">
+            <input id="regulation" type="text" class="w-100" formControlName="regulation">
+          </td>
+        </tr>
+        <tr>
+          <th>タイプ</th>
+          <td colspan="3">
+            <input id="type" type="text" [value]="'忍者'" class="w-100" formControlName="type">
+          </td>
+        </tr>
+        <tr>
+          <th>上位流派</th>
+          <td>
+            <select (change)="changeRyuha($event.target.value)">
+              <option *ngFor="let item of selectList">{{item}}</option>
+            </select>
+          </td>
+          <th>流派</th>
+          <td>
+            <input id="kairyuha" type="text" formControlName="kairyuha">
+          </td>
+        </tr>
+        <tr>
+          <th>流儀</th>
+          <td colspan="3">
+            <input id="ryugi" type="text" class="w-100" formControlName="ryugi">
+          </td>
+        </tr>
+        <tr>
+          <th>仇敵</th>
+          <td colspan="3">
+            <input id="enemy" type="text" class="w-100" formControlName="enemy">
+          </td>
+        </tr>
+        <tr>
+          <th>階級</th>
+          <td>
+            <input id="rank" type="text" formControlName="rank">
+          </td>
+          <th>功績</th>
+          <td>
+            <input id="achievement" type="text" formControlName="achievement">
+          </td>
+        </tr>
+        <tr>
+          <th>年齢</th>
+          <td>
+            <input id="age" type="text" formControlName="age">
+          </td>
+          <th>性別</th>
+          <td>
+            <input id="gender" type="text" formControlName="gender">
+          </td>
+        </tr>
+        <tr>
+          <th>表の顔</th>
+          <td>
+            <input id="face" type="text" formControlName="face">
+          </td>
+          <th>信念</th>
+          <td>
+            <input id="belief" type="text" formControlName="belief">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div>
+    <button class="btn btn-success" type="button" [disabled]="basicInfoGroup.invalid"
+      (click)="registCharactor()">保存</button>
+  </div>
 </div>
 <div class="m-md-3 row">
-    <div class="col-md-12">
-        <app-main-grid [ryuha]="ryuha"></app-main-grid>
-    </div>
+  <div class="col-md-12">
+    <app-main-grid [ryuha]="ryuha"></app-main-grid>
+  </div>
 </div>
 <div class="m-md-3 row">
-    <app-artssetting></app-artssetting>
+  <app-artssetting></app-artssetting>
 </div>
 <div class="m-md-3 row">
-    <app-background></app-background>
+  <app-background></app-background>
 </div>
 <div class="m-md-3 row">
-    <app-item-secrets></app-item-secrets>
+  <app-item-secrets></app-item-secrets>
 </div>

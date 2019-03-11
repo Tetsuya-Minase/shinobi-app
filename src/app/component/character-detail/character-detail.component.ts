@@ -1,9 +1,9 @@
 import { Component, AfterViewInit, AfterViewChecked, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { DbService } from '../../service/db.service';
-import * as cons from '../../common/constant';
-import * as func from '../../common/functions';
+import * as cons from '../../common/constants';
+import * as func from '../../common/utils';
 import { ICharacterData } from '../../common/interfaces';
-import { WebStorage } from '../../common/functions';
+import { WebStorage } from '../../common/utils';
 import { MainGridComponent } from './main-grid/main-grid.component';
 import { ArtssettingComponent } from './artssetting/artssetting.component';
 import { ItemSecretsComponent } from './item-secrets/item-secrets.component';

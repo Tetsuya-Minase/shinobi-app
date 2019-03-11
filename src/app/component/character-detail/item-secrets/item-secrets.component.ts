@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ISecretsInfo, IItemList } from '../../../common/interfaces';
+import { ISecretsData, IItemList } from '../../../common/interfaces';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { SecretAdd } from 'app/action/secrets.action';
 
 @Component({
   selector: 'app-item-secrets',
@@ -7,18 +10,24 @@ import { ISecretsInfo, IItemList } from '../../../common/interfaces';
   styleUrls: ['./item-secrets.component.scss']
 })
 export class ItemSecretsComponent implements OnInit {
-  @Input() secretList: Array<ISecretsInfo>;
   @Input() itemList: IItemList;
 
-  constructor() { }
+  public secretList: Array<ISecretsData>;
+  public secrets$: Observable<Array<ISecretsData>>;
 
+
+  constructor(
+    private store: Store<Array<ISecretsData>>
+  ) {
+    this.secrets$ = store.pipe(select('secrets'));
+    this.secrets$.subscribe(secret => this.secretList = secret);
+  }
+
+  /**
+   * アイテムリスト初期化
+   */
   ngOnInit() {
-    if (this.secretList == null) {
-      this.secretList = [];
-      this.addRow();
-    }
-
-    if (this.itemList == null) {
+    if (this.itemList === undefined) {
       this.itemList = {
         hyorogan: 0,
         jintugan: 0,
@@ -27,12 +36,17 @@ export class ItemSecretsComponent implements OnInit {
     }
   }
 
+  /**
+   * 行追加
+   */
   public addRow() {
-    this.secretList.push({
+    const secret = {
       name: '',
       targetSkill: '',
       effect: '',
       effectDetai: ''
-    });
+    };
+
+    this.store.dispatch(new SecretAdd(secret));
   }
 }

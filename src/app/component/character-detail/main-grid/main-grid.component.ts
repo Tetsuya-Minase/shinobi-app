@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, Input, OnChanges } from '@angular/core';
 import { GridOptions } from 'ag-grid';
-import { GridDefs } from '../../../common/constant';
-import { Functions } from '../../../common/functions';
+import { GridDefs } from '../../../common/constants';
+import { Functions } from '../../../common/utils';
 import * as ifs from '../../../common/interfaces';
 
 @Component({

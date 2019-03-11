@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DbService } from '../../../service/db.service';
 import * as ifs from '../../../common/interfaces';
-import { Functions } from '../../../common/functions';
+import { Functions } from '../../../common/utils';
 
 @Component({
   selector: 'app-arts',
