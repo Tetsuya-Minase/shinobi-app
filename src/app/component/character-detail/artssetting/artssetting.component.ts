@@ -27,8 +27,7 @@ export class ArtssettingComponent implements OnInit {
     this.displayArtsList$.subscribe(list => this.displayArtsList = list );
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   /**
    * モーダル画面オープン
