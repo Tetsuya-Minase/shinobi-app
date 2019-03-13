@@ -10,10 +10,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let background of backgroundList">
-      <td><input type="text" [(ngModel)]="background.name"></td>
-      <td><input type="text" [(ngModel)]="background.type"></td>
-      <td><input type="text" [(ngModel)]="background.point"></td>
-      <td><input type="text" [(ngModel)]="background.effect"></td>
+      <td><input type="text" (blur)="update()" [(ngModel)]="background.name"></td>
+      <td><input type="text" (blur)="update()" [(ngModel)]="background.type"></td>
+      <td><input type="text" (blur)="update()" [(ngModel)]="background.point"></td>
+      <td><input type="text" (blur)="update()" [(ngModel)]="background.effect"></td>
     </tr>
   </tbody>
 </table>

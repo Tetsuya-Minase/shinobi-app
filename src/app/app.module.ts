@@ -30,6 +30,12 @@ import { UserRegisterComponent } from './component/user-register/user-register.c
 import { ArtsComponent } from './modal/arts-modal/arts/arts.component';
 import { FormValidationNgComponent } from './component/form-validation-ng/form-validation-ng.component';
 
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducer/index.reducer';
+import { artsSettingReducer } from './reducer/arts-setting.reducer';
+import { backgroundReducer } from './reducer/background.reducer';
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -40,7 +46,11 @@ import { FormValidationNgComponent } from './component/form-validation-ng/form-v
     ROUTES,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // StoreModule.forRoot({artsSetting: artsSettingReducer, background: backgroundReducer}),
+    StoreModule.forRoot(reducers),
+    // StoreModule.forFeature('artsSetting', artsSettingReducer),
+    // StoreModule.forFeature('background', backgroundReducer)
   ],
   declarations: [
     AppComponent,

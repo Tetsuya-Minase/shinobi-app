@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DbService } from '../../../service/db.service';
 import * as ifs from '../../../common/interfaces';
-import { Functions } from '../../../common/functions';
+import { Functions } from '../../../common/utils';
 
 @Component({
   selector: 'app-arts',
@@ -19,11 +19,11 @@ export class ArtsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dbService.getArtsData().subscribe(
-      res => {
-        this.artsArray = res.artsinfo;
-      }
-    );
+    // this.dbService.getArtsData().subscribe(
+    //   res => {
+    //     this.artsArray = res.artsinfo;
+    //   }
+    // );
   }
 
   /**
@@ -41,5 +41,4 @@ export class ArtsComponent implements OnInit {
     this.artsNameList = this.selectArtsArray.map(s => s.name);
     this.regist.emit(this.selectArtsArray);
   }
-
 }

@@ -16,25 +16,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let arts of dispArtsArray;let index = index">
-        <td>
-          <input type="text" class="w-100" [(ngModel)]="arts.name">
-        </td>
-        <td>
-          <input type="text" class="w-100" [(ngModel)]="arts.type">
-        </td>
-        <td>
-          <input type="text" class="w-100" [(ngModel)]="arts.targetSkill">
-        </td>
-        <td>
-          <input type="text" class="w-100" [(ngModel)]="arts.range">
-        </td>
-        <td>
-          <input type="text" class="w-100" [(ngModel)]="arts.cost">
-        </td>
-        <td>
-          <input type="text" class="w-100" [(ngModel)]="arts.description">
-        </td>
+      <tr *ngFor="let arts of displayArtsList;let index = index">
+        <td><input type="text" class="w-100" (blur)="updateRowData()" [(ngModel)]="arts.name" ></td>
+        <td><input type="text" class="w-100" (blur)="updateRowData()" [(ngModel)]="arts.type"></td>
+        <td><input type="text" class="w-100" (blur)="updateRowData()" [(ngModel)]="arts.targetSkill"></td>
+        <td><input type="text" class="w-100" (blur)="updateRowData()" [(ngModel)]="arts.range"></td>
+        <td><input type="text" class="w-100" (blur)="updateRowData()" [(ngModel)]="arts.cost"></td>
+        <td><input type="text" class="w-100" (blur)="updateRowData()" [(ngModel)]="arts.description"></td>
         <td>2</td>
       </tr>
     </tbody>

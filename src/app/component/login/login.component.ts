@@ -1,9 +1,10 @@
 import { DataShareService } from './../../service/data-share.service';
 import { DbService } from './../../service/db.service';
-import { URL_LIST } from '../../common/constant';
+import { URL_LIST } from '../../common/constants';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { WebStorage } from '../../common/functions';
+import { WebStorage } from '../../common/utils';
+import { Enums } from '../../common/constants';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.dbService.postLogin(id, password).subscribe(
       res => {
         console.log('res:', res);
-        WebStorage.setSessionStorage('userId', id);
+        WebStorage.setSessionStorage(Enums.STORAGE_KEYS.userId, id);
         this.dataSharaService.loginInfoNext(true);
         this.router.navigate([URL_LIST.myPage]);
       },

@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import * as ifs from '../../../common/interfaces';
-import { ArtsModalComponent } from '../../../modal/arts-modal/arts-modal.component';
-import { MatDialog } from '@angular/material';
+import {Observable} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {ArtsAttribute, ArtsType, IArtsData} from '../../../common/interfaces';
+import {Functions} from '../../../common/utils';
+import {ArtsModalComponent} from '../../../modal/arts-modal/arts-modal.component';
+import {MatDialog} from '@angular/material';
+import {Store, select} from '@ngrx/store';
+import {ArtsSettingAdd, ArtsSettingUpdate} from 'app/action/arts-setting.action';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-artssetting',
@@ -10,27 +15,34 @@ import { MatDialog } from '@angular/material';
 })
 export class ArtssettingComponent implements OnInit {
   /** 選択した忍法リスト */
-  public selectArtsArray: Array<ifs.IArtsData> = [];
+  public selectArtsArray: Array<IArtsData> = [];
   /** 表示用リスト */
-  public dispArtsArray: Array<ifs.IArtsData> = [{
-    name: '接近戦攻撃※'
-    , type: ifs.ArtsType.atack
-    , range: 1
-    , cost: 'なし'
-    , targetSkill: '自由'
-    , description: '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。'
-    , flavor: '通常の接近戦攻撃。'
-    , attribute: [ifs.ArtsAttribute.general]
-    , clickFlg: false
-  }];
+  public displayArtsList: Array<IArtsData> = [];
+  public displayArtsList$: Observable<Array<IArtsData>>;
+
+  public artsSettingGroup = new FormGroup({
+    artsName: new FormControl('', []),
+    artsType: new FormControl('', []),
+    targetSkill: new FormControl('', []),
+    range: new FormControl('', []),
+    cost: new FormControl('', []),
+    description: new FormControl('', []),
+  });
 
   constructor(
-    private dialog: MatDialog
-  ) { }
+    private dialog: MatDialog,
+    private store: Store<{ artsSetting: Array<IArtsData> }>
+  ) {
+    this.displayArtsList$ = store.pipe(select('artsSetting'));
+    this.displayArtsList$.subscribe(list => this.displayArtsList = list);
+  }
 
   ngOnInit() {
   }
 
+  /**
+   * モーダル画面オープン
+   */
   public modalOpen() {
     this.dialog.open(ArtsModalComponent, {
       width: '70%',
@@ -38,23 +50,38 @@ export class ArtssettingComponent implements OnInit {
     });
   }
 
-  public registData(event: Array<ifs.IArtsData>) {
-    this.dispArtsArray = [{
+  /**
+   * 追加
+   * @param event
+   */
+  public registData(event: Array<IArtsData>) {
+    const artsList = {
       name: '接近戦攻撃※'
-      , type: ifs.ArtsType.atack
+      , type: ArtsType.atack
       , range: 1
       , cost: 'なし'
       , targetSkill: '自由'
       , description: '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。'
       , flavor: '通常の接近戦攻撃。'
-      , attribute: [ifs.ArtsAttribute.general]
+      , attribute: [ArtsAttribute.general]
       , clickFlg: false
-    }];
-    this.dispArtsArray = JSON.parse(JSON.stringify(event));
+    };
+
+    this.store.dispatch(new ArtsSettingAdd(event[0]));
   }
 
+  /**
+   * 入力データ更新
+   */
+  public updateRowData() {
+    this.store.dispatch(new ArtsSettingUpdate(this.displayArtsList));
+  }
+
+  /**
+   * 空行追加
+   */
   public addRow() {
-    this.dispArtsArray.push({
+    const arts = {
       name: ''
       , type: null
       , range: null
@@ -64,7 +91,8 @@ export class ArtssettingComponent implements OnInit {
       , flavor: ''
       , attribute: []
       , clickFlg: false
-    });
+    };
+    this.store.dispatch(new ArtsSettingAdd(arts));
   }
 
 }

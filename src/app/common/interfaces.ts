@@ -61,11 +61,11 @@ export interface IClickIndex {
 /**
  * 奥義用IF
  */
-export interface ISecretsInfo {
+export interface ISecretsData {
     name: string;
     targetSkill: string;
     effect: string;
-    effectDetai: string;
+    staging: string;
 }
 
 /**
@@ -120,7 +120,7 @@ export interface ICharacterData {
     selectedSkillList: object;
     dispArtsArray: object;
     background: Array<IBackGround>;
-    secrets: Array<ISecretsInfo>;
+    secrets: Array<ISecretsData>;
     hyorogan: number;
     jintugan: number;
     tonkohu: number;

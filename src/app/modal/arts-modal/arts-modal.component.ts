@@ -20,11 +20,18 @@ export class ArtsModalComponent implements OnInit {
     this.selectArtsArray = this.data.selectArtsArray;
   }
 
+  /**
+   * クリックしたデータ反映
+   * @param event クリックしたデータ
+   */
   public registData(event: Array<ifs.IArtsData>) {
     this.returnList = JSON.parse(JSON.stringify(event));
   }
 
+  /**
+   * ダイアログキャンセル
+   */
   public returnData() {
-    // this.regist.emit(this.returnList);
+    this.dialogRef.close(this.returnList);
   }
 }

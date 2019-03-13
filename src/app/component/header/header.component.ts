@@ -1,8 +1,8 @@
 import { IUrlList } from '../../common/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { URL_LIST } from '../../common/constant';
-import { WebStorage } from '../../common/functions';
+import { URL_LIST } from '../../common/constants';
+import { WebStorage } from '../../common/utils';
 import { DataShareService } from '../../service/data-share.service';
 
 @Component({
