@@ -65,7 +65,7 @@ export interface ISecretsData {
     name: string;
     targetSkill: string;
     effect: string;
-    effectDetai: string;
+    staging: string;
 }
 
 /**

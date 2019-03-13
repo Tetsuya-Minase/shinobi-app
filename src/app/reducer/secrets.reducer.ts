@@ -7,13 +7,15 @@ export const initialList: Array<ISecretsData> = [{
   name: '',
   targetSkill: '',
   effect: '',
-  effectDetai: ''
+  staging: ''
 }];
 
 export function secretsReducer(state = initialList, action: Action): Array<ISecretsData> {
   switch (action.type) {
     case SecretsActionTypes.Add:
       return [...state, action['secretData']];
+    case SecretsActionTypes.Update:
+      return [...action['secretDataList']];
     default:
       return state;
   }

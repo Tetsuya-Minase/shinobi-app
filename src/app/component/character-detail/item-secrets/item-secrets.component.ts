@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ISecretsData, IItemList } from '../../../common/interfaces';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { SecretAdd } from 'app/action/secrets.action';
+import {SecretAdd, SecretUpdate} from 'app/action/secrets.action';
 
 @Component({
   selector: 'app-item-secrets',
@@ -32,19 +32,26 @@ export class ItemSecretsComponent implements OnInit {
         hyorogan: 0,
         jintugan: 0,
         tonkohu: 0
-      }
+      };
     }
+  }
+
+  /**
+   * データ更新
+   */
+  public update() {
+    this.store.dispatch(new SecretUpdate(this.secretList));
   }
 
   /**
    * 行追加
    */
   public addRow() {
-    const secret = {
+    const secret: ISecretsData = {
       name: '',
       targetSkill: '',
       effect: '',
-      effectDetai: ''
+      staging: ''
     };
 
     this.store.dispatch(new SecretAdd(secret));

@@ -18,6 +18,8 @@ export function artsSettingReducer(state = initialList, action: Action): Array<I
   switch (action.type) {
     case ArtsSettingActionTypes.Add:
       return [...state, action['artsData']];
+    case ArtsSettingActionTypes.Update:
+      return [...action['artsDataList']];
     default:
       return state;
   }

@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node ./app/bin/www",
+    "start:local": "ng serve",
     "deploy": "run-s build:server build:client",
     "deploy:clean": "run-s clean deploy",
     "build:client": "ng build",

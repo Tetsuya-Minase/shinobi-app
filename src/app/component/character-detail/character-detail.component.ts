@@ -1,14 +1,16 @@
-import { Component, AfterViewInit, AfterViewChecked, ViewChildren, QueryList, OnInit } from '@angular/core';
-import { DbService } from '../../service/db.service';
+import {Component, AfterViewInit, AfterViewChecked, ViewChildren, QueryList, OnInit} from '@angular/core';
+import {DbService} from '../../service/db.service';
 import * as cons from '../../common/constants';
 import * as func from '../../common/utils';
-import { ICharacterData } from '../../common/interfaces';
-import { WebStorage } from '../../common/utils';
-import { MainGridComponent } from './main-grid/main-grid.component';
-import { ArtssettingComponent } from './artssetting/artssetting.component';
-import { ItemSecretsComponent } from './item-secrets/item-secrets.component';
-import { BackgroundComponent } from './background/background.component';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import {IArtsData, IBackGround, ICharacterData, ISecretsData} from '../../common/interfaces';
+import {WebStorage} from '../../common/utils';
+import {MainGridComponent} from './main-grid/main-grid.component';
+import {ArtssettingComponent} from './artssetting/artssetting.component';
+import {ItemSecretsComponent} from './item-secrets/item-secrets.component';
+import {BackgroundComponent} from './background/background.component';
+import {FormControl, Validators, FormGroup, AbstractControl} from '@angular/forms';
+import {select, Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -16,7 +18,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   templateUrl: './character-detail.component.html',
   styleUrls: ['./character-detail.component.scss']
 })
-export class CharacterDetailComponent implements OnInit, AfterViewChecked {
+export class CharacterDetailComponent implements OnInit {
   public ryuha = '';
   public characterData: ICharacterData = func.InitInterfaces.initCharacterData();
   public selectList: Array<string> = ['流派を選択', '斜歯忍軍', '鞍馬神流', 'ハグレモノ', '比良坂機関', '私立御斎学園', '隠忍の血統'];
@@ -67,32 +69,39 @@ export class CharacterDetailComponent implements OnInit, AfterViewChecked {
     ])
   });
 
-  @ViewChildren(MainGridComponent) mainGridQuery: QueryList<any>;
-  @ViewChildren(ArtssettingComponent) artsSettingQuery: QueryList<any>;
-  @ViewChildren(ItemSecretsComponent) itemSecretsQuery: QueryList<any>;
-  @ViewChildren(BackgroundComponent) backgroundQuery: QueryList<any>;
+  private displayArtsList$: Observable<Array<IArtsData>>;
+  private backgroudList$: Observable<Array<IBackGround>>;
+  private secretsList$: Observable<Array<ISecretsData>>;
 
-  constructor(private dbService: DbService) { }
+  constructor(
+    private dbService: DbService,
+    private store: Store<{ artsSetting: Array<IArtsData>, background: Array<IBackGround>, secrets: Array<ISecretsData> }>
+  ) {
+    this.displayArtsList$ = store.pipe(select('artsSetting'));
+    this.displayArtsList$.subscribe(dl => {
+      this.characterData.dispArtsArray = dl;
+    });
+    this.backgroudList$ = store.pipe(select('background'));
+    this.backgroudList$.subscribe(bl => {
+      this.characterData.background = bl;
+    });
+    this.secretsList$ = store.pipe(select('secrets'));
+    this.secretsList$.subscribe(sl => {
+      this.characterData.secrets = sl;
+    });
+  }
 
-
-  public ngOnInit() { }
+  public ngOnInit() {
+  }
 
   public changeRyuha(target: string) {
     this.ryuha = target;
   }
 
-  public ngAfterViewChecked() {
-    this.characterData.selectedSkillList = this.mainGridQuery.last.selectedSkillList;
-    this.characterData.dispArtsArray = this.artsSettingQuery.last.dispArtsArray;
-    this.characterData.ryuha = this.ryuha;
-    this.characterData.secrets = this.itemSecretsQuery.last.secretList;
-    this.characterData.hyorogan = this.itemSecretsQuery.last.itemList.hyorogan;
-    this.characterData.jintugan = this.itemSecretsQuery.last.itemList.jintugan;
-    this.characterData.tonkohu = this.itemSecretsQuery.last.itemList.tonkohu;
-    this.characterData.background = this.backgroundQuery.last.backgroundList;
-  }
-
-  public registCharactor() {
+  /**
+   * キャラクターデータ登録
+   */
+  public registerCharacter(): void {
     Object.keys(this.basicInfoGroup.value).forEach(value => {
       this.characterData[value] = this.basicInfoGroup.value[value];
     });
@@ -105,7 +114,11 @@ export class CharacterDetailComponent implements OnInit, AfterViewChecked {
     );
   }
 
-  public getForm(name: string) {
+  /**
+   * フォームから対象取得
+   * @param name キー名
+   */
+  public getForm(name: string): AbstractControl {
     return this.basicInfoGroup.get(name);
   }
 }

@@ -41,5 +41,4 @@ export class ArtsComponent implements OnInit {
     this.artsNameList = this.selectArtsArray.map(s => s.name);
     this.regist.emit(this.selectArtsArray);
   }
-
 }

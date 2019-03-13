@@ -107,7 +107,7 @@ export class InitInterfaces {
             name: '',
             targetSkill: '',
             effect: '',
-            effectDetai: ''
+            staging: ''
         }
     }
 

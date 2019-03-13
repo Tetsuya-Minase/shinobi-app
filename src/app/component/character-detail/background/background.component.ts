@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs';
-import { Component, OnInit, Input } from '@angular/core';
-import { IBackGround } from '../../../common/interfaces';
-import { Store, select } from '@ngrx/store';
-import { BackgroundAdd } from '../../../action/background.action';
+import {Observable} from 'rxjs';
+import {Component, OnInit, Input} from '@angular/core';
+import {IBackGround} from '../../../common/interfaces';
+import {Store, select} from '@ngrx/store';
+import {BackgroundAdd, BackgroundUpdate} from '../../../action/background.action';
 import * as reducers from '../../../reducer/index.reducer';
 
 @Component({
@@ -19,13 +19,24 @@ export class BackgroundComponent implements OnInit {
     private store: Store<Array<IBackGround>>
   ) {
     this.backgroud$ = store.pipe(select('background'));
-    this.backgroud$.subscribe((back: Array<IBackGround>) => {
-      this.backgroundList = back
+    this.backgroud$.subscribe((bl: Array<IBackGround>) => {
+      this.backgroundList = bl;
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
+  /**
+   * 入力内容更新
+   */
+  public update() {
+    this.store.dispatch(new BackgroundUpdate(this.backgroundList));
+  }
+
+  /**
+   * 行追加
+   */
   public addRow() {
     const background = {
       name: '',
