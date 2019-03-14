@@ -5,17 +5,18 @@ import * as cookieParser from 'cookie-parser';
 import * as helmet from 'helmet';
 // ログ
 import * as winston from 'winston';
+
 require('winston-daily-rotate-file');
 
-import { Response } from 'Express';
+import {Response} from 'Express';
 
 // router
-import { Api } from './routes/api';
+import {Api} from './routes/api';
 
 class App {
   public express: express.Application = express();
   private logger;
-  private apiRouter;
+  private readonly apiRouter;
 
   constructor() {
     this.apiRouter = new Api().router;
@@ -24,8 +25,8 @@ class App {
     this.initRouting();
     this.initHandleError();
     // 最低限落ちないようにしておく
-    process.on('uncaughtException', function(err) {
-      this.logger.error(err)
+    process.on('uncaughtException',  (err) => {
+      this.logger.error(err);
     });
   }
 
@@ -50,7 +51,7 @@ class App {
       maxFiles: '14d',
       level: 'error'
     });
-    
+
     this.logger = winston.createLogger({
       format: winston.format.combine(
         winston.format.timestamp(),
@@ -65,25 +66,25 @@ class App {
 
   private initRouting() {
     this.express.use(express.json());
-    this.express.use(express.urlencoded({ extended: false }));
+    this.express.use(express.urlencoded({extended: false}));
     this.express.use(cookieParser());
     this.express.use(express.static(path.resolve(__dirname, '../public')));
     this.express.use(helmet());
     this.express.disable('x-powered-by');
-    
+
     // ルーティング
     this.express.use('/api', this.apiRouter);
     this.express.get('*', (req, res: Response) => {
-      res.sendFile(path.resolve(__dirname, '..//public/index.html'));
+      res.sendFile(path.resolve(__dirname, '../public/index.html'));
     });
   }
-  
+
   private initHandleError() {
     // catch 404 and forward to error handler
     this.express.use((req, res, next) => {
       this.logger.error(`404 not found [url:${req.url}]`);
       next(createError(404));
-    });    
+    });
     // error handler
     this.express.use((err, req, res, next) => {
       // set locals, only providing error in development
@@ -94,7 +95,7 @@ class App {
       // render the error page
       res.status(err.status || 500);
       res.send(err);
-    });  
+    });
   }
 }
 
