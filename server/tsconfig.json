@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "baseUrl": "",
+    "baseUrl": "./**/*.ts",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es7", "dom"],
-    "mapRoot": "./",
+    "mapRoot": "",
     "module": "es6",
     "moduleResolution": "node",
-    "outDir": "../dist/out-tsc",
+    "outDir": "../app",
     "sourceMap": true,
     "target": "es5",
     "typeRoots": [

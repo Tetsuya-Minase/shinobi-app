@@ -1,5 +1,4 @@
 import {CharacterInterface} from '../domain/model/characterInterface';
-import {IBackGround, ISecretsInfo} from '../../src/app/common/interfaces';
 
 export class Utils {
   /**
@@ -9,7 +8,7 @@ export class Utils {
   public static characterDataFormatter(dbData: CharacterInterface) {
     const retList: Array<CharacterInterface> = [];
     Array.prototype.forEach.call(dbData, (data) => {
-      const retObj: CharacterInterface = InitialFunction.initalCharacter();
+      const retObj: CharacterInterface = InitialFunction.initialCharacter();
       retObj.playerName = data.player_name;
       retObj.characterName = data.character_name;
       retObj.kana = data.name_kana;
@@ -63,7 +62,7 @@ export class Utils {
  * 初期化処理用関数
  */
 export class InitialFunction {
-  public static initalCharacter(): CharacterInterface {
+  public static initialCharacter(): CharacterInterface {
     const retObj: CharacterInterface = {
       userId: '',
       playerName: '',
