@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "./**/*.ts",
+    "baseUrl": "",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es7", "dom"],
     "mapRoot": "",
-    "module": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "../app",
     "sourceMap": true,
@@ -14,5 +14,10 @@
     "typeRoots": [
       "../node_modules/@types"
     ]
-  }
+  },
+  "include": [
+    "./**/*.ts",
+    "./config/dbconfig.json"
+  ],
+  "exclude": []
 }

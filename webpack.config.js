@@ -1,14 +1,17 @@
 const path = require('path');
+const glob = require('glob');
+
+const entries = {};
+glob.sync('./server/**/*.ts')
+  .forEach(r => {
+    // ファイルパスから不要なとこを消して、tsをjsに変更
+    const key =r.split('/').splice(2).join('/').replace(/\.ts$/, '.js');
+    entries[key] = r;
+  });
 
 module.exports = {
   mode: 'development',
-//   entry: './server/bin/www.ts',
-  entry: {
-      'bin/www': './server/bin/www.ts',
-      'routes/api.js':'./server/routes/api.ts',
-      'routes/connectDb.js':'./server/routes/connectDb',
-      'app.js':'./server/app.ts'
-  },
+  entry: entries,
   target: 'node',
   node: {
     __dirname: false

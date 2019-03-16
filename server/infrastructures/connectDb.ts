@@ -1,6 +1,5 @@
-import {createConnection, MysqlError} from 'mysql';
+import {ConnectionConfig, createConnection, MysqlError} from 'mysql';
 import {Utils} from '../utils/utils';
-
 declare var require;
 const config = require('../config/dbconfig.json');
 

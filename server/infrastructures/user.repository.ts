@@ -13,7 +13,7 @@ export class UserRepository {
    * @param userId ユーザID
    */
   public async checkDuplicateUser(userId: string) {
-    const sql = 'select count(*) as "count" from login where user_id = ?';
+    const sql = 'select count(*) as "count" from user where user_id = ?';
     try {
       return await this.connect.query(sql, [userId]);
     } catch (error) {
@@ -26,7 +26,7 @@ export class UserRepository {
    * @param user ユーザ情報
    */
   public async registerUser(user: any) {
-    const sql = 'insert into login set ?';
+    const sql = 'insert into user set ?';
     try {
       return await this.connect.query(sql, [user]);
     } catch (error) {
@@ -39,7 +39,7 @@ export class UserRepository {
    * @param userId ユーザID
    */
   public async deleteUser(userId: string) {
-    const sql = 'delete from login where id = ?';
+    const sql = 'delete from user where user_id = ?';
     try {
       return await this.connect.query(sql, [userId]);
     } catch (error) {
