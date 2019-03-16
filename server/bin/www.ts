@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-import { default as express } from '../app';
+import express from '../app';
 import * as debug from 'debug';
 import * as http from 'http';
 

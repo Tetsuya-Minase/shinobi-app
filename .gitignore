@@ -2,7 +2,6 @@
 
 # compiled output
 /server/config
-/app/config
 
 # dist
 /app
@@ -46,5 +45,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# memo
-*.mdown
+# document
+/docs
