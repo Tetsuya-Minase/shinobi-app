@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" style="width: 80%" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        {{charactorData.charactorName}}
+        {{characterData.charactorName}}
       </div>
       <div class="modal-body">
         <div class="mtb-1">
@@ -11,84 +11,84 @@
             <tr>
               <th>プレイヤー名</th>
               <td colspan="3">
-                <input id="player" type="text" class="w-100" [value]="charactorData.playerName" readonly>
-                <!-- {{charactorData.playerName}} -->
+                <input id="player" type="text" class="w-100" [value]="characterData.playerName" readonly>
+                <!-- {{characterData.playerName}} -->
               </td>
             </tr>
             <tr>
               <th>キャラクター名</th>
               <td colspan="3">
-                <input id="charactor" type="text" class="w-100" [value]="charactorData.charactorName" readonly>
+                <input id="charactor" type="text" class="w-100" [value]="characterData.charactorName" readonly>
               </td>
             </tr>
             <tr>
               <th>カナ</th>
               <td colspan="3">
-                <input id="kana" type="text" class="w-100" [value]="charactorData.kana" readonly>
+                <input id="kana" type="text" class="w-100" [value]="characterData.kana" readonly>
               </td>
             </tr>
             <tr>
               <th>レギュレーション</th>
               <td colspan="3">
-                <input id="regulation" type="text" class="w-100" [value]="charactorData.regulation" readonly>
+                <input id="regulation" type="text" class="w-100" [value]="characterData.regulation" readonly>
               </td>
             </tr>
             <tr>
               <th>タイプ</th>
               <td colspan="3">
-                <input id="type" type="text" [value]="'忍者'" class="w-100" [value]="charactorData.type" readonly>
+                <input id="type" type="text" [value]="'忍者'" class="w-100" [value]="characterData.type" readonly>
               </td>
             </tr>
             <tr>
               <th>上位流派</th>
               <td>
-                <input id="jouiryuha" type="text" [value]="charactorData.ryuha" readonly>
+                <input id="jouiryuha" type="text" [value]="characterData.ryuha" readonly>
               </td>
               <th>流派</th>
               <td>
-                <input id="kairyuha" type="text" [value]="charactorData.kairyuha" readonly>
+                <input id="kairyuha" type="text" [value]="characterData.kairyuha" readonly>
               </td>
             </tr>
             <tr>
               <th>流儀</th>
               <td colspan="3">
-                <input id="ryugi" type="text" class="w-100" [value]="charactorData.ryugi" readonly>
+                <input id="ryugi" type="text" class="w-100" [value]="characterData.ryugi" readonly>
               </td>
             </tr>
             <tr>
               <th>仇敵</th>
               <td colspan="3">
-                <input id="enemy" type="text" class="w-100" [value]="charactorData.enemy" readonly>
+                <input id="enemy" type="text" class="w-100" [value]="characterData.enemy" readonly>
               </td>
             </tr>
             <tr>
               <th>階級</th>
               <td>
-                <input id="rank" type="text" [value]="charactorData.rank" readonly>
+                <input id="rank" type="text" [value]="characterData.rank" readonly>
               </td>
               <th>功績</th>
               <td>
-                <input id="achievement" type="text" [value]="charactorData.achievement" readonly>
+                <input id="achievement" type="text" [value]="characterData.achievement" readonly>
               </td>
             </tr>
             <tr>
               <th>年齢</th>
               <td>
-                <input id="age" type="text" [value]="charactorData.age" readonly>
+                <input id="age" type="text" [value]="characterData.age" readonly>
               </td>
               <th>性別</th>
               <td>
-                <input id="gender" type="text" [value]="charactorData.gender" readonly>
+                <input id="gender" type="text" [value]="characterData.gender" readonly>
               </td>
             </tr>
             <tr>
               <th>表の顔</th>
               <td>
-                <input id="face" type="text" [value]="charactorData.face" readonly>
+                <input id="face" type="text" [value]="characterData.face" readonly>
               </td>
               <th>信念</th>
               <td>
-                <input id="belief" type="text" [value]="charactorData.belief" readonly>
+                <input id="belief" type="text" [value]="characterData.belief" readonly>
               </td>
             </tr>
           </table>
@@ -96,7 +96,7 @@
         <div class="mt-2">
           <strong>選択特技</strong>
           <ul>
-            <li *ngFor="let skill of charactorData.selectedSkillList">
+            <li *ngFor="let skill of characterData.selectedSkillList">
               {{skill.name}}
             </li>
           </ul>
@@ -115,7 +115,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let arts of charactorData.dispArtsArray;let index = index">
+              <tr *ngFor="let arts of characterData.dispArtsArray;let index = index">
                 <td>
                   <input type="text" class="w-100" [value]="arts.name" readonly>
                 </td>

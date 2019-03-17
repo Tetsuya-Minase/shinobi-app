@@ -1,6 +1,6 @@
-import { DbService } from './../../service/db.service';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {DbService} from './../../service/db.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-register',
@@ -8,12 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-register.component.scss']
 })
 export class UserRegisterComponent implements OnInit {
-  public isDupicate = false;
+  public isDuplicate = false;
 
   constructor(
-    private dbDervice: DbService,
+    private dbService: DbService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
@@ -23,10 +24,10 @@ export class UserRegisterComponent implements OnInit {
    * @param id ユーザID
    */
   public duplicateUserCheck(id: string) {
-    this.dbDervice.duplicateUserCheck(id).subscribe(
+    this.dbService.duplicateUserCheck(id).subscribe(
       res => {
-        if(typeof res === 'boolean'){
-          this.isDupicate = res;
+        if (typeof res === 'boolean') {
+          this.isDuplicate = res;
         }
       },
       error => {
@@ -37,11 +38,11 @@ export class UserRegisterComponent implements OnInit {
 
   /**
    * ユーザ登録
-   * @param id 
-   * @param password 
+   * @param id
+   * @param password
    */
   public userRegister(id: string, password: string) {
-    this.dbDervice.userRegister(id, password).subscribe(
+    this.dbService.userRegister(id, password).subscribe(
       res => {
         window.alert('登録しました。');
         this.router.navigateByUrl('/my-page');

@@ -15,38 +15,38 @@ class UserRouter {
    */
   private initializeRouting() {
     /**
-     * ユーザ初期化
+     * ユーザ重複チェック
      */
-    this.router.get('/:id', (req, res) => {
+    this.router.get('/:id', async (req, res, next) => {
       try {
-        res.send(this.service.checkDuplicateUser(req['id']));
+        res.send(await this.service.checkDuplicateUser(req['id']));
       } catch (error) {
-        console.log(error);
-        res.status(500).send({message: 'internal server error'});
+        next(error);
       }
     });
 
     /**
      * ユーザ登録
      */
-    this.router.post('/', (req, res) => {
-      const id = req['userId'];
-      const password = req['password'];
+    this.router.post('/', async (req, res, next) => {
+      const id = req.body.userId;
+      const password = req.body.password;
       try {
-        res.send(this.service.registerUser(id, password));
+        res.send(await this.service.registerUser(id, password));
       } catch (error) {
-        res.status(500).send({message: 'internal server error'});
+        next(error);
       }
     });
 
     /**
      * ユーザ削除
+     * @param id 削除するユーザのID
      */
-    this.router.delete('/:id', (req, res) => {
+    this.router.delete('/:id', async (req, res, next) => {
       try {
-        res.send(this.service.deleteUser(req['id']));
+        res.send(await this.service.deleteUser(req['id']));
       } catch (error) {
-        res.status(500).send({message: 'internal server error'});
+        next(error);
       }
     });
   }

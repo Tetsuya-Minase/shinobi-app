@@ -1,5 +1,6 @@
 import * as express from 'express';
 import {CharacterService} from '../domain/service/character.service';
+import {Utils} from '../utils/utils';
 
 class CharacterRouter {
   public router = express.Router();
@@ -17,24 +18,27 @@ class CharacterRouter {
     /**
      * キャラクタ取得
      */
-    this.router.get('/:userId', (req, res) => {
+    this.router.get('/:userId', async (req, res, next) => {
       try {
-        res.send(this.service.getCharacter(req['userId']));
-      } catch (e) {
-        console.log(e);
-        res.status(500).send({message: 'internal server error'});
+        if (Utils.isDefined(req['userId'])) {
+        res.send(await this.service.getCharacter(req['userId']));
+        } else {
+          res.send(await this.service.getCharacterAll());
+        }
+      } catch (error) {
+        console.log(error);
+        next(error);
       }
     });
 
     /**
      * キャラクター登録
      */
-    this.router.post('/', (req, res) => {
+    this.router.post('/', async (req, res, next) => {
       try {
-        res.send(this.service.registerCharacter(req));
+        res.send(await this.service.registerCharacter(req));
       } catch (error) {
-        console.log(error);
-        res.status(500).send({message: 'internal server error'});
+        next(error);
       }
     });
   }

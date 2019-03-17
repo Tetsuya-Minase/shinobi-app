@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./refer-modal.component.scss']
 })
 export class ReferModalComponent implements OnInit {
-  @Input() charactorData;
+  @Input() characterData;
 
   constructor() { }
 

@@ -12,10 +12,11 @@ export class UserService {
    * @param userId ユーザID
    */
   public async checkDuplicateUser(userId: string) {
-    return await this.repository.checkDuplicateUser(userId)
-      .catch(error => {
-        throw error;
-      });
+    try {
+      return await this.repository.checkDuplicateUser(userId);
+    } catch (error) {
+      throw error;
+    }
   }
 
   /**
@@ -29,12 +30,12 @@ export class UserService {
       password: password,
       create_date: new Date(),
       last_modified: new Date(),
-      del_flg: 0
     };
-    return this.repository.registerUser(user)
-      .catch(error => {
-        throw error;
-      });
+    try {
+      return this.repository.registerUser(user);
+    } catch (error) {
+      throw error;
+    }
   }
 
   /**
@@ -42,9 +43,10 @@ export class UserService {
    * @param userId ユーザID
    */
   public async deleteUser(userId: string) {
-    return this.repository.deleteUser(userId)
-      .catch(error => {
-        throw error;
-      });
+    try {
+      return this.repository.deleteUser(userId);
+    } catch (error) {
+      throw error;
+    }
   }
 }
