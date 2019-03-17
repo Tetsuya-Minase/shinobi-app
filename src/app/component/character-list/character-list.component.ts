@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DbService } from '../../service/db.service';
 import { MatDialog } from '@angular/material';
 import { ReferModalComponent } from '../../modal/refer-modal/refer-modal.component';
+import {Functions} from '../../common/utils';
 
 @Component({
   selector: 'app-character-list',
@@ -24,15 +25,10 @@ export class CharacterListComponent implements OnInit {
   ngOnInit() {
     this.dbService.getCharacterData().subscribe(
       ret => {
-        this.characterList = ret;
-        console.log(ret);
-        if (!this.characterList) {
+        if (!Functions.isListDefined(ret)) {
           return;
         }
-        // this.characterList.forEach(item => {
-        //   this.characterNameList.push(item['characterName']);
-        // });
-        // console.log('characterNameList:', this.characterNameList);
+        this.characterList = ret;
       }, err => {
         console.error(err);
       }
@@ -40,6 +36,7 @@ export class CharacterListComponent implements OnInit {
   }
 
   public modalOpen(character: any) {
+    console.log(character);
     this.dialog.open(ReferModalComponent, {
       width: '70%',
       data: character

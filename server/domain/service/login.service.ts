@@ -13,9 +13,10 @@ export class LoginService {
    * @param pass パスワード
    */
   public async checkLogin(id: string, pass: string) {
-    return await this.repository.checkLogin(id, pass)
-      .catch(error => {
-        throw error;
-      });
+    try {
+      return await this.repository.checkLogin(id, pass);
+    } catch (error) {
+      throw error;
+    }
   }
 }

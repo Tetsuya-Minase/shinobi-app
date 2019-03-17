@@ -87,9 +87,6 @@ class App {
     });
     // error handler
     this.express.use((err, req, res, next) => {
-      // set locals, only providing error in development
-      res.locals.message = err.message;
-      res.locals.error = req.express.get('env') === 'development' ? err : {};
       // log error
       this.logger.error(`500 internal server error [err:${err}]`);
       // render the error page

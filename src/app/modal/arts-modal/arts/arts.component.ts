@@ -21,7 +21,7 @@ export class ArtsComponent implements OnInit {
   ngOnInit() {
     // this.dbService.getArtsData().subscribe(
     //   res => {
-    //     this.artsArray = res.artsinfo;
+    //     this.artsArray = res.artsInfo;
     //   }
     // );
   }

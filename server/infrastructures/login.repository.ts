@@ -1,4 +1,5 @@
 import {ConnectDB} from './connectDb';
+import {CustomError} from '../domain/model/CustomError';
 
 export class LoginRepository {
   private connect: ConnectDB;
@@ -13,9 +14,10 @@ export class LoginRepository {
    * @param pass パスワード
    */
   public async checkLogin(id: string, pass: string) {
-    const sql = 'select count(*) as "count" from user where user_id = ? and password = ?';
+    const sql = 'select * from user where user_id = ? and password = ?';
+    // @ts-ignore
     try {
-      return this.connect.query(sql, [id, pass]);
+      return await this.connect.query(sql, [id, pass]);
     } catch (error) {
       throw error;
     }

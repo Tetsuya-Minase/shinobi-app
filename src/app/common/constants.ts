@@ -14,7 +14,7 @@ export namespace GridDefs {
       , width: 200 // 幅
       , editable: false // 編集不可
       , cellRenderer: (params) => {
-        return params.value.data
+        return params.value.data;
         // const element = document.createElement('span');
         // element.innerHTML = params.value.data;
         // element.addEventListener('click', () => {
@@ -42,7 +42,7 @@ export namespace GridDefs {
       , width: 200
       , editable: false // 編集不可
       , cellRenderer: (params) => {
-        return params.value.data
+        return params.value.data;
       }
     }, {
       // 行間用
@@ -55,7 +55,7 @@ export namespace GridDefs {
       field: 'ninjutsu',
       width: 200,
       cellRenderer: (params) => {
-        return params.value.data
+        return params.value.data;
       }
     }, {
       // 行間用
@@ -68,7 +68,7 @@ export namespace GridDefs {
       field: 'boujutsu',
       width: 200,
       cellRenderer: (params) => {
-        return params.value.data
+        return params.value.data;
       }
     }, {
       // 行間用
@@ -81,7 +81,7 @@ export namespace GridDefs {
       field: 'senjutsu',
       width: 200,
       cellRenderer: (params) => {
-        return params.value.data
+        return params.value.data;
       }
     }, {
       // 行間用
@@ -94,7 +94,7 @@ export namespace GridDefs {
       field: 'youjutsu',
       width: 200,
       cellRenderer: (params) => {
-        return params.value.data
+        return params.value.data;
       }
     }, {
       // 行間用
@@ -203,134 +203,134 @@ export const URL_LIST: ifs.IUrlList = {
   characterList: 'character-list',
   login: 'login',
   myPage: 'my-page'
-}
+};
 
 export const CHARACTER = {
-  "charactor": [
+  'charactor': [
     {
-      "playerName": "Guest",
-      "charactorName": "Charactor1",
-      "kana": "キャラクターイチ",
-      "regulation": "現代",
-      "type": "",
-      "kairyuha": "",
-      "enemy": "",
-      "rank": "",
-      "achievement": "",
-      "age": "",
-      "gender": "",
-      "face": "",
-      "ryugi": "",
-      "belief": "",
-      "selectedSkillList": [
+      'playerName': 'Guest',
+      'charactorName': 'Charactor1',
+      'kana': 'キャラクターイチ',
+      'regulation': '現代',
+      'type': '',
+      'kairyuha': '',
+      'enemy': '',
+      'rank': '',
+      'achievement': '',
+      'age': '',
+      'gender': '',
+      'face': '',
+      'ryugi': '',
+      'belief': '',
+      'selectedSkillList': [
         {
-          "name": "拷問術",
-          "colId": "kijutsu",
-          "colIndex": null,
-          "rowIndex": 9
+          'name': '拷問術',
+          'colId': 'kijutsu',
+          'colIndex': null,
+          'rowIndex': 9
         },
         {
-          "name": "走術",
-          "colId": "taijutsu",
-          "colIndex": null,
-          "rowIndex": 7
+          'name': '走術',
+          'colId': 'taijutsu',
+          'colIndex': null,
+          'rowIndex': 7
         },
         {
-          "name": "隠形術",
-          "colId": "ninjutsu",
-          "colIndex": null,
-          "rowIndex": 6
+          'name': '隠形術',
+          'colId': 'ninjutsu',
+          'colIndex': null,
+          'rowIndex': 6
         },
         {
-          "name": "野戦術",
-          "colId": "senjutsu",
-          "colIndex": null,
-          "rowIndex": 3
+          'name': '野戦術',
+          'colId': 'senjutsu',
+          'colIndex': null,
+          'rowIndex': 3
         },
         {
-          "name": "詐術",
-          "colId": "boujutsu",
-          "colIndex": null,
-          "rowIndex": 5
+          'name': '詐術',
+          'colId': 'boujutsu',
+          'colIndex': null,
+          'rowIndex': 5
         }
       ],
-      "dispArtsArray": [
+      'dispArtsArray': [
         {
-          "name": "接近戦攻撃※",
-          "type": "攻撃忍法",
-          "range": 1,
-          "cost": "なし",
-          "targetSkill": "自由",
-          "description": "接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。",
-          "flavor": "通常の接近戦攻撃。",
-          "attribute": [
-            "汎用忍法"
+          'name': '接近戦攻撃※',
+          'type': '攻撃忍法',
+          'range': 1,
+          'cost': 'なし',
+          'targetSkill': '自由',
+          'description': '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。',
+          'flavor': '通常の接近戦攻撃。',
+          'attribute': [
+            '汎用忍法'
           ],
-          "clickFlg": false
+          'clickFlg': false
         },
         {
-          "name": "テストサポート",
-          "type": "サポート忍法",
-          "range": "1",
-          "cost": "6",
-          "targetSkill": "自由",
-          "description": "サポート用",
-          "flavor": "",
-          "attribute": [],
-          "clickFlg": false
+          'name': 'テストサポート',
+          'type': 'サポート忍法',
+          'range': '1',
+          'cost': '6',
+          'targetSkill': '自由',
+          'description': 'サポート用',
+          'flavor': '',
+          'attribute': [],
+          'clickFlg': false
         },
         {
-          "name": "テスト装備",
-          "type": "装備忍法",
-          "range": "なし",
-          "cost": "なし",
-          "targetSkill": "なし",
-          "description": "装備用",
-          "flavor": "",
-          "attribute": [],
-          "clickFlg": false
+          'name': 'テスト装備',
+          'type': '装備忍法',
+          'range': 'なし',
+          'cost': 'なし',
+          'targetSkill': 'なし',
+          'description': '装備用',
+          'flavor': '',
+          'attribute': [],
+          'clickFlg': false
         }
       ],
-      "ryuha": "ハグレモノ"
+      'ryuha': 'ハグレモノ'
     },
     {
-      "playerName": "Guest2",
-      "charactorName": "蔵馬",
-      "kana": "クラマ",
-      "regulation": "現代",
-      "type": "",
-      "kairyuha": "",
-      "enemy": "",
-      "rank": "",
-      "achievement": "",
-      "age": "",
-      "gender": "",
-      "face": "",
-      "ryugi": "",
-      "belief": "",
-      "selectedSkillList": [],
-      "dispArtsArray": [
+      'playerName': 'Guest2',
+      'charactorName': '蔵馬',
+      'kana': 'クラマ',
+      'regulation': '現代',
+      'type': '',
+      'kairyuha': '',
+      'enemy': '',
+      'rank': '',
+      'achievement': '',
+      'age': '',
+      'gender': '',
+      'face': '',
+      'ryugi': '',
+      'belief': '',
+      'selectedSkillList': [],
+      'dispArtsArray': [
         {
-          "name": "接近戦攻撃※",
-          "type": "攻撃忍法",
-          "range": 1,
-          "cost": "なし",
-          "targetSkill": "自由",
-          "description": "接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。",
-          "flavor": "通常の接近戦攻撃。",
-          "attribute": [
-            "汎用忍法"
+          'name': '接近戦攻撃※',
+          'type': '攻撃忍法',
+          'range': 1,
+          'cost': 'なし',
+          'targetSkill': '自由',
+          'description': '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。',
+          'flavor': '通常の接近戦攻撃。',
+          'attribute': [
+            '汎用忍法'
           ],
-          "clickFlg": false
+          'clickFlg': false
         }
       ],
-      "ryuha": "鞍馬神流"
+      'ryuha': '鞍馬神流'
     }
   ]
-}
+};
 
 export namespace Enums {
   export enum STORAGE_KEYS {
     userId = 'userId'
-  };
+  }
 }

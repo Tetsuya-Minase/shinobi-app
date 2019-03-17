@@ -8,10 +8,10 @@ export class Api {
 
   constructor() {
     // キャラクター系
-    this.router.all('/character', CharacterRouter);
+    this.router.use('/character', CharacterRouter);
     // ログイン系
-    this.router.all('/login', LoginRouter);
+    this.router.use('/login', LoginRouter);
     // ユーザ系
-    this.router.all('/user', UserRouter);
+    this.router.use('/user', UserRouter);
   }
 }

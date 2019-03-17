@@ -14,13 +14,13 @@ class LoginRouter {
     /**
      * ログイン処理
      */
-    this.router.post('/', (req, res) => {
+    this.router.post('/', async (req, res, next) => {
       const id = req.body.id;
       const pass = req.body.password;
       try {
-        res.send(this.server.checkLogin(id, pass));
+        res.send(await this.server.checkLogin(id, pass));
       } catch (error) {
-        res.status(500).send({message: 'internal server error'});
+        next(error);
       }
     });
   }

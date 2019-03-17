@@ -5,7 +5,7 @@ export class Utils {
    * キャラクタデータフォーマッター
    * @param {object} dbData
    */
-  public static characterDataFormatter(dbData: CharacterInterface) {
+  public static characterDataFormatter(dbData: Array<CharacterInterface>) {
     const retList: Array<CharacterInterface> = [];
     Array.prototype.forEach.call(dbData, (data) => {
       const retObj: CharacterInterface = InitialFunction.initialCharacter();

@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {Functions} from '../common/utils';
 import * as ifs from '../common/interfaces';
 
 export namespace URL {
-  export const artsinfo = 'assets/artsinfo.json';
+  export const artsInfo = 'assets/artsInfo.json';
   export const character = 'api/character';
   export const login = 'api/login';
   export const user = 'api/user';
@@ -12,49 +13,37 @@ export namespace URL {
 
 @Injectable()
 export class DbService {
-  private serverFlg: boolean;
-  private header;
+  private readonly header;
 
   constructor(private http: HttpClient) {
-    const port = location.port;
-    if (port === '4200') {
-      this.serverFlg = false;
-    } else if (port === '3000') {
-      this.serverFlg = true;
-    } else {
-      console.log(port);
-    }
-    this.header = { 'content-type': 'appication/json' }
+    this.header = {'content-type': 'application/json'};
   }
 
   /**
    * 忍法取得Service
    */
   public getArtsData(): Observable<ifs.IArtsInfo> {
-    return this.http.get<ifs.IArtsInfo>(URL.artsinfo);
-  };
+    return this.http.get<ifs.IArtsInfo>(URL.artsInfo);
+  }
 
   /**
    * キャラクタ一覧取得
    */
   public getCharacterData(param?: string): Observable<Array<object>> {
-    const url = '/api/charactor';
-    let opt = { name: '' }
-
-    console.log(`param:${param}`);
-    if (param && typeof param === 'string') {
-      opt.name = param;
+    const params = {name: ''};
+    console.log('getCharacter');
+    if (Functions.isDefined(param) && typeof param === 'string') {
+      params.name = param;
     }
-    return this.http.get<Array<object>>(URL.character, { headers: this.header, params: opt });
+    return this.http.get<Array<object>>(URL.character, {headers: this.header});
   }
 
   /**
    * キャラクター登録
-   * @param data 
+   * @param data 登録するキャラクターデータ
    */
   public insertData(data: any): Observable<object> {
-    console.log('data:', data);
-    return this.http.post(URL.character, data);
+    return this.http.post(URL.character, data, {headers: this.header});
   }
 
   /**
@@ -67,20 +56,20 @@ export class DbService {
       id: id,
       password: pass
     };
-    return this.http.post(URL.login, param);
+    return this.http.post(URL.login, param, {headers: this.header});
   }
 
   /**
    * ユーザ登録
    * @param id ユーザID
-   * @param pass パスワード
+   * @param password パスワード
    */
   public userRegister(id: string, password: string): Observable<object> {
     const param = {
       userId: id,
       password: password
-    }
-    return this.http.post(URL.user, param);
+    };
+    return this.http.post(URL.user, param, {headers: this.header});
   }
 
   /**
@@ -88,6 +77,6 @@ export class DbService {
    * @param id ユーザID
    */
   public duplicateUserCheck(id: string) {
-    return this.http.get<boolean>(URL.user, { headers: this.header, params: { id: id } });
+    return this.http.get<boolean>(`${URL.user}/${id}`, {headers: this.header});
   }
 }

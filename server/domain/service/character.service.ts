@@ -10,22 +10,19 @@ export class CharacterService {
   }
 
   /**
-   * キャラクター取得
-   * @param userId ユーザに紐づくデータが欲しい時指定
+   * ユーザに紐づくキャラクター取得
+   * @param userId 取得したいユーザ
    */
   public async getCharacter(userId?: string): Promise<Array<CharacterInterface>> {
-    let result;
-    if (Utils.isDefined(userId)) {
-      result = await this.repository.getCharacterByUserId(userId)
-        .catch(err => {
-          throw err;
-        });
-    } else {
-      result = await this.repository.getAllCharacter()
-        .catch(err => {
-          throw err;
-        });
-    }
+    const result = await this.repository.getCharacterByUserId(userId);
+    return Utils.characterDataFormatter(result);
+  }
+
+  /**
+   * キャラクター情報複数件取得
+   */
+  public async getCharacterAll(): Promise<Array<CharacterInterface>> {
+    const result = await this.repository.getAllCharacter();
     return Utils.characterDataFormatter(result);
   }
 
@@ -64,10 +61,11 @@ export class CharacterService {
       delflg: 0
     };
 
-    return await this.repository.registerCharacter(character)
-      .catch(error => {
-        throw error;
-      });
+    try {
+      return await this.repository.registerCharacter(character);
+    } catch (e) {
+      throw e;
+    }
   }
 
 }
