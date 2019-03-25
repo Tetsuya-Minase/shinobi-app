@@ -12,14 +12,9 @@ export class CharacterRepository {
    * @param userId ユーザID
    */
   public async getCharacterByUserId(userId: string) {
-    console.log('character domain all');
-
     const sql = 'select * from character_data where user_id = ?';
     try {
-      return await this.connect.query(sql, [userId])
-        .catch(error => {
-          throw error;
-        });
+      return await this.connect.query(sql, [userId]);
     } catch (error) {
       throw error;
     }
@@ -29,15 +24,9 @@ export class CharacterRepository {
    * キャラクター全件取得
    */
   public async getAllCharacter() {
-    console.log('character domain all');
-
     const sql = 'select * from character_data';
     try {
-      return await this.connect.query(sql)
-        .catch(error => {
-          throw error;
-        });
-
+      return await this.connect.query(sql);
     } catch (error) {
       throw error;
     }

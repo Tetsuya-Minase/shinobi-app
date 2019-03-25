@@ -18,10 +18,19 @@ class CharacterRouter {
     /**
      * キャラクタ取得
      */
-    this.router.get('/:userId', async (req, res, next) => {
+    this.router.get('/api/character', async (req, res, next) => {
+      try {
+          res.send(await this.service.getCharacterAll());
+      } catch (error) {
+        console.log(error);
+        next(error);
+      }
+    });
+
+    this.router.get('/api/character/:userId', async (req, res, next) => {
       try {
         if (Utils.isDefined(req['userId'])) {
-        res.send(await this.service.getCharacter(req['userId']));
+          res.send(await this.service.getCharacter(req['userId']));
         } else {
           res.send(await this.service.getCharacterAll());
         }
@@ -34,7 +43,7 @@ class CharacterRouter {
     /**
      * キャラクター登録
      */
-    this.router.post('/', async (req, res, next) => {
+    this.router.post('/api/character', async (req, res, next) => {
       try {
         res.send(await this.service.registerCharacter(req));
       } catch (error) {

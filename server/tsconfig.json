@@ -17,7 +17,7 @@
   },
   "include": [
     "./**/*.ts",
-    "./config/dbconfig.json"
+    "./config/dbconfig_.json"
   ],
   "exclude": []
 }

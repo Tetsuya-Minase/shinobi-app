@@ -17,7 +17,7 @@ class UserRouter {
     /**
      * ユーザ重複チェック
      */
-    this.router.get('/:id', async (req, res, next) => {
+    this.router.get('/api/user/:id', async (req, res, next) => {
       try {
         res.send(await this.service.checkDuplicateUser(req['id']));
       } catch (error) {
@@ -28,7 +28,7 @@ class UserRouter {
     /**
      * ユーザ登録
      */
-    this.router.post('/', async (req, res, next) => {
+    this.router.post('/api/user', async (req, res, next) => {
       const id = req.body.userId;
       const password = req.body.password;
       try {
@@ -42,7 +42,7 @@ class UserRouter {
      * ユーザ削除
      * @param id 削除するユーザのID
      */
-    this.router.delete('/:id', async (req, res, next) => {
+    this.router.delete('/api/user/:id', async (req, res, next) => {
       try {
         res.send(await this.service.deleteUser(req['id']));
       } catch (error) {

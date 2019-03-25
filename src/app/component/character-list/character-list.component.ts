@@ -30,7 +30,7 @@ export class CharacterListComponent implements OnInit {
         }
         this.characterList = ret;
       }, err => {
-        console.error(err);
+        console.error('error in character list', err);
       }
     );
   }

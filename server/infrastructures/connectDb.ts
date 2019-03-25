@@ -1,9 +1,15 @@
-import {ConnectionConfig, createConnection, MysqlError} from 'mysql';
+import {createConnection, MysqlError} from 'mysql';
 import {Utils} from '../utils/utils';
 import {CustomError} from '../domain/model/CustomError';
 
-declare var require;
-const config = require('../config/dbconfig.json');
+// declare var require;
+// const config = require('../config/dbconfig_.json');
+const config = {
+  user: process.env.SQL_USER,
+  password: process.env.SQL_PASSWORD,
+  database: process.env.SQL_DATABASE,
+  socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`
+};
 
 export class ConnectDB {
   private connection;
@@ -12,7 +18,7 @@ export class ConnectDB {
     this.connection = createConnection(config);
     this.connection.connect((err) => {
       if (err) {
-        console.log(err);
+        console.error(err);
         return;
       }
     });
