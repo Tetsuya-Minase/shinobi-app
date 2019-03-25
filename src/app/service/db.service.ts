@@ -31,10 +31,10 @@ export class DbService {
    */
   public getCharacterData(param?: string): Observable<Array<object>> {
     const params = {name: ''};
-    console.log('getCharacter');
     if (Functions.isDefined(param) && typeof param === 'string') {
       params.name = param;
     }
+
     return this.http.get<Array<object>>(URL.character, {headers: this.header});
   }
 

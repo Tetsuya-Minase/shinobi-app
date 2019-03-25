@@ -14,7 +14,7 @@ class LoginRouter {
     /**
      * ログイン処理
      */
-    this.router.post('/', async (req, res, next) => {
+    this.router.post('/api/login', async (req, res, next) => {
       const id = req.body.id;
       const pass = req.body.password;
       try {
