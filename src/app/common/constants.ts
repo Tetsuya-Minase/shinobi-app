@@ -1,4 +1,4 @@
-import * as ifs from './interfaces';
+import {IArtsData, IGridData, IUrlList} from './interfaces';
 
 export namespace GridDefs {
   export const columnDefs = [
@@ -117,6 +117,22 @@ export namespace GridDefs {
     { kijutsu: { data: '壊器術', clickFlg: false }, taijutsu: { data: '刀術', clickFlg: false }, ninjutsu: { data: '隠蔽術', clickFlg: false }, boujutsu: { data: '流言の術', clickFlg: false }, senjutsu: { data: '伝達術', clickFlg: false }, youjutsu: { data: '憑依術', clickFlg: false } },
     { kijutsu: { data: '掘削術', clickFlg: false }, taijutsu: { data: '怪力', clickFlg: false }, ninjutsu: { data: '第六感', clickFlg: false }, boujutsu: { data: '経済力', clickFlg: false }, senjutsu: { data: '人脈', clickFlg: false }, youjutsu: { data: '呪術', clickFlg: false } }
   ];
+  export const TABLE_HEADER = [
+    {data: 'A', category: ['hasuba']}, {data: '器術', category: ['kijutsu']}, {data: 'B', category: ['hasuba', 'kurama']}, {data: '体術', category: ['taijutsu']}, {data: 'C', category: ['kurama', 'hagure']}, {data: '忍術', category: ['ninjutsu']}, {data: 'D', category: ['hagure', 'hirasaka']}, {data: '謀術', category: ['boujutsu']}, {data: 'E', category: ['hirasaka', 'otogi']}, {data: '戦術', category: ['senjutsu']}, {data: 'F', category: ['otogi', 'oni']}, {data: '妖術', category: ['youjutsu']}, {data: 'G', category: ['oni']}
+  ];
+  export const TABLE_DATA: Array<Array<IGridData>> = [
+    [{data: '', isClicked: false, categories: ['hasuba'] }, { data: '絡繰術', isClicked: false, categories: ['kijutsu'] }, {data: '', isClicked: false, categories: ['hasuba', 'kurama'] }, { data: '騎乗術', isClicked: false , categories: ['taijutsu']}, {data: '', isClicked: false, categories: ['kurama', 'hagure'] }, { data: '生存術', isClicked: false, categories: ['ninjutsu'] }, {data: '', isClicked: false, categories: ['hagure', 'hirasaka'] }, { data: '医術', isClicked: false, categories: ['boujutsu']  }, {data: '', isClicked: false, categories: ['hirasaka', 'otogi']  }, { data: '兵糧術', isClicked: false, categories: ['senjutsu'] }, {data: '', isClicked: false, categories: ['otogi', 'oni'] }, { data: '異形化', isClicked: false, categories: ['youjutsu'] }, {data: '', isClicked: false, categories: ['oni'] }],
+    [{data: '', isClicked: false, categories: ['hasuba'] }, { data: '火術', isClicked: false, categories: ['kijutsu']}, {data: '', isClicked: false, categories: ['hasuba', 'kurama'] }, { data: '砲術', isClicked: false, categories: ['taijutsu'] }, {data: '', isClicked: false, categories: ['kurama', 'hagure'] }, { data: '潜伏術', isClicked: false, categories: ['ninjutsu'] }, {data: '', isClicked: false, categories: ['hagure', 'hirasaka'] }, { data: '毒術', isClicked: false, categories: ['boujutsu'] }, {data: '', isClicked: false, categories: ['hirasaka', 'otogi']  }, { data: '鳥獣術', isClicked: false, categories: ['senjutsu'] }, {data: '', isClicked: false, categories: ['otogi', 'oni'] }, { data: '召喚術', isClicked: false, categories: ['youjutsu'] }, {data: '', isClicked: false, categories: ['oni'] }] ,
+    [{data: '', isClicked: false, categories: ['hasuba'] }, { data: '水術', isClicked: false, categories: ['kijutsu'] }, {data: '', isClicked: false, categories: ['hasuba', 'kurama'] }, { data: '手裏剣術', isClicked: false, categories: ['taijutsu'] }, {data: '', isClicked: false, categories: ['kurama', 'hagure'] }, { data: '遁走術', isClicked: false, categories: ['ninjutsu'] }, {data: '', isClicked: false, categories: ['hagure', 'hirasaka']}, { data: '罠術', isClicked: false, categories: ['boujutsu'] }, {data: '', isClicked: false, categories: ['hirasaka', 'otogi']  }, { data: '野戦術', isClicked: false, categories: ['senjutsu']}, {data: '', isClicked: false, categories: ['otogi', 'oni'] }, { data: '死霊術', isClicked: false, categories: ['youjutsu'] }, {data: '', isClicked: false, categories: ['oni'] }] ,
+    [{data: '', isClicked: false, categories: ['hasuba'] }, { data: '針術', isClicked: false, categories: ['kijutsu'] }, {data: '', isClicked: false, categories: ['hasuba', 'kurama'] }, { data: '手練', isClicked: false, categories: ['taijutsu'] }, {data: '', isClicked: false, categories: ['kurama', 'hagure'] }, { data: '盗聴術', isClicked: false, categories: ['ninjutsu'] }, {data: '', isClicked: false, categories: ['hagure', 'hirasaka'] }, { data: '調査術', isClicked: false, categories: ['boujutsu'] }, {data: '', isClicked: false, categories: ['hirasaka', 'otogi']  }, { data: '地の利', isClicked: false, categories: ['senjutsu'] }, {data: '', isClicked: false, categories: ['otogi', 'oni'] }, { data: '結界術', isClicked: false, categories: ['youjutsu'] }, {data: '', isClicked: false, categories: ['oni'] }] ,
+    [{data: '', isClicked: false, categories: ['hasuba'] }, { data: '仕込み', isClicked: false, categories: ['kijutsu'] }, {data: '', isClicked: false, categories: ['hasuba', 'kurama'] }, { data: '身体操術', isClicked: false, categories: ['taijutsu'] }, {data: '', isClicked: false, categories: ['kurama', 'hagure'] }, { data: '腹話術', isClicked: false, categories: ['ninjutsu'] }, {data: '', isClicked: false, categories: ['hagure', 'hirasaka']}, { data: '詐術', isClicked: false, categories: ['boujutsu']}, {data: '', isClicked: false, categories: ['hirasaka', 'otogi']  }, { data: '意気', isClicked: false, categories: ['senjutsu'] }, {data: '', isClicked: false, categories: ['otogi', 'oni'] }, { data: '封術', isClicked: false, categories: ['youjutsu'] }, {data: '', isClicked: false, categories: ['oni'] }] ,
+    [{data: '', isClicked: false, categories: ['hasuba'] }, { data: '衣装術', isClicked: false, categories: ['kijutsu'] }, {data: '', isClicked: false, categories: ['hasuba', 'kurama'] }, { data: '歩術', isClicked: false, categories: ['taijutsu'] }, {data: '', isClicked: false, categories: ['kurama', 'hagure'] }, { data: '隠形術', isClicked: false, categories: ['ninjutsu'] }, {data: '', isClicked: false, categories: ['hagure', 'hirasaka'] }, { data: '対人術', isClicked: false, categories: ['boujutsu'] }, {data: '', isClicked: false, categories: ['hirasaka', 'otogi'] }, { data: '用兵術', isClicked: false, categories: ['senjutsu']}, {data: '', isClicked: false, categories: ['otogi', 'oni'] }, { data: '言霊術', isClicked: false, categories: ['youjutsu'] }, {data: '', isClicked: false, categories: ['oni'] }] ,
+    [{data: '', isClicked: false, categories: ['hasuba'] }, { data: '縄術', isClicked: false, categories: ['kijutsu'] }, {data: '', isClicked: false, categories: ['hasuba', 'kurama']}, { data: '走術', isClicked: false, categories: ['taijutsu'] }, {data: '', isClicked: false, categories: ['kurama', 'hagure'] }, { data: '変装術', isClicked: false, categories: ['ninjutsu'] }, {data: '', isClicked: false, categories: ['hagure', 'hirasaka'] }, { data: '遊芸', isClicked: false, categories: ['boujutsu'] }, {data: '', isClicked: false, categories: ['hirasaka', 'otogi']  }, { data: '記憶術', isClicked: false, categories: ['senjutsu'] }, {data: '', isClicked: false, categories: ['otogi', 'oni'] }, { data: '幻術', isClicked: false, categories: ['youjutsu'] }, {data: '', isClicked: false, categories: ['oni'] }] ,
+    [{data: '', isClicked: false, categories: ['hasuba'] }, { data: '登術', isClicked: false, categories: ['kijutsu'] }, {data: '', isClicked: false, categories: ['hasuba', 'kurama'] }, { data: '飛術', isClicked: false, categories: ['taijutsu'] }, {data: '', isClicked: false, categories: ['kurama', 'hagure'] }, { data: '香術', isClicked: false, categories: ['ninjutsu'] }, {data: '', isClicked: false, categories: ['hagure', 'hirasaka'] }, { data: 'くノ一の術', isClicked: false, categories: ['boujutsu'] }, {data: '', isClicked: false, categories: ['hirasaka', 'otogi']  }, { data: '見敵術', isClicked: false, categories: ['senjutsu'] }, {data: '', isClicked: false, categories: ['otogi', 'oni'] }, { data: '瞳術', isClicked: false, categories: ['youjutsu'] }, {data: '', isClicked: false, categories: ['oni'] }] ,
+    [{data: '', isClicked: false, categories: ['hasuba'] }, { data: '拷問術', isClicked: false, categories: ['kijutsu'] }, {data: '', isClicked: false, categories: ['hasuba', 'kurama'] }, { data: '骨法術', isClicked: false, categories: ['taijutsu'] }, {data: '', isClicked: false, categories: ['kurama', 'hagure'] }, { data: '分身の術', isClicked: false, categories: ['ninjutsu'] }, {data: '', isClicked: false, categories: ['hagure', 'hirasaka'] }, { data: '傀儡の術', isClicked: false, categories: ['boujutsu'] }, {data: '', isClicked: false, categories: ['hirasaka', 'otogi'] }, { data: '暗号術', isClicked: false, categories: ['senjutsu']}, {data: '', isClicked: false, categories: ['otogi', 'oni'] }, { data: '千里眼の術', isClicked: false, categories: ['youjutsu'] }, {data: '', isClicked: false, categories: ['oni'] }] ,
+    [{data: '', isClicked: false, categories: ['hasuba'] }, { data: '壊器術', isClicked: false, categories: ['kijutsu'] }, {data: '', isClicked: false, categories: ['hasuba', 'kurama'] }, { data: '刀術', isClicked: false, categories: ['taijutsu'] }, {data: '', isClicked: false, categories: ['kurama', 'hagure'] }, { data: '隠蔽術', isClicked: false, categories: ['ninjutsu'] }, {data: '', isClicked: false, categories: ['hagure', 'hirasaka'] }, { data: '流言の術', isClicked: false, categories: ['boujutsu'] }, {data: '', isClicked: false, categories: ['hirasaka', 'otogi']  }, { data: '伝達術', isClicked: false, categories: ['senjutsu']}, {data: '', isClicked: false, categories: ['otogi', 'oni'] }, { data: '憑依術', isClicked: false, categories: ['youjutsu'] }, {data: '', isClicked: false, categories: ['oni'] }] ,
+    [{data: '', isClicked: false, categories: ['hasuba'] }, { data: '掘削術', isClicked: false, categories: ['kijutsu'] }, {data: '', isClicked: false, categories: ['hasuba', 'kurama'] }, { data: '怪力', isClicked: false, categories: ['taijutsu'] }, {data: '', isClicked: false, categories: ['kurama', 'hagure'] }, { data: '第六感', isClicked: false, categories: ['ninjutsu'] }, {data: '', isClicked: false, categories: ['hagure', 'hirasaka'] }, { data: '経済力', isClicked: false, categories: ['boujutsu'] }, {data: '', isClicked: false, categories: ['hirasaka', 'otogi'] }, { data: '人脈', isClicked: false, categories: ['senjutsu']}, {data: '', isClicked: false, categories: ['otogi', 'oni'] }, { data: '呪術', isClicked: false, categories: ['youjutsu'] }, {data: '', isClicked: false, categories: ['oni'] }]
+  ];
   export const ryuha = {
     hasuba: '斜歯忍軍'
     , kurama: '鞍馬神流'
@@ -133,72 +149,72 @@ export namespace ObjectFilter {
 }
 
 export namespace ArtsInfo {
-  export const arts: Array<ifs.IArtsData> = [
+  export const arts: Array<IArtsData> = [
     {
       name: '接近戦攻撃※'
-      , type: ifs.ArtsType.atack
+      , type: Enums.ArtsType.atack
       , range: 1
       , cost: 'なし'
       , targetSkill: '自由'
       , description: '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。'
       , flavor: '通常の接近戦攻撃。'
-      , attribute: [ifs.ArtsAttribute.general]
+      , attribute: [Enums.ArtsAttribute.general]
       , clickFlg: false
     }, {
       name: '鳳凰'
-      , type: ifs.ArtsType.atack
+      , type: Enums.ArtsType.atack
       , range: 6
       , cost: '2'
       , targetSkill: '火術'
       , description: '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。'
       , flavor: '通常の接近戦攻撃。'
-      , attribute: [ifs.ArtsAttribute.hasuba, ifs.ArtsAttribute.ryuha]
+      , attribute: [Enums.ArtsAttribute.hasuba, Enums.ArtsAttribute.ryuha]
       , clickFlg: false
     }, {
       name: '鳳凰'
-      , type: ifs.ArtsType.atack
+      , type: Enums.ArtsType.atack
       , range: 6
       , cost: '2'
       , targetSkill: '火術'
       , description: '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。'
       , flavor: '通常の接近戦攻撃。'
-      , attribute: [ifs.ArtsAttribute.hasuba, ifs.ArtsAttribute.ryuha]
+      , attribute: [Enums.ArtsAttribute.hasuba, Enums.ArtsAttribute.ryuha]
       , clickFlg: false
     }, {
       name: '鳳凰'
-      , type: ifs.ArtsType.atack
+      , type: Enums.ArtsType.atack
       , range: 6
       , cost: '2'
       , targetSkill: '火術'
       , description: '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。'
       , flavor: '通常の接近戦攻撃。'
-      , attribute: [ifs.ArtsAttribute.hasuba, ifs.ArtsAttribute.ryuha]
+      , attribute: [Enums.ArtsAttribute.hasuba, Enums.ArtsAttribute.ryuha]
       , clickFlg: false
     }, {
       name: '鳳凰'
-      , type: ifs.ArtsType.atack
+      , type: Enums.ArtsType.atack
       , range: 6
       , cost: '2'
       , targetSkill: '火術'
       , description: '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。'
       , flavor: '通常の接近戦攻撃。'
-      , attribute: [ifs.ArtsAttribute.hasuba, ifs.ArtsAttribute.ryuha]
+      , attribute: [Enums.ArtsAttribute.hasuba, Enums.ArtsAttribute.ryuha]
       , clickFlg: false
     }, {
       name: '鳳凰'
-      , type: ifs.ArtsType.atack
+      , type: Enums.ArtsType.atack
       , range: 6
       , cost: '2'
       , targetSkill: '火術'
       , description: '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。'
       , flavor: '通常の接近戦攻撃。'
-      , attribute: [ifs.ArtsAttribute.hasuba, ifs.ArtsAttribute.ryuha]
+      , attribute: [Enums.ArtsAttribute.hasuba, Enums.ArtsAttribute.ryuha]
       , clickFlg: false
     }
   ];
 }
 
-export const URL_LIST: ifs.IUrlList = {
+export const URL_LIST: IUrlList = {
   regist: 'character',
   characterList: 'character-list',
   login: 'login',
@@ -332,5 +348,24 @@ export const CHARACTER = {
 export namespace Enums {
   export enum STORAGE_KEYS {
     userId = 'userId'
+  }
+  /**
+   * 忍法タイプ
+   */
+  export enum ArtsType {
+    atack = '攻撃忍法'
+    , equipment = '装備忍法'
+    , support = 'サポート忍法'
+  }
+
+  /**
+   * 忍法種類
+   */
+  export enum ArtsAttribute {
+    taima = '退魔編'
+    , general = '汎用忍法'
+    , hasuba = '斜歯忍軍'
+    , ryuha = '流派忍法'
+    , hiden = '秘伝忍法'
   }
 }

@@ -1,22 +1,4 @@
-/**
- * 忍法タイプ
- */
-export enum ArtsType {
-  atack = '攻撃忍法'
-  , equipment = '装備忍法'
-  , support = 'サポート忍法'
-};
-
-/**
- * 忍法種類
- */
-export enum ArtsAttribute {
-  taima = '退魔編'
-  , general = '汎用忍法'
-  , hasuba = '斜歯忍軍'
-  , ryuha = '流派忍法'
-  , hiden = '秘伝忍法'
-}
+import { Enums } from './constants';
 
 /**
  * 忍法用IF
@@ -25,7 +7,7 @@ export interface IArtsData {
   /** 忍法名 */
   name: string;
   /** 忍法タイプ */
-  type: ArtsType;
+  type: Enums.ArtsType;
   /** 間合 */
   range: number;
   /** コスト */
@@ -37,10 +19,10 @@ export interface IArtsData {
   /** フレーバーテキスト */
   flavor: string;
   /** 忍法種類 */
-  attribute: Array<ArtsAttribute>;
+  attribute: Array<Enums.ArtsAttribute>;
   /** データクリックされたか */
   clickFlg: boolean;
-};
+}
 
 /**
  * 忍法JSON用IF
@@ -125,4 +107,13 @@ export interface ICharacterData {
     hyorogan: number;
     jintugan: number;
     tonkohu: number;
+}
+
+/**
+ * グリッドデータ用IF
+ */
+export interface IGridData {
+  data: string;
+  isClicked: boolean;
+  categories: Array<string>;
 }

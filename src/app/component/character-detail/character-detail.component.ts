@@ -70,7 +70,7 @@ export class CharacterDetailComponent implements OnInit {
   });
 
   private displayArtsList$: Observable<Array<IArtsData>>;
-  private backgroudList$: Observable<Array<IBackGround>>;
+  private backgroundList$: Observable<Array<IBackGround>>;
   private secretsList$: Observable<Array<ISecretsData>>;
 
   constructor(
@@ -81,8 +81,8 @@ export class CharacterDetailComponent implements OnInit {
     this.displayArtsList$.subscribe(dl => {
       this.characterData.dispArtsArray = dl;
     });
-    this.backgroudList$ = store.pipe(select('background'));
-    this.backgroudList$.subscribe(bl => {
+    this.backgroundList$ = store.pipe(select('background'));
+    this.backgroundList$.subscribe(bl => {
       this.characterData.background = bl;
     });
     this.secretsList$ = store.pipe(select('secrets'));
@@ -107,6 +107,7 @@ export class CharacterDetailComponent implements OnInit {
     });
     const userId = WebStorage.getSessionStorage('userId');
     this.characterData['userId'] = userId ? userId : 'GUEST';
+    console.log(this.characterData);
     this.dbService.insertData(this.characterData).subscribe(
       res => {
         window.alert('登録しました。');

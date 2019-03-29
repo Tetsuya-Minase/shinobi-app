@@ -34,6 +34,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducer/index.reducer';
 import { artsSettingReducer } from './reducer/arts-setting.reducer';
 import { backgroundReducer } from './reducer/background.reducer';
+import { GridComponent } from './component/character-detail/main-grid/grid/grid.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { backgroundReducer } from './reducer/background.reducer';
     UserRegisterComponent,
     ItemSecretsComponent,
     BackgroundComponent,
-    FormValidationNgComponent
+    FormValidationNgComponent,
+    GridComponent
   ],
   providers: [
     DbService,
