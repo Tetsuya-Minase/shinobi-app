@@ -32,6 +32,7 @@ export class CharacterService {
    * @return 登録結果
    */
   public async registerCharacter(req: any) {
+    console.log(req.body);
     const character = {
       user_id: req.body.userId,
       player_name: req.body.playerName,
@@ -62,7 +63,8 @@ export class CharacterService {
     };
 
     try {
-      return await this.repository.registerCharacter(character);
+      return undefined;
+      // return await this.repository.registerCharacter(character);
     } catch (e) {
       throw e;
     }

@@ -5,7 +5,7 @@ COPY package-lock.json /src/package-lock.json
 WORKDIR /src
 RUN npm install
 COPY . /src
-RUN npm run build:clean
+RUN npm run deploy:clean
 EXPOSE  3000
 
 CMD ["node", "/src/app/bin/www"]

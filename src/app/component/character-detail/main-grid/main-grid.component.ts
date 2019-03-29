@@ -10,10 +10,10 @@ import * as ifs from '../../../common/interfaces';
     styleUrls: ['./main-grid.component.scss']
 })
 export class MainGridComponent implements OnInit, AfterViewInit, OnChanges {
-    @Input() ryuha: string = '';
+    @Input() ryuha = '';
     public gridOptions: GridOptions;
-    public buttonString: string = '';
-    public decisionFlg: boolean = false;
+    public buttonString = '';
+    public decisionFlg = false;
     public selectList: Array<string> = ['流派を選択', '斜歯忍軍', '鞍馬神流', 'ハグレモノ', '比良坂機関', '私立御斎学園', '隠忍の血統'];
     public selectedSkillList: Array<ifs.IClickIndex> = [];
     public decisionResult: Array<any> = new Array<any>();
@@ -170,7 +170,7 @@ export class MainGridComponent implements OnInit, AfterViewInit, OnChanges {
         const originItems: Array<ifs.IClickIndex> = Functions.deepCopy(clickItems);
         let colIndex: number;
         originItems.forEach((item, idx) => {
-            let skipCount: number = 0;
+            let skipCount = 0;
             for (let i = 0; i < allColumns.length; i++) {
                 // 非表示カラムはスキップ(カウントを1減らす)
                 if (!allColumns[i].visible) {
