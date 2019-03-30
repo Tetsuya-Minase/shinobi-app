@@ -1,0 +1,10 @@
+.grid__cell {
+  &--clicked {
+    background-color: black;
+    color: white;
+  };
+  &--unClicked {
+    background-color: white;
+    color: black;
+  }
+}
