@@ -1,7 +1,7 @@
 import {Observable} from 'rxjs';
 import {Component, OnInit} from '@angular/core';
-import {ArtsAttribute, ArtsType, IArtsData} from '../../../common/interfaces';
-import {Functions} from '../../../common/utils';
+import {IArtsData} from '../../../common/interfaces';
+import {Enums} from '../../../common/constants';
 import {ArtsModalComponent} from '../../../modal/arts-modal/arts-modal.component';
 import {MatDialog} from '@angular/material';
 import {Store, select} from '@ngrx/store';
@@ -10,10 +10,10 @@ import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-artssetting',
-  templateUrl: './artssetting.component.html',
-  styleUrls: ['./artssetting.component.scss']
+  templateUrl: './arts-setting.component.html',
+  styleUrls: ['./arts-setting.component.scss']
 })
-export class ArtssettingComponent implements OnInit {
+export class ArtsSettingComponent implements OnInit {
   /** 選択した忍法リスト */
   public selectArtsArray: Array<IArtsData> = [];
   /** 表示用リスト */
@@ -57,13 +57,13 @@ export class ArtssettingComponent implements OnInit {
   public registData(event: Array<IArtsData>) {
     const artsList = {
       name: '接近戦攻撃※'
-      , type: ArtsType.atack
+      , type: Enums.ArtsType.atack
       , range: 1
       , cost: 'なし'
       , targetSkill: '自由'
       , description: '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。'
       , flavor: '通常の接近戦攻撃。'
-      , attribute: [ArtsAttribute.general]
+      , attribute: [Enums.ArtsAttribute.general]
       , clickFlg: false
     };
 

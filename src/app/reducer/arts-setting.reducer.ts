@@ -1,16 +1,17 @@
 import { Action } from '@ngrx/store';
 import { ArtsSettingActionTypes } from '../action/arts-setting.action';
-import { IArtsData, ArtsType, ArtsAttribute } from '../common/interfaces';
+import { IArtsData } from '../common/interfaces';
+import { Enums } from '../common/constants';
 
 export const initialList: Array<IArtsData> = [{
   name: '接近戦攻撃※'
-  , type: ArtsType.atack
+  , type: Enums.ArtsType.atack
   , range: 1
   , cost: 'なし'
   , targetSkill: '自由'
   , description: '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。'
   , flavor: '通常の接近戦攻撃。'
-  , attribute: [ArtsAttribute.general]
+  , attribute: [Enums.ArtsAttribute.general]
   , clickFlg: false
 }];
 

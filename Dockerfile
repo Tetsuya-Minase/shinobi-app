@@ -8,4 +8,4 @@ COPY . /src
 RUN npm run deploy:clean
 EXPOSE  3000
 
-CMD ["node", "/src/app/bin/www"]
+CMD ["node", "/src/app/bin/www.js"]

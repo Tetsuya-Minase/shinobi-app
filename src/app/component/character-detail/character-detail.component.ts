@@ -5,7 +5,7 @@ import * as func from '../../common/utils';
 import {IArtsData, IBackGround, ICharacterData, ISecretsData} from '../../common/interfaces';
 import {WebStorage} from '../../common/utils';
 import {MainGridComponent} from './main-grid/main-grid.component';
-import {ArtssettingComponent} from './artssetting/artssetting.component';
+import {ArtsSettingComponent} from './artssetting/arts-setting.component';
 import {ItemSecretsComponent} from './item-secrets/item-secrets.component';
 import {BackgroundComponent} from './background/background.component';
 import {FormControl, Validators, FormGroup, AbstractControl} from '@angular/forms';

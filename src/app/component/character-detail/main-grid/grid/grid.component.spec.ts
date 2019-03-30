@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArtssettingComponent } from './artssetting.component';
+import { GridComponent } from './grid.component';
 
-describe('ArtssettingComponent', () => {
-  let component: ArtssettingComponent;
-  let fixture: ComponentFixture<ArtssettingComponent>;
+describe('GridComponent', () => {
+  let component: GridComponent;
+  let fixture: ComponentFixture<GridComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArtssettingComponent ]
+      declarations: [ GridComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArtssettingComponent);
+    fixture = TestBed.createComponent(GridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

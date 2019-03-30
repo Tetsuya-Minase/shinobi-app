@@ -1,0 +1,14 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th *ngFor="let currentHeader of currentHeaderList">{{currentHeader.data}}</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let currentData of currentDataList">
+      <td *ngFor="let data of currentData" (click)="clickCell(data)" [ngClass]="data.isClicked ? 'grid__cell--clicked' : 'grid__cell--nuClicked'" >
+        {{data.data}}
+      </td>
+    </tr>
+  </tbody>
+</table>
