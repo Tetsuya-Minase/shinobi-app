@@ -15,7 +15,7 @@ import { LoginGuardGuard } from './guard/login-guard.guard';
 
 import { ArtsModalComponent } from './modal/arts-modal/arts-modal.component';
 import { MainGridComponent } from './component/character-detail/main-grid/main-grid.component';
-import { ArtssettingComponent } from './component/character-detail/artssetting/artssetting.component';
+import { ArtsSettingComponent } from './component/character-detail/artssetting/arts-setting.component';
 import { ItemSecretsComponent } from './component/character-detail/item-secrets/item-secrets.component';
 import { BackgroundComponent } from './component/character-detail/background/background.component';
 import { ReferModalComponent } from './modal/refer-modal/refer-modal.component';
@@ -59,7 +59,7 @@ import { GridComponent } from './component/character-detail/main-grid/grid/grid.
     ArtsModalComponent,
     ArtsComponent,
     ReferModalComponent,
-    ArtssettingComponent,
+    ArtsSettingComponent,
     LoginComponent,
     ErrorComponent,
     TopComponent,
