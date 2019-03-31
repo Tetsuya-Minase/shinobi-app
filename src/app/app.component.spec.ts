@@ -7,9 +7,7 @@ import {} from 'jasmine';
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
     });
     TestBed.compileComponents();
   });

@@ -36,7 +36,6 @@ import { artsSettingReducer } from './reducer/arts-setting.reducer';
 import { backgroundReducer } from './reducer/background.reducer';
 import { GridComponent } from './component/character-detail/main-grid/grid/grid.component';
 
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -71,17 +70,10 @@ import { GridComponent } from './component/character-detail/main-grid/grid/grid.
     ItemSecretsComponent,
     BackgroundComponent,
     FormValidationNgComponent,
-    GridComponent
+    GridComponent,
   ],
-  providers: [
-    DbService,
-    DataShareService,
-    LoginGuardGuard
-  ],
-  entryComponents: [
-    ReferModalComponent,
-    ArtsModalComponent
-  ],
-  bootstrap: [AppComponent]
+  providers: [DbService, DataShareService, LoginGuardGuard],
+  entryComponents: [ReferModalComponent, ArtsModalComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
