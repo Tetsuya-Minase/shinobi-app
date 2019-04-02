@@ -1,14 +1,9 @@
 <div class="dropdown">
   <input type="checkbox" [(ngModel)]="decisionFlg">判定モード
 </div>
-<!--<div>-->
-  <!--<app-grid></app-grid>-->
-<!--</div>-->
 <div class="row">
   <div class="grid col-md-8">
     <app-grid [currentRyuha]="ryuha"></app-grid>
-    <!--<ag-grid-angular #agGrid style="height: 400px;" class="ag-fresh" [gridOptions]="gridOptions"-->
-                     <!--(cellClicked)="decisionFlg ? decisionClick($event): selectedSkill($event)"></ag-grid-angular>-->
   </div>
   <div class="col-md-4">
     <div class="card">
