@@ -3,7 +3,6 @@ import {Component, OnInit, Input} from '@angular/core';
 import {IBackGround} from '../../../common/interfaces';
 import {Store, select} from '@ngrx/store';
 import {BackgroundAdd, BackgroundUpdate} from '../../../action/background.action';
-import * as reducers from '../../../reducer/index.reducer';
 
 @Component({
   selector: 'app-background',

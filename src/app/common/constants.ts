@@ -141,11 +141,44 @@ export namespace GridDefs {
     , otogi: '私立御斎学園'
     , oni: '隠忍の血統'
   };
+  // export const ryuha: Map<string, string> = new Map([
+  //   ['hasuba', '斜歯忍軍'],
+  //   ['kurama', '鞍馬神流'],
+  //   ['hagure', 'ハグレモノ'],
+  //   ['hirasaka', '比良坂機関'],
+  //   ['otogi', '私立御斎学園'],
+  //   ['oni', '隠忍の血統']
+  // ]);
 }
 
 export namespace ObjectFilter {
   export const characterDataFillter = ['playerName', 'charactorName', 'kana', 'regulation', 'type', 'kairyuha', 'enemy', 'rank', 'achievement', 'age', 'gender', 'face', 'ryugi', 'belief'];
 
+}
+
+export namespace Enums {
+  export enum STORAGE_KEYS {
+    userId = 'userId'
+  }
+  /**
+   * 忍法タイプ
+   */
+  export enum ArtsType {
+    atack = '攻撃忍法'
+    , equipment = '装備忍法'
+    , support = 'サポート忍法'
+  }
+
+  /**
+   * 忍法種類
+   */
+  export enum ArtsAttribute {
+    taima = '退魔編'
+    , general = '汎用忍法'
+    , hasuba = '斜歯忍軍'
+    , ryuha = '流派忍法'
+    , hiden = '秘伝忍法'
+  }
 }
 
 export namespace ArtsInfo {
@@ -220,152 +253,3 @@ export const URL_LIST: IUrlList = {
   login: 'login',
   myPage: 'my-page'
 };
-
-export const CHARACTER = {
-  'charactor': [
-    {
-      'playerName': 'Guest',
-      'charactorName': 'Charactor1',
-      'kana': 'キャラクターイチ',
-      'regulation': '現代',
-      'type': '',
-      'kairyuha': '',
-      'enemy': '',
-      'rank': '',
-      'achievement': '',
-      'age': '',
-      'gender': '',
-      'face': '',
-      'ryugi': '',
-      'belief': '',
-      'selectedSkillList': [
-        {
-          'name': '拷問術',
-          'colId': 'kijutsu',
-          'colIndex': null,
-          'rowIndex': 9
-        },
-        {
-          'name': '走術',
-          'colId': 'taijutsu',
-          'colIndex': null,
-          'rowIndex': 7
-        },
-        {
-          'name': '隠形術',
-          'colId': 'ninjutsu',
-          'colIndex': null,
-          'rowIndex': 6
-        },
-        {
-          'name': '野戦術',
-          'colId': 'senjutsu',
-          'colIndex': null,
-          'rowIndex': 3
-        },
-        {
-          'name': '詐術',
-          'colId': 'boujutsu',
-          'colIndex': null,
-          'rowIndex': 5
-        }
-      ],
-      'dispArtsArray': [
-        {
-          'name': '接近戦攻撃※',
-          'type': '攻撃忍法',
-          'range': 1,
-          'cost': 'なし',
-          'targetSkill': '自由',
-          'description': '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。',
-          'flavor': '通常の接近戦攻撃。',
-          'attribute': [
-            '汎用忍法'
-          ],
-          'clickFlg': false
-        },
-        {
-          'name': 'テストサポート',
-          'type': 'サポート忍法',
-          'range': '1',
-          'cost': '6',
-          'targetSkill': '自由',
-          'description': 'サポート用',
-          'flavor': '',
-          'attribute': [],
-          'clickFlg': false
-        },
-        {
-          'name': 'テスト装備',
-          'type': '装備忍法',
-          'range': 'なし',
-          'cost': 'なし',
-          'targetSkill': 'なし',
-          'description': '装備用',
-          'flavor': '',
-          'attribute': [],
-          'clickFlg': false
-        }
-      ],
-      'ryuha': 'ハグレモノ'
-    },
-    {
-      'playerName': 'Guest2',
-      'charactorName': '蔵馬',
-      'kana': 'クラマ',
-      'regulation': '現代',
-      'type': '',
-      'kairyuha': '',
-      'enemy': '',
-      'rank': '',
-      'achievement': '',
-      'age': '',
-      'gender': '',
-      'face': '',
-      'ryugi': '',
-      'belief': '',
-      'selectedSkillList': [],
-      'dispArtsArray': [
-        {
-          'name': '接近戦攻撃※',
-          'type': '攻撃忍法',
-          'range': 1,
-          'cost': 'なし',
-          'targetSkill': '自由',
-          'description': '接近戦。攻撃が成功すると、目標に接近戦ダメージを1点与えることが出来る。',
-          'flavor': '通常の接近戦攻撃。',
-          'attribute': [
-            '汎用忍法'
-          ],
-          'clickFlg': false
-        }
-      ],
-      'ryuha': '鞍馬神流'
-    }
-  ]
-};
-
-export namespace Enums {
-  export enum STORAGE_KEYS {
-    userId = 'userId'
-  }
-  /**
-   * 忍法タイプ
-   */
-  export enum ArtsType {
-    atack = '攻撃忍法'
-    , equipment = '装備忍法'
-    , support = 'サポート忍法'
-  }
-
-  /**
-   * 忍法種類
-   */
-  export enum ArtsAttribute {
-    taima = '退魔編'
-    , general = '汎用忍法'
-    , hasuba = '斜歯忍軍'
-    , ryuha = '流派忍法'
-    , hiden = '秘伝忍法'
-  }
-}

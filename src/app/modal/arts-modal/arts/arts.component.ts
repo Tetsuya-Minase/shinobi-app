@@ -9,21 +9,20 @@ import { Functions } from '../../../common/utils';
   styleUrls: ['./arts.component.scss']
 })
 export class ArtsComponent implements OnInit {
-  @Input() public selectArtsArray: Array<ifs.IArtsData>;
+  @Input() public selectArtsList: Array<ifs.IArtsData>;
   @Output() public regist = new EventEmitter<Array<ifs.IArtsData>>();
   public artsArray: Array<ifs.IArtsData>;
   private artsNameList: Array<string> = [];
+  private deleteSelectArtsList: Function;
+  private addSelectArtsList: Function;
 
   constructor(
     private dbService: DbService
   ) { }
 
   ngOnInit() {
-    // this.dbService.getArtsData().subscribe(
-    //   res => {
-    //     this.artsArray = res.artsInfo;
-    //   }
-    // );
+    this.deleteSelectArtsList = Functions.listDeleteByKey(this.selectArtsList);
+    this.addSelectArtsList = Functions.addList(this.selectArtsList);
   }
 
   /**
@@ -34,11 +33,11 @@ export class ArtsComponent implements OnInit {
     arts.clickFlg = !arts.clickFlg;
 
     if (this.artsNameList.includes(arts.name)) {
-      this.selectArtsArray = Functions.listDeleteByKey(this.selectArtsArray, 'name', arts.name);
+      this.selectArtsList = this.deleteSelectArtsList('name', arts.name);
     } else {
-      this.selectArtsArray = [...this.selectArtsArray, arts];
+      this.selectArtsList = this.addSelectArtsList(arts);
     }
-    this.artsNameList = this.selectArtsArray.map(s => s.name);
-    this.regist.emit(this.selectArtsArray);
+    this.artsNameList = this.selectArtsList.map(s => s.name);
+    this.regist.emit(this.selectArtsList);
   }
 }

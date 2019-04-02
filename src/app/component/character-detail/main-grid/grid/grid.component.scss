@@ -1,4 +1,8 @@
-.grid__cell {
+.table-header__label {
+  text-align: center;
+}
+
+.table-body__cell {
   &--clicked {
     background-color: black;
     color: white;

@@ -28,7 +28,7 @@ describe('ArtsComponent', () => {
   });
 
   it('dataClick: listなし', () => {
-    component.selectArtsArray = [];
+    component.selectArtsList = [];
     component.regist.subscribe((r:Array<ifs.IArtsData>) => {
       expect(r[0].clickFlg).toBe(!Stub.dataClickArgsIncludes.clickFlg);
       expect(r[0].name).toEqual(Stub.dataClickArgsIncludes.name);
@@ -39,7 +39,7 @@ describe('ArtsComponent', () => {
   });
 
   it('dataClick: listあり', () => {
-    component.selectArtsArray = [Stub.dataClickArgsIncludes];
+    component.selectArtsList = [Stub.dataClickArgsIncludes];
     component['artsNameList'] = [Stub.dataClickArgsIncludes.name];
     component.regist.subscribe((r:Array<ifs.IArtsData>) => {
       expect(r.length).toEqual(0);
