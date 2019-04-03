@@ -2,7 +2,7 @@ import {Component, AfterViewInit, AfterViewChecked, ViewChildren, QueryList, OnI
 import {DbService} from '../../service/db.service';
 import * as cons from '../../common/constants';
 import * as func from '../../common/utils';
-import {IArtsData, IBackGround, ICharacterData, ISecretsData} from '../../common/interfaces';
+import {IArtsData, IBackGround, ICharacterData, IGridData, ISecretsData} from '../../common/interfaces';
 import {WebStorage} from '../../common/utils';
 import {MainGridComponent} from './main-grid/main-grid.component';
 import {ArtsSettingComponent} from './artssetting/arts-setting.component';
@@ -72,10 +72,11 @@ export class CharacterDetailComponent implements OnInit {
   private displayArtsList$: Observable<Array<IArtsData>>;
   private backgroundList$: Observable<Array<IBackGround>>;
   private secretsList$: Observable<Array<ISecretsData>>;
+  private gridList$: Observable<Array<IGridData>>;
 
   constructor(
     private dbService: DbService,
-    private store: Store<{ artsSetting: Array<IArtsData>, background: Array<IBackGround>, secrets: Array<ISecretsData> }>
+    private store: Store<{ artsSetting: Array<IArtsData>, background: Array<IBackGround>, secrets: Array<ISecretsData>, grids: Array<IGridData> }>
   ) {
     this.displayArtsList$ = store.pipe(select('artsSetting'));
     this.displayArtsList$.subscribe(dl => {
@@ -89,6 +90,8 @@ export class CharacterDetailComponent implements OnInit {
     this.secretsList$.subscribe(sl => {
       this.characterData.secrets = sl;
     });
+    this.gridList$ = store.pipe(select('grids'));
+    this.gridList$.subscribe(gl => this.characterData.selectedSkillList = gl);
   }
 
   public ngOnInit() {
@@ -107,7 +110,7 @@ export class CharacterDetailComponent implements OnInit {
     });
     const userId = WebStorage.getSessionStorage('userId');
     this.characterData['userId'] = userId ? userId : 'GUEST';
-    console.log(this.characterData);
+    console.log('characterData', this.characterData);
     this.dbService.insertData(this.characterData).subscribe(
       res => {
         window.alert('登録しました。');

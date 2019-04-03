@@ -16,20 +16,17 @@ export class Functions {
   /**
    * リストから指定した値を持つオブジェクトを削除する
    * @param list 削除したいオブジェクトを持つリスト
-   * @param keyName 削除したい値が格納されているキー
-   * @param key 削除したい値
    */
-  public static listDeleteByKey(list: any[], keyName: any, key: any): any[] {
-    return list.filter(l => l[keyName] !== key);
+  public static listDeleteByKey(list: any[]) {
+    return (keyName: string, key: any) => list.filter(l => l[keyName] !== key);
   }
 
   /**
    * リストへ追加
    * @param list データが追加されるリスト
-   * @param additionalData 追加するデータ
    */
-  public static addList(list: Array<any>, additionalData: any): Array<any> {
-    return [...list, additionalData];
+  public static addList(list: Array<any>) {
+    return (additionalData: any) => [...list, additionalData];
   }
 
   /**
@@ -50,6 +47,17 @@ export class Functions {
       return false;
     }
     return Array.isArray(target);
+  }
+
+  /**
+   * リストが空か調べる
+   * @param target
+   */
+  public static isEmptyList(target: any): boolean {
+    if (!this.isListDefined(target)) {
+      return true;
+    }
+    return target.length === 0;
   }
 }
 

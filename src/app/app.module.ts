@@ -32,8 +32,6 @@ import { FormValidationNgComponent } from './component/form-validation-ng/form-v
 
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducer/index.reducer';
-import { artsSettingReducer } from './reducer/arts-setting.reducer';
-import { backgroundReducer } from './reducer/background.reducer';
 import { GridComponent } from './component/character-detail/main-grid/grid/grid.component';
 
 @NgModule({
@@ -47,10 +45,7 @@ import { GridComponent } from './component/character-detail/main-grid/grid/grid.
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    // StoreModule.forRoot({artsSetting: artsSettingReducer, background: backgroundReducer}),
     StoreModule.forRoot(reducers),
-    // StoreModule.forFeature('artsSetting', artsSettingReducer),
-    // StoreModule.forFeature('background', backgroundReducer)
   ],
   declarations: [
     AppComponent,
