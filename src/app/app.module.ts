@@ -15,7 +15,7 @@ import { LoginGuardGuard } from './guard/login-guard.guard';
 
 import { ArtsModalComponent } from './modal/arts-modal/arts-modal.component';
 import { MainGridComponent } from './component/character-detail/main-grid/main-grid.component';
-import { ArtssettingComponent } from './component/character-detail/artssetting/artssetting.component';
+import { ArtsSettingComponent } from './component/character-detail/artssetting/arts-setting.component';
 import { ItemSecretsComponent } from './component/character-detail/item-secrets/item-secrets.component';
 import { BackgroundComponent } from './component/character-detail/background/background.component';
 import { ReferModalComponent } from './modal/refer-modal/refer-modal.component';
@@ -32,9 +32,7 @@ import { FormValidationNgComponent } from './component/form-validation-ng/form-v
 
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducer/index.reducer';
-import { artsSettingReducer } from './reducer/arts-setting.reducer';
-import { backgroundReducer } from './reducer/background.reducer';
-
+import { GridComponent } from './component/character-detail/main-grid/grid/grid.component';
 
 @NgModule({
   imports: [
@@ -47,10 +45,7 @@ import { backgroundReducer } from './reducer/background.reducer';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    // StoreModule.forRoot({artsSetting: artsSettingReducer, background: backgroundReducer}),
     StoreModule.forRoot(reducers),
-    // StoreModule.forFeature('artsSetting', artsSettingReducer),
-    // StoreModule.forFeature('background', backgroundReducer)
   ],
   declarations: [
     AppComponent,
@@ -58,7 +53,7 @@ import { backgroundReducer } from './reducer/background.reducer';
     ArtsModalComponent,
     ArtsComponent,
     ReferModalComponent,
-    ArtssettingComponent,
+    ArtsSettingComponent,
     LoginComponent,
     ErrorComponent,
     TopComponent,
@@ -69,17 +64,11 @@ import { backgroundReducer } from './reducer/background.reducer';
     UserRegisterComponent,
     ItemSecretsComponent,
     BackgroundComponent,
-    FormValidationNgComponent
+    FormValidationNgComponent,
+    GridComponent,
   ],
-  providers: [
-    DbService,
-    DataShareService,
-    LoginGuardGuard
-  ],
-  entryComponents: [
-    ReferModalComponent,
-    ArtsModalComponent
-  ],
-  bootstrap: [AppComponent]
+  providers: [DbService, DataShareService, LoginGuardGuard],
+  entryComponents: [ReferModalComponent, ArtsModalComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

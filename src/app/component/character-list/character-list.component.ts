@@ -22,6 +22,9 @@ export class CharacterListComponent implements OnInit {
     private dialog: MatDialog
   ) { }
 
+  /**
+   * 初期化処理
+   */
   ngOnInit() {
     this.dbService.getCharacterData().subscribe(
       ret => {
@@ -35,6 +38,10 @@ export class CharacterListComponent implements OnInit {
     );
   }
 
+  /**
+   * モーダル画面オープン
+   * @param character 表示するキャラクタ情報
+   */
   public modalOpen(character: any) {
     console.log(character);
     this.dialog.open(ReferModalComponent, {

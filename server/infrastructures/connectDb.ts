@@ -3,14 +3,18 @@ import {Utils} from '../utils/utils';
 import {CustomError} from '../domain/model/CustomError';
 
 // declare var require;
-// const config = require('../config/dbconfig_.json');
+// const config = {
+//   user: process.env.SQL_USER,
+//   password: process.env.SQL_PASSWORD,
+//   database: process.env.SQL_DATABASE,
+//   socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`
+// };
 const config = {
-  user: process.env.SQL_USER,
-  password: process.env.SQL_PASSWORD,
-  database: process.env.SQL_DATABASE,
-  socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`
+  user: 'trpguser',
+  password: 'p94C2-rT',
+  database: 'trpgdb',
+  host: '35.226.231.219'
 };
-
 export class ConnectDB {
   private connection;
 

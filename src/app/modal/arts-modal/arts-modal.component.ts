@@ -17,7 +17,7 @@ export class ArtsModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.selectArtsArray = this.data.selectArtsArray;
+    this.selectArtsArray = this.data.selectArtsList;
   }
 
   /**
