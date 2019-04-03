@@ -6,7 +6,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let currentData of currentDataList">
-      <td *ngFor="let data of currentData" (click)="clickCell(data)" [ngClass]="data.isClicked ? 'table-body__cell--clicked' : 'table-body__cell--nuClicked'" >
+      <td *ngFor="let data of currentData" (click)="isDecision ? decision(data) : addData(data)" [ngClass]="data.isClicked ? 'table-body__cell--clicked' : 'table-body__cell--nuClicked'" >
         {{data.data}}
       </td>
     </tr>

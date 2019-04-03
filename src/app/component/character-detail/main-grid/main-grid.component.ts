@@ -1,8 +1,7 @@
-import {Component, OnInit, AfterViewInit, Input, OnChanges} from '@angular/core';
-import {GridOptions} from 'ag-grid';
-import {GridDefs} from '../../../common/constants';
+import {Component, OnInit, Input} from '@angular/core';
+import {IClickIndex} from '../../../common/interfaces';
+import {DataShareService} from '../../../service/data-share.service';
 import {Functions} from '../../../common/utils';
-import * as ifs from '../../../common/interfaces';
 
 @Component({
   selector: 'app-main-grid',
@@ -11,15 +10,17 @@ import * as ifs from '../../../common/interfaces';
 })
 export class MainGridComponent implements OnInit {
   @Input() ryuha = '';
-  public decisionFlg = false;
-  public selectedSkillList: Array<ifs.IClickIndex> = [];
-  public decisionResult: Array<any> = new Array<any>();
+  public isDecision = false;
+  public selectedSkillList: Array<IClickIndex> = [];
+  public decisionResult = [];
   public decisionTarget: string;
 
-  constructor() {
-  }
+  constructor(
+    private dataShareService: DataShareService
+  ) {}
 
   ngOnInit() {
+
   }
 
   /**
@@ -34,5 +35,22 @@ export class MainGridComponent implements OnInit {
     tempArea.select();
     document.execCommand('copy');
     bodyElm.removeChild(tempArea);
+  }
+
+  /**
+   * 判定結果取得
+   * @param result
+   */
+  public fetchDecisionResult(result: Array<any>) {
+    if (Functions.isEmptyList(result)) {
+      return;
+    }
+    this.decisionResult = result;
+    this.decisionTarget = result[0]['target'];
+  }
+
+  public decisionShare() {
+    this.isDecision = !this.isDecision;
+    this.dataShareService.decisionNext(this.isDecision);
   }
 }

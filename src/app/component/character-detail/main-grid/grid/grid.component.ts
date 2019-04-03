@@ -1,10 +1,11 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {GridDefs} from '../../../../common/constants';
 import {Functions} from '../../../../common/utils';
 import {IGridData} from '../../../../common/interfaces';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {GridUpdate} from '../../../../action/grid.action';
+import {DataShareService} from '../../../../service/data-share.service';
 
 @Component({
   selector: 'app-grid',
@@ -13,18 +14,24 @@ import {GridUpdate} from '../../../../action/grid.action';
 })
 export class GridComponent implements OnInit, OnChanges {
   @Input() currentRyuha = '';
+  @Output() calculationResult: EventEmitter<any> = new EventEmitter();
   public currentHeaderList: Array<any>;
   public currentDataList: Array<Array<IGridData>>;
+  public isDecision: boolean;
   private selectedGridList: Array<IGridData>;
   private addSelectedGridList: Function;
   private deleteSelectedGridList: Function;
   private grid$: Observable<Array<IGridData>>;
+  private decision$: Observable<boolean>;
 
   constructor(
-    private store: Store<Array<IGridData>>
+    private store: Store<Array<IGridData>>,
+    private dataShareService: DataShareService
   ) {
     this.grid$ = store.pipe(select('grid'));
     this.grid$.subscribe((gl: Array<IGridData>) => this.selectedGridList = gl);
+    this.decision$ = this.dataShareService.decision$;
+    this.decision$.subscribe(d => this.isDecision = d);
   }
 
   ngOnInit() {
@@ -36,7 +43,6 @@ export class GridComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log(this.currentRyuha);
     this.filterGridData(this.currentRyuha);
   }
 
@@ -44,19 +50,54 @@ export class GridComponent implements OnInit, OnChanges {
    * セルクリック判定
    * @param target クリックしたセル
    */
-  public clickCell(target: IGridData) {
+  public addData(target: IGridData) {
     if (target.data === '') {
       return;
     }
     target.isClicked = !target.isClicked;
     if (target.isClicked) {
-      // this.selectedGridList = this.addSelectedGridList(target);
       this.selectedGridList = Functions.addList(this.selectedGridList)(target);
     } else {
-      // this.selectedGridList = this.deleteSelectedGridList('data', target.data);
       this.selectedGridList = Functions.listDeleteByKey(this.selectedGridList)('data', target.data);
     }
     this.store.dispatch(new GridUpdate(this.selectedGridList));
+  }
+
+  /**
+   * 差分の取得を行う
+   * @param clickData
+   */
+  public decision(clickData: IGridData) {
+    const calculationTarget = [];
+    let decisionTarget = {};
+    const currentSelected: Array<string> = this.selectedGridList.map(sg => sg.data);
+    this.currentDataList.forEach((row, rowNum) => {
+      row.forEach((col, colNum) => {
+        if (currentSelected.includes(col.data)) {
+          calculationTarget.push({data: col.data, row: rowNum, col: colNum});
+        } else if (clickData.data === col.data) {
+          decisionTarget = {data: clickData.data, row: rowNum, col: colNum};
+        }
+      });
+    });
+
+    this.calculationResult.emit(this.calculator(decisionTarget)(calculationTarget));
+  }
+
+  /**
+   * 差分計算
+   * @param decisionTarget
+   */
+  private calculator(decisionTarget) {
+    const result = [];
+    return (calculationTarget) => {
+      Object.keys(calculationTarget).forEach(key => {
+        const row = Math.abs(Number(calculationTarget[key]['row']) - Number(decisionTarget['row']));
+        const col = Math.abs(Number(calculationTarget[key]['col']) - Number(decisionTarget['col']));
+        result.push({data: calculationTarget[key]['data'], sub: `2D6>=${row + col}`, target: decisionTarget.data});
+      });
+      return result;
+    };
   }
 
   /**

@@ -48,6 +48,17 @@ export class Functions {
     }
     return Array.isArray(target);
   }
+
+  /**
+   * リストが空か調べる
+   * @param target
+   */
+  public static isEmptyList(target: any): boolean {
+    if (!this.isListDefined(target)) {
+      return true;
+    }
+    return target.length === 0;
+  }
 }
 
 export class WebStorage {
