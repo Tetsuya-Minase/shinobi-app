@@ -1,0 +1,8 @@
+<div class="col-md-12 m-2">
+  <div class="float-left">
+    <h3>登録済みキャラクター</h3>
+    <li *ngFor="let character of characterList">
+      <span (click)="modalOpen(character)">{{character['characterName']}}</span>
+    </li>
+  </div>
+</div>
