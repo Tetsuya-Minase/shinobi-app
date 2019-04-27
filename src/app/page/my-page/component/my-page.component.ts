@@ -1,7 +1,7 @@
-import { MatDialog } from '@angular/material';
-import { DbService } from '../../../service/db.service';
-import { Component, OnInit } from '@angular/core';
-import { ReferModalComponent } from '../../../modal/refer-modal/refer-modal.component';
+import {MatDialog} from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {ReferModalComponent} from '../../../modal/refer-modal/refer-modal.component';
+import {MyPageService} from '../service/my-page.service';
 
 @Component({
   selector: 'app-my-page',
@@ -9,31 +9,17 @@ import { ReferModalComponent } from '../../../modal/refer-modal/refer-modal.comp
   styleUrls: ['./my-page.component.scss']
 })
 export class MyPageComponent implements OnInit {
-  public myCharacterList: Array<object> = new Array<object>();
-  public myCharacterNameList: Array<object> = new Array<object>();
-  public modalCharacter = {};
+  public myCharacterList = this.myPageService.myCharacterList;
+  public myCharacterNameList = this.myPageService.myCharacterNameList;
 
   constructor(
-    private dbService: DbService,
+    private myPageService: MyPageService,
     private dialog: MatDialog
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-    const userId = window.sessionStorage.getItem('userId');
-    this.dbService.getCharacterData(userId).subscribe(
-      res => {
-        this.myCharacterList = res;
-        console.log(this.myCharacterList);
-        if (!this.myCharacterList) {
-          return;
-        }
-        this.myCharacterList.forEach(item => {
-          this.myCharacterNameList.push(item['characterName']);
-        });
-      }, err => {
-        console.log(err);
-      }
-    );
+    this.myPageService.fetchCharacterList();
   }
 
   public modalOpen(character: object) {

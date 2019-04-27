@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { DbService } from '../../../service/db.service';
-import { MatDialog } from '@angular/material';
-import { ReferModalComponent } from '../../../modal/refer-modal/refer-modal.component';
-import {Functions} from '../../../common/utils';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {ReferModalComponent} from '../../../modal/refer-modal/refer-modal.component';
+import {CharacterListService} from '../service/character-list.service';
 
 @Component({
   selector: 'app-character-list',
@@ -10,32 +9,20 @@ import {Functions} from '../../../common/utils';
   styleUrls: ['./character-list.component.scss']
 })
 export class CharacterListComponent implements OnInit {
-  public characterNameList = [];
-  public characterList = [];
-  public modalCharacter = {
-    selectedSkillList: { skill: []},
-    dispArtsArray: { arts: []}
-  };
+  public characterList = this.characterListService.characterList$;
 
   constructor(
-    private dbService: DbService,
-    private dialog: MatDialog
-  ) { }
+    private dialog: MatDialog,
+    private characterListService: CharacterListService
+  ) {
+    this.characterListService.fetchCharacterData();
+  }
 
   /**
    * 初期化処理
    */
   ngOnInit() {
-    this.dbService.getCharacterData().subscribe(
-      ret => {
-        if (!Functions.isListDefined(ret)) {
-          return;
-        }
-        this.characterList = ret;
-      }, err => {
-        console.error('error in character list', err);
-      }
-    );
+
   }
 
   /**
@@ -43,7 +30,6 @@ export class CharacterListComponent implements OnInit {
    * @param character 表示するキャラクタ情報
    */
   public modalOpen(character: any) {
-    console.log(character);
     this.dialog.open(ReferModalComponent, {
       width: '70%',
       data: character

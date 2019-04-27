@@ -1,12 +1,15 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MyPageComponent} from './component/my-page.component';
+import {MyPageService} from './service/my-page.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [MyPageComponent],
-  exports: [MyPageComponent]
+  exports: [MyPageComponent],
+  providers: [MyPageService]
 })
-export class MyPageModule { }
+export class MyPageModule {
+}

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CharacterListComponent} from './component/character-list.component';
+import {CharacterListService} from './service/character-list.service';
 
 @NgModule({
   imports: [
@@ -11,6 +12,9 @@ import {CharacterListComponent} from './component/character-list.component';
   ],
   exports: [
     CharacterListComponent
+  ],
+  providers: [
+    CharacterListService
   ]
 })
 export class CharacterListModule { }

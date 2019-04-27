@@ -4,7 +4,7 @@
     <h3>登録キャラクター一覧</h3>
     <div *ngIf="myCharacterList.length > 0">
       <ul>
-        <li *ngFor="let character of myCharacterList">
+        <li *ngFor="let character of myCharacterList | async">
           <a (click)="modalOpen(character)">{{character['characterName']}}</a>
         </li>
       </ul>

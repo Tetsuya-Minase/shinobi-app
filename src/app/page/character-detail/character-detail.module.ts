@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {CharacterDetailComponent} from './component/character-detail.component';
 import {MainGridComponent} from './component/main-grid/main-grid.component';
 import {GridComponent} from './component/main-grid/grid/grid.component';
@@ -9,6 +9,7 @@ import {ArtsSettingComponent} from './component/artssetting/arts-setting.compone
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonComponentModule} from '../../common/component/common-component.module';
 import {MaterialModule} from '../../common/module/material.module';
+import {CharacterDetailService} from './service/character-detail.service';
 
 @NgModule({
   imports: [
@@ -27,12 +28,9 @@ import {MaterialModule} from '../../common/module/material.module';
     ArtsSettingComponent
   ],
   exports: [
-    CharacterDetailComponent,
-    MainGridComponent,
-    GridComponent,
-    ItemSecretsComponent,
-    BackgroundComponent,
-    ArtsSettingComponent
-  ]
+    CharacterDetailComponent
+  ],
+  providers: [CharacterDetailService]
 })
-export class CharacterDetailModule { }
+export class CharacterDetailModule {
+}
