@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {DbService} from '../../../service/db.service';
-import {InitInterfaces} from '../../../common/utils';
+import {InitInterfaces, WebStorage} from '../../../common/utils';
 import {IArtsData, IBackGround, ICharacterData, IGridData, ISecretsData} from '../../../common/interfaces';
-import {WebStorage} from '../../../common/utils';
-import {FormControl, Validators, FormGroup, AbstractControl} from '@angular/forms';
-import {select, Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {CharacterDetailService} from '../service/character-detail.service';
 
 
 @Component({
@@ -64,28 +63,25 @@ export class CharacterDetailComponent implements OnInit {
     ])
   });
 
-  private displayArtsList$: Observable<Array<IArtsData>>;
-  private backgroundList$: Observable<Array<IBackGround>>;
-  private secretsList$: Observable<Array<ISecretsData>>;
-  private gridList$: Observable<Array<IGridData>>;
+  private displayArtsList$ = this.characterDetailService.displayArtsList$;
+  private backgroundList$ = this.characterDetailService.backgroundList$;
+  private secretsList$ = this.characterDetailService.secretsList$;
+  private gridList$ = this.characterDetailService.gridList$;
 
   constructor(
+    private characterDetailService: CharacterDetailService,
     private dbService: DbService,
     private store: Store<{ artsSetting: Array<IArtsData>, background: Array<IBackGround>, secrets: Array<ISecretsData>, grids: Array<IGridData> }>
   ) {
-    this.displayArtsList$ = store.pipe(select('artsSetting'));
     this.displayArtsList$.subscribe(dl => {
       this.characterData.dispArtsArray = dl;
     });
-    this.backgroundList$ = store.pipe(select('background'));
     this.backgroundList$.subscribe(bl => {
       this.characterData.background = bl;
     });
-    this.secretsList$ = store.pipe(select('secrets'));
     this.secretsList$.subscribe(sl => {
       this.characterData.secrets = sl;
     });
-    this.gridList$ = store.pipe(select('grids'));
     this.gridList$.subscribe(gl => this.characterData.selectedSkillList = gl);
   }
 

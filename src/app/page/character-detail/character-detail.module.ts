@@ -9,7 +9,7 @@ import {ArtsSettingComponent} from './component/artssetting/arts-setting.compone
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonComponentModule} from '../../common/component/common-component.module';
 import {MaterialModule} from '../../common/module/material.module';
-import {CharacterDetailService} from './service/character-detail.service';
+import {CharacterDetailServicesModule} from './service/character-detail-services.module';
 
 @NgModule({
   imports: [
@@ -17,7 +17,8 @@ import {CharacterDetailService} from './service/character-detail.service';
     FormsModule,
     ReactiveFormsModule,
     CommonComponentModule,
-    MaterialModule
+    MaterialModule,
+    CharacterDetailServicesModule
   ],
   declarations: [
     CharacterDetailComponent,
@@ -29,8 +30,7 @@ import {CharacterDetailService} from './service/character-detail.service';
   ],
   exports: [
     CharacterDetailComponent
-  ],
-  providers: [CharacterDetailService]
+  ]
 })
 export class CharacterDetailModule {
 }
