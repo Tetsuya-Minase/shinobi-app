@@ -7,67 +7,55 @@ import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { MaterialModule } from './common/material.module';
+import { MaterialModule } from './common/module/material.module';
 import { AppComponent } from './app.component';
 import { DbService } from './service/db.service';
 import { ROUTES } from './app.routing';
 import { LoginGuardGuard } from './guard/login-guard.guard';
 
 import { ArtsModalComponent } from './modal/arts-modal/arts-modal.component';
-import { MainGridComponent } from './component/character-detail/main-grid/main-grid.component';
-import { ArtsSettingComponent } from './component/character-detail/artssetting/arts-setting.component';
-import { ItemSecretsComponent } from './component/character-detail/item-secrets/item-secrets.component';
-import { BackgroundComponent } from './component/character-detail/background/background.component';
 import { ReferModalComponent } from './modal/refer-modal/refer-modal.component';
-import { LoginComponent } from './component/login/login.component';
-import { ErrorComponent } from './component/error/error.component';
-import { TopComponent } from './component/top/top.component';
-import { CharacterDetailComponent } from './component/character-detail/character-detail.component';
-import { CharacterListComponent } from './component/character-list/character-list.component';
-import { HeaderComponent } from './component/header/header.component';
-import { MyPageComponent } from './component/my-page/my-page.component';
-import { UserRegisterComponent } from './component/user-register/user-register.component';
 import { ArtsComponent } from './modal/arts-modal/arts/arts.component';
-import { FormValidationNgComponent } from './component/form-validation-ng/form-validation-ng.component';
 
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducer/index.reducer';
-import { GridComponent } from './component/character-detail/main-grid/grid/grid.component';
+import { CharacterListModule } from './page/character-list/character-list.module';
+import { CharacterDetailModule } from './page/character-detail/character-detail.module';
+import { ErrorModule } from './page/error/error.module';
+import { LoginModule } from './page/login/login.module';
+import { MyPageModule } from './page/my-page/my-page.module';
+import { TopModule } from './page/top/top.module';
+import { UserRegisterModule } from './page/user-register/user-register.module';
+import { ServiceModule } from './service/service.module';
+import { CommonComponentModule } from './common/component/common-component.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgbModule.forRoot(),
-    AgGridModule.withComponents([]),
     ROUTES,
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers),
+    CharacterListModule,
+    CharacterDetailModule,
+    ErrorModule,
+    LoginModule,
+    MyPageModule,
+    TopModule,
+    UserRegisterModule,
+    ServiceModule,
+    CommonComponentModule,
   ],
   declarations: [
     AppComponent,
-    MainGridComponent,
     ArtsModalComponent,
     ArtsComponent,
     ReferModalComponent,
-    ArtsSettingComponent,
-    LoginComponent,
-    ErrorComponent,
-    TopComponent,
-    CharacterDetailComponent,
-    CharacterListComponent,
-    HeaderComponent,
-    MyPageComponent,
-    UserRegisterComponent,
-    ItemSecretsComponent,
-    BackgroundComponent,
-    FormValidationNgComponent,
-    GridComponent,
   ],
-  providers: [DbService, DataShareService, LoginGuardGuard],
+  providers: [LoginGuardGuard],
   entryComponents: [ReferModalComponent, ArtsModalComponent],
   bootstrap: [AppComponent],
 })
