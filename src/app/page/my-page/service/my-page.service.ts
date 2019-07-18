@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {MyPageModule} from '../my-page.module';
 import {DbService} from '../../../service/db.service';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {isDefined} from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Injectable({
   providedIn: MyPageModule
@@ -20,7 +19,7 @@ export class MyPageService {
     this.dbService.getCharacterData(userId).subscribe(
       res => {
         this._myCharacterList.next(res);
-        if (isDefined(res)) {
+        if (this.isDefined(res)) {
           return;
         }
         this._myCharacterNameList.next(res.map(item => item['characterName']));
@@ -36,5 +35,9 @@ export class MyPageService {
 
   public get myCharacterNameList(): Observable<Array<object>> {
     return this._myCharacterNameList.asObservable();
+  }
+
+  private isDefined(target: any): boolean {
+    return !(target === null || target === undefined);
   }
 }
