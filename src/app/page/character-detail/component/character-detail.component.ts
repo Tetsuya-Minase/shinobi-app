@@ -80,7 +80,7 @@ export class CharacterDetailComponent implements OnInit, OnDestroy {
       .subscribe(c => this.characterData = c);
     // this.displayArtsList$
     //   .pipe(takeUntil(this.onDestroy$))
-    //   .subscribe(dl => this.characterData.dispArtsArray = dl);
+    //   .subscribe(dl => this.characterData.displayArtsList = dl);
     // this.backgroundList$
     //   .pipe(takeUntil(this.onDestroy$))
     //   .subscribe(bl => this.characterData.background = bl);
