@@ -5,6 +5,10 @@ secret.yaml
 
 # dist
 /app
+/dist
+
+# for development
+/test-server
 
 # dependencies
 node_modules
