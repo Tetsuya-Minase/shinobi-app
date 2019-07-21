@@ -1,4 +1,4 @@
-import {IUrlList} from '../../interfaces';
+import {UrlList} from '../../types';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {URL_LIST} from '../../constants';
@@ -14,7 +14,7 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   // HTMLから参照するため仮置き
-  public urlList: IUrlList;
+  public urlList: UrlList;
   public isLogin = false;
   private onDestroy$ = new Subject();
 

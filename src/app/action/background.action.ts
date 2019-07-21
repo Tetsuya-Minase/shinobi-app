@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {IBackGround} from '../common/interfaces';
+import {BackGround} from '../common/types';
 
 export enum BackgroundActionTypes {
   Add = '[Background] ADD',
@@ -9,14 +9,14 @@ export enum BackgroundActionTypes {
 export class BackgroundAdd implements Action {
   readonly type = BackgroundActionTypes.Add;
 
-  constructor(public background: IBackGround) {
+  constructor(public background: BackGround) {
   }
 }
 
 export class BackgroundUpdate implements Action {
   readonly type = BackgroundActionTypes.Update;
 
-  constructor(public backgroundList: Array<IBackGround>) {
+  constructor(public backgroundList: Array<BackGround>) {
   }
 }
 

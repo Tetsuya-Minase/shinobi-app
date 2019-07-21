@@ -1,25 +1,25 @@
 import {Injectable} from '@angular/core';
 import {CharacterDetailModule} from '../character-detail.module';
 import {select, Store} from '@ngrx/store';
-import {IArtsData, IBackGround, ICharacterData, IGridData, ISecretsData} from '../../../common/interfaces';
+import {ArtsData, BackGround, CharacterData, GridData, SecretsData} from '../../../common/types';
 import {DbService} from '../../../service/db.service';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {InitInterfaces, WebStorage} from '../../../common/utils';
+import {InitTypes, WebStorage} from '../../../common/utils';
 
 @Injectable({
   providedIn: CharacterDetailModule
 })
 export class CharacterDetailService {
 
-  private _displayArtsList$: Observable<Array<IArtsData>> = this.store.pipe(select('artsSetting'));
-  private _backgroundList$: Observable<Array<IBackGround>> = this.store.pipe(select('background'));
-  private _secretsList$: Observable<Array<ISecretsData>> = this.store.pipe(select('secrets'));
-  private _selectedSkillList$: Observable<Array<IGridData>> = this.store.pipe(select('grids'));
-  private _characterData$ = new BehaviorSubject<ICharacterData>(InitInterfaces.initCharacterData());
+  private _displayArtsList$: Observable<Array<ArtsData>> = this.store.pipe(select('artsSetting'));
+  private _backgroundList$: Observable<Array<BackGround>> = this.store.pipe(select('background'));
+  private _secretsList$: Observable<Array<SecretsData>> = this.store.pipe(select('secrets'));
+  private _selectedSkillList$: Observable<Array<GridData>> = this.store.pipe(select('grids'));
+  private _characterData$ = new BehaviorSubject<CharacterData>(InitTypes.initCharacterData());
 
   constructor(
     private dbService: DbService,
-    private store: Store<{ artsSetting: Array<IArtsData>, background: Array<IBackGround>, secrets: Array<ISecretsData>, grids: Array<IGridData> }>
+    private store: Store<{ artsSetting: Array<ArtsData>, background: Array<BackGround>, secrets: Array<SecretsData>, grids: Array<GridData> }>
   ) {
   }
 
@@ -49,7 +49,7 @@ export class CharacterDetailService {
 
   private async patchCharacterData() {
     const characterData = await this._characterData$.toPromise();
-    characterData.dispArtsArray = await this.displayArtsList$.toPromise();
+    characterData.displayArtsArray = await this.displayArtsList$.toPromise();
     characterData.background = await this.backgroundList$.toPromise();
     characterData.secrets = await this.secretsList$.toPromise();
     characterData.selectedSkillList = await this.selectedSkillList$.toPromise();

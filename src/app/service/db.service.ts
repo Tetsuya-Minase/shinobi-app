@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Functions} from '../common/utils';
-import * as ifs from '../common/interfaces';
+import * as ifs from '../common/types';
 
 export namespace URL {
   export const artsInfo = 'assets/artsInfo.json';
@@ -22,8 +22,8 @@ export class DbService {
   /**
    * 忍法取得Service
    */
-  public getArtsData(): Observable<ifs.IArtsInfo> {
-    return this.http.get<ifs.IArtsInfo>(URL.artsInfo);
+  public getArtsData(): Observable<ifs.ArtsInfo> {
+    return this.http.get<ifs.ArtsInfo>(URL.artsInfo);
   }
 
   /**

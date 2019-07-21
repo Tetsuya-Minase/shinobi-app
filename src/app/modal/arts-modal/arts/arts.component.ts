@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DbService } from '../../../service/db.service';
-import * as ifs from '../../../common/interfaces';
-import { Functions } from '../../../common/utils';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {DbService} from '../../../service/db.service';
+import * as ifs from '../../../common/types';
+import {Functions} from '../../../common/utils';
 
 @Component({
   selector: 'app-arts',
@@ -9,16 +9,17 @@ import { Functions } from '../../../common/utils';
   styleUrls: ['./arts.component.scss']
 })
 export class ArtsComponent implements OnInit {
-  @Input() public selectArtsList: Array<ifs.IArtsData>;
-  @Output() public regist = new EventEmitter<Array<ifs.IArtsData>>();
-  public artsArray: Array<ifs.IArtsData>;
+  @Input() public selectArtsList: Array<ifs.ArtsData>;
+  @Output() public regist = new EventEmitter<Array<ifs.ArtsData>>();
+  public artsArray: Array<ifs.ArtsData>;
   private artsNameList: Array<string> = [];
   private deleteSelectArtsList: Function;
   private addSelectArtsList: Function;
 
   constructor(
     private dbService: DbService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.deleteSelectArtsList = Functions.listDeleteByKey(this.selectArtsList);
@@ -29,7 +30,7 @@ export class ArtsComponent implements OnInit {
    * クリックデータを親コンポーネントに通知する
    * @param arts クリックしたデータ
    */
-  public dataClick(arts: ifs.IArtsData) {
+  public dataClick(arts: ifs.ArtsData) {
     arts.clickFlg = !arts.clickFlg;
 
     if (this.artsNameList.includes(arts.name)) {

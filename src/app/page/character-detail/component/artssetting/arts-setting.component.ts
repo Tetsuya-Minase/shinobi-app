@@ -1,10 +1,10 @@
 import {Observable} from 'rxjs';
 import {Component, OnInit} from '@angular/core';
-import {IArtsData} from '../../../../common/interfaces';
+import {ArtsData} from '../../../../common/types';
 import {Enums} from '../../../../common/constants';
 import {ArtsModalComponent} from '../../../../modal/arts-modal/arts-modal.component';
 import {MatDialog} from '@angular/material';
-import {Store, select} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {ArtsSettingAdd, ArtsSettingUpdate} from 'app/action/arts-setting.action';
 import {FormControl, FormGroup} from '@angular/forms';
 
@@ -15,10 +15,10 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class ArtsSettingComponent implements OnInit {
   /** 選択した忍法リスト */
-  public selectArtsArray: Array<IArtsData> = [];
+  public selectArtsArray: ArtsData[] = [];
   /** 表示用リスト */
-  public displayArtsList: Array<IArtsData> = [];
-  public displayArtsList$: Observable<Array<IArtsData>>;
+  public displayArtsList: ArtsData[] = [];
+  public displayArtsList$: Observable<ArtsData[]>;
 
   public artsSettingGroup = new FormGroup({
     artsName: new FormControl('', []),
@@ -31,7 +31,7 @@ export class ArtsSettingComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private store: Store<{ artsSetting: Array<IArtsData> }>
+    private store: Store<{ artsSetting: ArtsData[] }>
   ) {
     this.displayArtsList$ = store.pipe(select('artsSetting'));
     this.displayArtsList$.subscribe(list => this.displayArtsList = list);
@@ -54,7 +54,7 @@ export class ArtsSettingComponent implements OnInit {
    * 追加
    * @param event
    */
-  public registData(event: Array<IArtsData>) {
+  public registData(event: Array<ArtsData>) {
     const artsList = {
       name: '接近戦攻撃※'
       , type: Enums.ArtsType.atack

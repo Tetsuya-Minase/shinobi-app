@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { IArtsData } from '../common/interfaces';
+import { ArtsData } from '../common/types';
 
 export enum ArtsSettingActionTypes {
   Add = '[ArtsData] ADD',
@@ -9,11 +9,11 @@ export enum ArtsSettingActionTypes {
 export class ArtsSettingAdd implements Action {
   readonly type = ArtsSettingActionTypes.Add;
 
-  constructor(public artsData: IArtsData) { }
+  constructor(public artsData: ArtsData) { }
 }
 
 export class ArtsSettingUpdate implements Action {
   readonly type = ArtsSettingActionTypes.Update;
 
-  constructor(public artsDataList: Array<IArtsData>) { }
+  constructor(public artsDataList: Array<ArtsData>) { }
 }

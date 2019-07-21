@@ -1,4 +1,4 @@
-import * as  ifs from './interfaces';
+import * as  types from './types';
 
 /**
  * 汎用関数群用namespace
@@ -9,7 +9,7 @@ export class Functions {
    * @param target コピー前オブジェクト
    * @return コピー後オブジェクト
    */
-  public static deepCopy(target: any): any {
+  static deepCopy(target: any): any {
     return JSON.parse(JSON.stringify(target));
   }
 
@@ -17,15 +17,15 @@ export class Functions {
    * リストから指定した値を持つオブジェクトを削除する
    * @param list 削除したいオブジェクトを持つリスト
    */
-  public static listDeleteByKey(list: any[]) {
-    return (keyName: string, key: any) => list.filter(l => l[keyName] !== key);
+  static listDeleteByKey(list: any[]) {
+    return (keyName: string, key: string) => list.filter(l => l[keyName] !== key);
   }
 
   /**
    * リストへ追加
    * @param list データが追加されるリスト
    */
-  public static addList(list: Array<any>) {
+  static addList(list: any[]) {
     return (additionalData: any) => [...list, additionalData];
   }
 
@@ -34,7 +34,7 @@ export class Functions {
    * @param target 検査対象
    * @returns true: 定義済み / false:未定義 or null
    */
-  public static isDefined(target: any): boolean {
+  static isDefined(target: any): boolean {
     return !(target === null || target === undefined);
   }
 
@@ -42,7 +42,7 @@ export class Functions {
    * 対象がリストかつ定義されているか確認
    * @param target 検査対象
    */
-  public static isListDefined(target: any): boolean {
+  static isListDefined(target: any): boolean {
     if (target === null || target === undefined) {
       return false;
     }
@@ -53,7 +53,7 @@ export class Functions {
    * リストが空か調べる
    * @param target
    */
-  public static isEmptyList(target: any): boolean {
+  static isEmptyList(target: any): boolean {
     if (!this.isListDefined(target)) {
       return true;
     }
@@ -62,7 +62,7 @@ export class Functions {
 }
 
 export class WebStorage {
-  public static setSessionStorage(key: string, value: string | Array<string>) {
+  static setSessionStorage(key: string, value: string | string[]) {
     if (typeof value === 'string') {
       window.sessionStorage.setItem(key, value);
     } else {
@@ -70,15 +70,15 @@ export class WebStorage {
     }
   }
 
-  public static getSessionStorage(key: string) {
+  static getSessionStorage(key: string) {
     return window.sessionStorage.getItem(key);
   }
 
-  public static delSessionStorage(key: string) {
+  static delSessionStorage(key: string) {
     window.sessionStorage.removeItem(key);
   }
 
-  public static setLocalStorage(key: string, value: string | Array<string>) {
+  static setLocalStorage(key: string, value: string | string[]) {
     if (typeof value === 'string') {
       window.localStorage.setItem(key, value);
     } else {
@@ -86,17 +86,17 @@ export class WebStorage {
     }
   }
 
-  public static getLocalStorage(key: string) {
+  static getLocalStorage(key: string) {
     window.localStorage.getItem(key);
   }
 
-  public static delLocalStorage(key: string) {
+  static delLocalStorage(key: string) {
     window.localStorage.removeItem(key);
   }
 }
 
-export class InitInterfaces {
-  public static initCharacterData(): ifs.ICharacterData {
+export class InitTypes {
+  static initCharacterData(): types.CharacterData {
     return {
       userId: '',
       playerName: '',
@@ -114,8 +114,8 @@ export class InitInterfaces {
       gender: '',
       face: '',
       belief: '',
-      selectedSkillList: {},
-      dispArtsArray: {},
+      selectedSkillList: [],
+      displayArtsArray: [],
       background: [this.initBackground()],
       secrets: [this.initSecrets()],
       hyorogan: 0,
@@ -124,7 +124,7 @@ export class InitInterfaces {
     };
   }
 
-  public static initSecrets(): ifs.ISecretsData {
+  static initSecrets(): types.SecretsData {
     return {
       name: '',
       targetSkill: '',
@@ -133,7 +133,7 @@ export class InitInterfaces {
     };
   }
 
-  public static initBackground(): ifs.IBackGround {
+  static initBackground(): types.BackGround {
     return {
       name: '',
       type: '',
@@ -144,11 +144,11 @@ export class InitInterfaces {
 }
 
 export class Base64 {
-  public static encode(str: string) {
+  static encode(str: string): string {
     return btoa(unescape(encodeURIComponent(str)));
   }
 
-  public static decode(str: string) {
+  static decode(str: string): string {
     return decodeURIComponent(escape(atob(str)));
   }
 }

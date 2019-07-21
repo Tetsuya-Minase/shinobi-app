@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ISecretsData, IItemList } from '../../../../common/interfaces';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import {Component, Input, OnInit} from '@angular/core';
+import {ItemList, SecretsData} from '../../../../common/types';
+import {select, Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
 import {SecretAdd, SecretUpdate} from 'app/action/secrets.action';
 
 @Component({
@@ -10,14 +10,14 @@ import {SecretAdd, SecretUpdate} from 'app/action/secrets.action';
   styleUrls: ['./item-secrets.component.scss']
 })
 export class ItemSecretsComponent implements OnInit {
-  @Input() itemList: IItemList;
+  @Input() itemList: ItemList;
 
-  public secretList: Array<ISecretsData>;
-  public secrets$: Observable<Array<ISecretsData>>;
+  public secretList: Array<SecretsData>;
+  public secrets$: Observable<Array<SecretsData>>;
 
 
   constructor(
-    private store: Store<Array<ISecretsData>>
+    private store: Store<Array<SecretsData>>
   ) {
     this.secrets$ = store.pipe(select('secrets'));
     this.secrets$.subscribe(secret => this.secretList = secret);
@@ -47,7 +47,7 @@ export class ItemSecretsComponent implements OnInit {
    * 行追加
    */
   public addRow() {
-    const secret: ISecretsData = {
+    const secret: SecretsData = {
       name: '',
       targetSkill: '',
       effect: '',

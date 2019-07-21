@@ -1,9 +1,9 @@
-import { Action } from '@ngrx/store';
-import { ArtsSettingActionTypes } from '../action/arts-setting.action';
-import { IArtsData } from '../common/interfaces';
-import { Enums } from '../common/constants';
+import {Action} from '@ngrx/store';
+import {ArtsSettingActionTypes} from '../action/arts-setting.action';
+import {ArtsData} from '../common/types';
+import {Enums} from '../common/constants';
 
-export const initialList: Array<IArtsData> = [{
+export const initialList: Array<ArtsData> = [{
   name: '接近戦攻撃※'
   , type: Enums.ArtsType.atack
   , range: 1
@@ -15,7 +15,7 @@ export const initialList: Array<IArtsData> = [{
   , clickFlg: false
 }];
 
-export function artsSettingReducer(state = initialList, action: Action): Array<IArtsData> {
+export function artsSettingReducer(state = initialList, action: Action): Array<ArtsData> {
   switch (action.type) {
     case ArtsSettingActionTypes.Add:
       return [...state, action['artsData']];
