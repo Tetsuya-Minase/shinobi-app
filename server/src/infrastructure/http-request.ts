@@ -15,7 +15,6 @@ export class HttpRequest<T> {
 
   public getAsList(url: string, param?: unknown): Observable<T[]> {
 
-    console.log(`url: ${url}, param:${param}`);
     // TODO: 雑すぎるので、なんとかする
     if (param == undefined) {
       return this.httpService.get(url).pipe(
@@ -24,7 +23,6 @@ export class HttpRequest<T> {
           if (this.isStatus4xx(r.status) || this.isStatus5xx(r.status)) {
             throw new CustomError(r.statusText, r.status);
           }
-          console.log('r.data', r.data);
           return r.data;
         })
       );
