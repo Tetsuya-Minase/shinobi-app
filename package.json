@@ -10,12 +10,12 @@
     "deploy": "run-s build:server build:client",
     "deploy:clean": "run-s clean deploy",
     "build:client": "ng build --aot=true",
-    "build:server": "tsc -p ./nest-server/tsconfig.build.json",
+    "build:server": "tsc -p server/tsconfig.build.json",
     "clean": "rimraf ./app",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor",
     "formatter": "eslint --fix src/**/*.ts",
-    "start:nest": "ts-node -r tsconfig-paths/register nest-server/src/main.ts"
+    "start:nest": "ts-node -r tsconfig-paths/register server/src/main.ts"
   },
   "private": true,
   "dependencies": {
