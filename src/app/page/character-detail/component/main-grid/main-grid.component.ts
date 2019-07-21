@@ -1,5 +1,5 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {IClickIndex} from '../../../../common/interfaces';
+import {Component, Input, OnInit} from '@angular/core';
+import {ClickIndex} from '../../../../common/types';
 import {DataShareService} from '../../../../service/data-share.service';
 import {Functions} from '../../../../common/utils';
 
@@ -11,13 +11,14 @@ import {Functions} from '../../../../common/utils';
 export class MainGridComponent implements OnInit {
   @Input() ryuha = '';
   public isDecision = false;
-  public selectedSkillList: Array<IClickIndex> = [];
+  public selectedSkillList: Array<ClickIndex> = [];
   public decisionResult = [];
   public decisionTarget: string;
 
   constructor(
     private dataShareService: DataShareService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
 

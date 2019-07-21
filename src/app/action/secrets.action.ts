@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {ISecretsData} from 'app/common/interfaces';
+import {SecretsData} from 'app/common/types';
 
 export enum SecretsActionTypes {
   Add = '[SecretData] ADD',
@@ -9,13 +9,13 @@ export enum SecretsActionTypes {
 export class SecretAdd implements Action {
   readonly type = SecretsActionTypes.Add;
 
-  constructor(public secretData: ISecretsData) {
+  constructor(public secretData: SecretsData) {
   }
 }
 
 export class SecretUpdate implements Action {
   readonly type = SecretsActionTypes.Update;
 
-  constructor(public secretDataList: Array<ISecretsData>) {
+  constructor(public secretDataList: Array<SecretsData>) {
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CharacterData} from '../../common/types';
 
 @Component({
   selector: 'app-refer-modal',
@@ -6,9 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./refer-modal.component.scss']
 })
 export class ReferModalComponent implements OnInit {
-  @Input() characterData;
+  @Input() characterData: CharacterData;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

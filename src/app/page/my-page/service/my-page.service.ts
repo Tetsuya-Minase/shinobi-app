@@ -24,7 +24,7 @@ export class MyPageService {
         }
         this._myCharacterNameList.next(res.map(item => item['characterName']));
       }, err => {
-        console.log(err);
+        console.error(err);
       }
     );
   }

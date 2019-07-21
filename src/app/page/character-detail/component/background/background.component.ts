@@ -1,7 +1,7 @@
 import {Observable} from 'rxjs';
-import {Component, OnInit, Input} from '@angular/core';
-import {IBackGround} from '../../../../common/interfaces';
-import {Store, select} from '@ngrx/store';
+import {Component, OnInit} from '@angular/core';
+import {BackGround} from '../../../../common/types';
+import {select, Store} from '@ngrx/store';
 import {BackgroundAdd, BackgroundUpdate} from '../../../../action/background.action';
 
 @Component({
@@ -10,15 +10,15 @@ import {BackgroundAdd, BackgroundUpdate} from '../../../../action/background.act
   styleUrls: ['./background.component.scss']
 })
 export class BackgroundComponent implements OnInit {
-  public backgroundList: Array<IBackGround>;
-  public backgroud$: Observable<Array<IBackGround>>;
+  public backgroundList: Array<BackGround>;
+  public backgroud$: Observable<Array<BackGround>>;
 
 
   constructor(
-    private store: Store<Array<IBackGround>>
+    private store: Store<Array<BackGround>>
   ) {
     this.backgroud$ = store.pipe(select('background'));
-    this.backgroud$.subscribe((bl: Array<IBackGround>) => {
+    this.backgroud$.subscribe((bl: Array<BackGround>) => {
       this.backgroundList = bl;
     });
   }

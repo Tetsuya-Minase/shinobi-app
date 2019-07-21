@@ -19,7 +19,7 @@ export class UserController {
     @Param('userId') userId: string,
     @Body() body: UserEntity
   ) {
-    const result = await this.repository.findUserByUserId(userId);
+    const result = await this.repository.findUserByUserId(userId, body);
     response.send({result: result});
   }
 

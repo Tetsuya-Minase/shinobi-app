@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {GridDefs} from '../../../../../common/constants';
 import {Functions} from '../../../../../common/utils';
-import {IGridData} from '../../../../../common/interfaces';
+import {GridData} from '../../../../../common/types';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {GridUpdate} from '../../../../../action/grid.action';
@@ -16,20 +16,20 @@ export class GridComponent implements OnInit, OnChanges {
   @Input() currentRyuha = '';
   @Output() calculationResult: EventEmitter<any> = new EventEmitter();
   public currentHeaderList: Array<any>;
-  public currentDataList: Array<Array<IGridData>>;
+  public currentDataList: Array<Array<GridData>>;
   public isDecision: boolean;
-  private selectedGridList: Array<IGridData>;
+  private selectedGridList: Array<GridData>;
   private addSelectedGridList: Function;
   private deleteSelectedGridList: Function;
-  private grid$: Observable<Array<IGridData>>;
+  private grid$: Observable<Array<GridData>>;
   private decision$: Observable<boolean>;
 
   constructor(
-    private store: Store<Array<IGridData>>,
+    private store: Store<Array<GridData>>,
     private dataShareService: DataShareService
   ) {
     this.grid$ = store.pipe(select('grid'));
-    this.grid$.subscribe((gl: Array<IGridData>) => this.selectedGridList = gl);
+    this.grid$.subscribe((gl: Array<GridData>) => this.selectedGridList = gl);
     this.decision$ = this.dataShareService.decision$;
     this.decision$.subscribe(d => this.isDecision = d);
   }
@@ -50,7 +50,7 @@ export class GridComponent implements OnInit, OnChanges {
    * セルクリック判定
    * @param target クリックしたセル
    */
-  public addData(target: IGridData) {
+  public addData(target: GridData) {
     if (target.data === '') {
       return;
     }
@@ -67,7 +67,7 @@ export class GridComponent implements OnInit, OnChanges {
    * 差分の取得を行う
    * @param clickData
    */
-  public decision(clickData: IGridData) {
+  public decision(clickData: GridData) {
     const calculationTarget = [];
     let decisionTarget = {};
     const currentSelected: Array<string> = this.selectedGridList.map(sg => sg.data);
@@ -111,7 +111,7 @@ export class GridComponent implements OnInit, OnChanges {
 
     const currentKey = Object.keys(GridDefs.ryuha).filter(k => GridDefs.ryuha[k] === currentRyuha);
     this.currentHeaderList = Functions.deepCopy(GridDefs.TABLE_HEADER).filter(h => !h.category.includes(currentKey[0]));
-    const tmpBody: Array<Array<IGridData>> = Functions.deepCopy(GridDefs.TABLE_DATA);
+    const tmpBody: Array<Array<GridData>> = Functions.deepCopy(GridDefs.TABLE_DATA);
     // TODO: ここの設計終わってるからもう少し考える
     this.currentDataList = [];
     tmpBody.forEach(tdl => {

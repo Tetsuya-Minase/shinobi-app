@@ -1,14 +1,14 @@
 import {Action} from '@ngrx/store';
 import {GridActionTypes} from '../action/grid.action';
-import {IGridData} from '../common/interfaces';
+import {GridData} from '../common/types';
 
-export const initialList: Array<IGridData> = [{
+export const initialList: Array<GridData> = [{
   data: '',
   isClicked: false,
   categories: []
 }];
 
-export function gridReducer(state = initialList, action: Action): Array<IGridData> {
+export function gridReducer(state = initialList, action: Action): Array<GridData> {
   switch (action.type) {
     case GridActionTypes.Add:
       return [...state, action['grid']];

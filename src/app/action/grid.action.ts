@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {IGridData} from '../common/interfaces';
+import {GridData} from '../common/types';
 
 export enum GridActionTypes {
   Add = '[Grid] ADD',
@@ -9,14 +9,14 @@ export enum GridActionTypes {
 export class GridAdd implements Action {
   readonly type = GridActionTypes.Add;
 
-  constructor(public grid: IGridData) {
+  constructor(public grid: GridData) {
   }
 }
 
 export class GridUpdate implements Action {
   readonly type = GridActionTypes.Update;
 
-  constructor(public gridList: Array<IGridData>) {
+  constructor(public gridList: Array<GridData>) {
   }
 }
 

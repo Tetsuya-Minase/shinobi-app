@@ -1,9 +1,9 @@
-import { Enums } from './constants';
+import {Enums} from './constants';
 
 /**
  * 忍法用IF
  */
-export interface IArtsData {
+export type ArtsData = {
   /** 忍法名 */
   name: string;
   /** 忍法タイプ */
@@ -19,101 +19,102 @@ export interface IArtsData {
   /** フレーバーテキスト */
   flavor: string;
   /** 忍法種類 */
-  attribute: Array<Enums.ArtsAttribute>;
+  attribute: Enums.ArtsAttribute[];
   /** データクリックされたか */
   clickFlg: boolean;
-}
+};
 
 /**
  * 忍法JSON用IF
  */
-export interface IArtsInfo {
-  artsinfo: Array<IArtsData>;
-}
+export type ArtsInfo = {
+  artsInfo: ArtsData[];
+};
 
 /**
  * クリックした忍法用IF
  */
-export interface IClickIndex {
+export type ClickIndex = {
   name: string;
   colId: string;
   colIndex: number;
   rowIndex: number;
-}
+};
 
 /**
  * 奥義用IF
  */
-export interface ISecretsData {
+export type SecretsData = {
   name: string;
   targetSkill: string;
   effect: string;
   staging: string;
-}
+};
 
 /**
  * アイテム用IF
  */
-export interface IItemList {
+export type ItemList = {
   hyorogan: number;
   jintugan: number;
   tonkohu: number;
-}
+};
 
 /**
  * ページURL用IF
  */
-export interface IUrlList {
+export type UrlList = {
   regist: string;
   characterList: string;
   login: string;
   myPage: string;
-}
+};
 
 /**
  * 背景用IF
  */
-export interface IBackGround {
+export type BackGround = {
   name: string;
   type: string;
   point: number;
   effect: string;
-}
+};
 
 /**
  * キャラクターデータ用IF
  */
-export interface ICharacterData {
-    userId: string;
-    playerName: string;
-    characterName: string;
-    kana: string;
-    regulation: string;
-    type: string;
-    ryuha: string;
-    kairyuha: string;
-    ryugi: string;
-    enemy: string;
-    rank: string;
-    achievement: string;
-    age: string;
-    gender: string;
-    face: string;
-    belief: string;
-    selectedSkillList: object;
-    dispArtsArray: object;
-    background: Array<IBackGround>;
-    secrets: Array<ISecretsData>;
-    hyorogan: number;
-    jintugan: number;
-    tonkohu: number;
-}
+export type CharacterData = {
+  userId: string;
+  playerName: string;
+  characterName: string;
+  kana: string;
+  regulation: string;
+  type: string;
+  ryuha: string;
+  kairyuha: string;
+  ryugi: string;
+  enemy: string;
+  rank: string;
+  achievement: string;
+  age: string;
+  gender: string;
+  face: string;
+  belief: string;
+  selectedSkillList: GridData[];
+  displayArtsArray: ArtsData[];
+  background: BackGround[];
+  secrets: SecretsData[];
+  hyorogan: number;
+  jintugan: number;
+  tonkohu: number;
+};
 
 /**
  * グリッドデータ用IF
  */
-export interface IGridData {
+export type GridData = {
   data: string;
   isClicked: boolean;
-  categories: Array<string>;
-}
+  categories: string[];
+};
+
