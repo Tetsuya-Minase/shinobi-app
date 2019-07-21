@@ -42,7 +42,7 @@ export class UserRegisterService {
         return true;
       }),
       catchError(err => {
-        console.log(err);
+        console.error(err);
         return of(false);
       })
     );

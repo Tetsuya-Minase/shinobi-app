@@ -30,7 +30,6 @@ export class CharacterDetailService {
     const userId = WebStorage.getSessionStorage('userId');
     const characterData = await this._characterData$.toPromise();
     characterData['userId'] = userId ? userId : 'GUEST';
-    console.log('characterData', characterData);
     try {
       this.dbService.insertData(characterData);
       return 'OK';
