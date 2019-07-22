@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {CharacterData} from '../../common/types';
+import {MAT_DIALOG_DATA} from '@angular/material';
+import {Functions} from '../../common/utils';
 
 @Component({
   selector: 'app-refer-modal',
@@ -7,9 +9,10 @@ import {CharacterData} from '../../common/types';
   styleUrls: ['./refer-modal.component.scss']
 })
 export class ReferModalComponent implements OnInit {
-  @Input() characterData: CharacterData;
+  characterData: CharacterData;
 
-  constructor() {
+  constructor(@Inject(MAT_DIALOG_DATA) private readonly data: CharacterData) {
+    this.characterData = Functions.deepCopy(data);
   }
 
   ngOnInit() {

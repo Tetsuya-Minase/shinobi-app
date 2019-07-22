@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {Functions} from '../common/utils';
-import * as ifs from '../common/types';
+import {ArtsInfo, CharacterDataResult, CharacterListResult} from '../common/types';
 
 export namespace URL {
   export const artsInfo = 'assets/artsInfo.json';
@@ -22,28 +21,37 @@ export class DbService {
   /**
    * 忍法取得Service
    */
-  public getArtsData(): Observable<ifs.ArtsInfo> {
-    return this.http.get<ifs.ArtsInfo>(URL.artsInfo);
+  public getArtsData(): Observable<ArtsInfo> {
+    return this.http.get<ArtsInfo>(URL.artsInfo);
   }
 
   /**
-   * キャラクタ一覧取得
+   * キャラクター一覧取得
    */
-  public getCharacterData(param?: string): Observable<Array<object>> {
-    const params = {name: ''};
-    if (Functions.isDefined(param) && typeof param === 'string') {
-      params.name = param;
-    }
+  public getCharacterList(): Observable<CharacterListResult> {
+    return this.http.get<CharacterListResult>(URL.character, {headers: this.header});
+  }
 
-    return this.http.get<Array<object>>(URL.character, {headers: this.header});
+  /**
+   * ユーザに紐づくキャラクター一覧取得
+   */
+  public getCharacterListByUserId(userId: string): Observable<CharacterListResult> {
+    return this.http.get<CharacterListResult>(`${URL.character}/${userId}`, {headers: this.header});
+  }
+
+  /**
+   * キャラクター単体取得
+   */
+  public getCharacterDataById(characterId: string): Observable<CharacterListResult> {
+    return this.http.get<CharacterListResult>(`${URL.character}/${characterId}`, {headers: this.header});
   }
 
   /**
    * キャラクター登録
    * @param data 登録するキャラクターデータ
    */
-  public insertData(data: any): Observable<object> {
-    return this.http.post(URL.character, data, {headers: this.header});
+  public insertData(data: any): Observable<CharacterDataResult> {
+    return this.http.post<CharacterDataResult>(URL.character, data, {headers: this.header});
   }
 
   /**
@@ -76,7 +84,7 @@ export class DbService {
    * ユーザ重複チェック
    * @param id ユーザID
    */
-  public duplicateUserCheck(id: string) {
+  public duplicateUserCheck(id: string): Observable<boolean> {
     return this.http.get<boolean>(`${URL.user}/${id}`, {headers: this.header});
   }
 }

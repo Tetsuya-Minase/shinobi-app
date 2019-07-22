@@ -1,7 +1,7 @@
 import {Enums} from './constants';
 
 /**
- * 忍法用IF
+ * 忍法用type
  */
 export type ArtsData = {
   /** 忍法名 */
@@ -25,14 +25,14 @@ export type ArtsData = {
 };
 
 /**
- * 忍法JSON用IF
+ * 忍法JSON用type
  */
 export type ArtsInfo = {
   artsInfo: ArtsData[];
 };
 
 /**
- * クリックした忍法用IF
+ * クリックした忍法用type
  */
 export type ClickIndex = {
   name: string;
@@ -42,7 +42,7 @@ export type ClickIndex = {
 };
 
 /**
- * 奥義用IF
+ * 奥義用type
  */
 export type SecretsData = {
   name: string;
@@ -52,7 +52,7 @@ export type SecretsData = {
 };
 
 /**
- * アイテム用IF
+ * アイテム用type
  */
 export type ItemList = {
   hyorogan: number;
@@ -61,7 +61,7 @@ export type ItemList = {
 };
 
 /**
- * ページURL用IF
+ * ページURL用type
  */
 export type UrlList = {
   regist: string;
@@ -71,7 +71,7 @@ export type UrlList = {
 };
 
 /**
- * 背景用IF
+ * 背景用type
  */
 export type BackGround = {
   name: string;
@@ -81,7 +81,7 @@ export type BackGround = {
 };
 
 /**
- * キャラクターデータ用IF
+ * キャラクターデータ用type
  */
 export type CharacterData = {
   userId: string;
@@ -110,7 +110,7 @@ export type CharacterData = {
 };
 
 /**
- * グリッドデータ用IF
+ * グリッドデータ用type
  */
 export type GridData = {
   data: string;
@@ -118,3 +118,16 @@ export type GridData = {
   categories: string[];
 };
 
+/**
+ * キャラクターリストレスポンス用type
+ */
+export type CharacterListResult = {
+  result: CharacterData[]
+};
+
+/**
+ * キャラクターデータレスポンス用type
+ */
+export type CharacterDataResult = {
+  result: CharacterData
+};
