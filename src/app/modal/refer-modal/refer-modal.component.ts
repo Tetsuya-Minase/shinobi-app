@@ -13,6 +13,7 @@ export class ReferModalComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) private readonly data: CharacterData) {
     this.characterData = Functions.deepCopy(data);
+    console.log('characterData:', this.characterData);
   }
 
   ngOnInit() {
